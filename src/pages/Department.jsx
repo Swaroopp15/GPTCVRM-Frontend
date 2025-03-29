@@ -22,7 +22,7 @@ function Department() {
       <DepartmentDetails department={department} />
       <div className="bg-gray-100 font-sans flex items-center justify-center">
         <div className="p-8">
-          <div className="max-w-md mx-auto">
+          <div className=" mx-auto">
             <div className="mb-4 flex space-x-4 p-2 bg-white rounded-lg shadow-md">
               <Link
                 to={"faculty"}

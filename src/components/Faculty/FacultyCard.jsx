@@ -5,7 +5,7 @@ function FacultyCard({ faculty }) {
     <div className="card shadow-lg rounded-lg overflow-hidden bg-white p-6">
       <img
         src={`${import.meta.env.VITE_BACKEND}${faculty.image}`}
-       className="w-full h-56 object-cover"
+        className="w-full h-40 object-cover"
         alt="Faculty"
       />
       <div className="p-4">

@@ -6,6 +6,7 @@ import ContextProvider from "../Context/Context";
 import Departments from "./pages/Departments";
 import Department from "./pages/Department";
 import Faculty from "./pages/Faculty";
+import Labs from "./pages/Labs";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -18,6 +19,7 @@ function App() {
           <Route path="/departments" element={<Departments />} />
           <Route path="/department/:depo_code" element={<Department />} >
             <Route path="faculty" element={<Faculty/>} />
+            <Route path="labs" element={<Labs/>} />
           </Route>
         </Routes>
         <h1 className="text-3xl font-bold underline text-center">

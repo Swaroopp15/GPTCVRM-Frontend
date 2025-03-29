@@ -40,8 +40,7 @@ function Faculty() {
       {loading ? (
         <p className="text-center">Loading faculty data...</p>
       ) : faculty.length > 0 ? (
-        <div className="grid grid-cols-2 gap-6">
-
+        <div className="grid grid-cols-3 gap-4">
           {faculty.map((prof) => (
             <FacultyCard key={prof.id} faculty={prof} />
           ))}
