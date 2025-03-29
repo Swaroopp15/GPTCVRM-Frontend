@@ -10,8 +10,8 @@ function Navbar() {
     <nav class="mx-5 flex flex-row gap-4 text-gray-700">
   <p>Home</p>
   <p>About</p>
-  <DropDown name={"departments"} values={objectToArray(departmentNames)} />
-  <DropDown name={"committees"} values={objectToArray(committees)} />
+  <DropDown name={"departments"} values={objectToArray(departmentNames)} link={"/department/"} />
+  <DropDown name={"committees"} values={objectToArray(committees)} link={"/committee/"} />
   <DropDown name={"others"} values={["placements", "results"]} />
 </nav>
 

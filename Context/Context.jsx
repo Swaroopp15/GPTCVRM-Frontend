@@ -9,7 +9,7 @@ function ContextProvider(params) {
   const [committees, setCommittees] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const collegeData = await getCollegeInfo();
+      const collegeData = await getCollegeInfo();      
       setCollege(collegeData.college);
       setCommittees(collegeData.committees);
       setDepartmentNames(collegeData.departments);
