@@ -7,6 +7,7 @@ import Departments from "./pages/Departments";
 import Department from "./pages/Department";
 import Faculty from "./pages/Faculty";
 import Labs from "./pages/Labs";
+import Placements from "./pages/Placements";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -20,7 +21,9 @@ function App() {
           <Route path="/department/:depo_code" element={<Department />} >
             <Route path="faculty" element={<Faculty/>} />
             <Route path="labs" element={<Labs/>} />
+            <Route path="placements" element={<Placements/>} />
           </Route>
+          <Route path="/placements" element={<Placements/>} />
         </Routes>
         <h1 className="text-3xl font-bold underline text-center">
           Hello world!

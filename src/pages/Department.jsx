@@ -9,11 +9,15 @@ function Department() {
   const [department, setDepartment] = useState();
   useEffect(() => {
     const getDepartmentData = async () => {
-      const response = await fetch(
-        `http://localhost:3000/departments/${depo_code}`
-      );
-      const data = await response.json();
-      setDepartment(data);
+      try {
+        const response = await fetch(
+          `http://localhost:3000/departments/${depo_code}`
+        );
+        const data = await response.json();
+        setDepartment(data);
+      } catch (error) {
+        console.log("Error at fetching departments details : ", error);
+      }
     };
     getDepartmentData();
   }, [depo_code]);
@@ -37,7 +41,7 @@ function Department() {
                 Labs
               </Link>
               <Link
-                to={"placements"}
+                to={`placements?depo_code=${depo_code}&year=2025`}
                 className="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300"
               >
                 Placements
