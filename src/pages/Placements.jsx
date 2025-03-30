@@ -3,8 +3,9 @@ import { useSearchParams } from "react-router";
 import getPlacements from "../functions/getPlacements";
 import YearSelector from "../components/utility/YearSelector";
 import Selector from "../components/utility/YearSelector";
+import objectToArray from "../functions/objectsToArray";
 
-const PlacementRecord = ({placement}) => {
+const PlacementRecord = ({ placement }) => {
   return (
     <tr>
       <td class="py-3 px-6 border border-gray-300">{placement.name}</td>
@@ -19,18 +20,21 @@ const PlacementRecord = ({placement}) => {
 
 const getYears = async (url) => {
   try {
-    
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    return data;
+    
+    // Extracting the year values
+    const yearList = data.years.map((item) => item.year);
+    
+    return yearList;
   } catch (error) {
-    console.error('Error fetching years:', error);
+    console.error("Error fetching years:", error);
     return [];
   }
-}
+};
 
 
 function Placements() {
@@ -42,9 +46,12 @@ function Placements() {
   const placementYear = query.get("year");
   const url = import.meta.env.VITE_BACKEND + "placements/years";
   useEffect(() => {
-    getYears(url).then((data) => setYears(data));
-  }
-  , [url]);
+    getYears(url)
+      .then((years) => {
+        setYears(years);
+      })
+      .catch((error) => console.error("Error fetching years:", error));
+  }, [url]);
   useEffect(() => {
     if (placementYear) {
       setYear(placementYear);
@@ -54,6 +61,7 @@ function Placements() {
   }, []);
   useEffect(() => {
     getPlacements(depo_code, year).then((data) => setPlacements(data));
+    console.log("year : ", year);
   }, [depo_code, year]);
   return (
     <section class="max-w-4xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg">
