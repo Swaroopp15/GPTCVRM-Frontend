@@ -8,6 +8,7 @@ import Department from "./pages/Department";
 import Faculty from "./pages/Faculty";
 import Labs from "./pages/Labs";
 import Placements from "./pages/Placements";
+import About from "./pages/About";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/department/:depo_code" element={<Department />} >
             <Route path="faculty" element={<Faculty/>} />

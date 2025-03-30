@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import getPlacements from "../functions/getPlacements";
+import YearSelector from "../components/utility/YearSelector";
 
 const PlacementRecord = ({placement}) => {
   return (
@@ -17,16 +18,24 @@ const PlacementRecord = ({placement}) => {
 
 function Placements() {
   const [query, setQuery] = useSearchParams();
+  const [year, setYear] = useState();
   const [placements, setPlacements] = useState();
   const depo_code = query.get("depo_code");
-  const year = query.get("year");
+  const placementYear = query.get("year");
+  useEffect(() => {
+    if (placementYear) {
+      setYear(placementYear);
+    } else {
+      setYear(new Date().getFullYear());
+    }
+  }, []);
   useEffect(() => {
     getPlacements(depo_code, year).then((data) => setPlacements(data));
   }, [depo_code, year]);
   return (
     <section class="max-w-4xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg">
       <h2 class="text-4xl font-bold text-red-700 text-center">Placements </h2>
-
+      <YearSelector year={year} setYear={setYear} url={import.meta.env.VITE_BACKEND + "placements/years"} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-6">
         <table class="w-full border-collapse border border-gray-200">
           <thead>
