@@ -9,6 +9,8 @@ import Faculty from "./pages/Faculty";
 import Labs from "./pages/Labs";
 import Placements from "./pages/Placements";
 import About from "./pages/About";
+import Committees from "./pages/Committees";
+import Committee from "./pages/Committee";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -19,6 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/committees" element={<Committees />} />
+          <Route path="/committee/:id" element={<Committee />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/department/:depo_code" element={<Department />} >
             <Route path="faculty" element={<Faculty/>} />
