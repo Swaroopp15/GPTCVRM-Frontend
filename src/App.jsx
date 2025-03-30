@@ -11,6 +11,7 @@ import Placements from "./pages/Placements";
 import About from "./pages/About";
 import Committees from "./pages/Committees";
 import Committee from "./pages/Committee";
+import Results from "./pages/Results";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -29,6 +30,7 @@ function App() {
             <Route path="labs" element={<Labs/>} />
             <Route path="placements" element={<Placements/>} />
           </Route>
+          <Route path="/results" element={<Results/>} />
           <Route path="/placements" element={<Placements/>} />
         </Routes>
         <h1 className="text-3xl font-bold underline text-center">
