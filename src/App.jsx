@@ -14,6 +14,7 @@ import Committee from "./pages/Committee";
 import Results from "./pages/Results";
 import AdminLogin from "./pages/Login";
 import Events from "./pages/Events";
+import Notifications from "./pages/Notifications";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -38,6 +39,7 @@ function App() {
           <Route path="/placements" element={<Placements/>} />
           <Route path="/events" element={<Events />} />
           <Route path="adminLogin" element={<AdminLogin/>}/>
+          <Route path="notification" element={<Notifications/>} />
         </Routes>
         </div>
       </ContextProvider>
