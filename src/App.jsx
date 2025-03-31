@@ -21,6 +21,7 @@ import DashBoard from "./components/admin/DashBoard";
 import DeleteFaculty from "./components/admin/Forms/Faculty/DeleteFaculty";
 import AdminDepartments from "./components/admin/Forms/Departments/AdminDepartments";
 import AddDepartment from "./components/admin/Forms/Departments/AddDepartment";
+import DeleteDepartment from "./components/admin/Forms/Departments/DeleteDepartment";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -59,7 +60,7 @@ function App() {
             {/* Faculty Routes */}
             <Route path="" element={<AddDepartment/>} /> {/* default route */}
             <Route path="add" element={<AddDepartment/>} />
-            <Route path="delete" element={<DeleteFaculty/>} />
+            <Route path="delete" element={<DeleteDepartment/>} />
             </Route>
             
            </Route>
