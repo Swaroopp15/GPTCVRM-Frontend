@@ -19,7 +19,6 @@ const addFaculty = async (event) => {
       alert("No image selected!");
     }
 
-
     const response = await fetch(import.meta.env.VITE_BACKEND + "faculty/", {
       method: 'POST',
       body: form,

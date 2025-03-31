@@ -9,19 +9,19 @@ function Faculty() {
           <div className=" mx-auto">
             <div className="mb-4 flex space-x-4 p-2 bg-white rounded-lg shadow-md">
               <Link
-                to={"addfaculty"}
+                to={"add"}
                 className="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300"
               >
                 Add Faculty
               </Link>
               <Link
-                to={"deleteFaculty"}
+                to={"delete"}
                 className="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300"
               >
                 Delete Faculty
               </Link>
               <Link
-                to={`updateFaculty`}
+                to={`update`}
                 className="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300"
               >
                 Update Faculty
