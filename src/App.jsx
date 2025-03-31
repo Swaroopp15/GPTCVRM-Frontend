@@ -5,7 +5,7 @@ import { useState } from "react";
 import ContextProvider from "../Context/Context";
 import Departments from "./pages/Departments";
 import Department from "./pages/Department";
-import Faculty from "./pages/Faculty";
+import Faculty from "./components/admin/Forms/Faculty/Faculty";
 import Labs from "./pages/Labs";
 import Placements from "./pages/Placements";
 import About from "./pages/About";
@@ -42,13 +42,18 @@ function App() {
           <Route path="/results" element={<Results/>} />
           <Route path="/placements" element={<Placements/>} />
           <Route path="/events" element={<Events />} />
-          <Route path="/admin" element={<Admin/>} >
-            <Route path="" element={<DashBoard/>} />
-            <Route path="addFaculty" element={<AddFaculty/>} />
-            <Route path="deleteFaculty" element={<DeleteFaculty/>} />
-           </Route>
           <Route path="/login" element={<AdminLogin/>}/>
           <Route path="/notifications" element={<Notifications/>} />
+           {/* admin routes */}
+          <Route path="/admin" element={<Admin/>} >
+            <Route path="" element={<DashBoard/>} />
+            <Route path="faculty" element={<Faculty/>} > 
+            {/* Faculty Routes */}
+            <Route path="addFaculty" element={<AddFaculty/>} />
+            <Route path="" element={<AddFaculty/>} />
+            <Route path="deleteFaculty" element={<DeleteFaculty/>} />
+            </Route>
+           </Route>
         </Routes>
         </div>
       </ContextProvider>

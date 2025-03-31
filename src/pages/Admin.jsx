@@ -7,10 +7,10 @@ function Admin() {
   
 
   return (
-    <div className="flex bg-gray-50 pt-16">
+    <div className="flex bg-gray-50">
       <SideBar />
       <div className="bg-gray-900 opacity-50 hidden fixed inset-1 z-0" id="sidebarBackdrop" />
-      <div id="main-content" className="flex-1 min-h-screen p-6 lg:ml-64 overflow-y-auto">
+      <div id="main-content" className="flex-1 min-h-screen lg:ml-64 overflow-y-auto">
         <Outlet />
       </div>
     </div>
