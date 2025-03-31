@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import getPlacements from "../functions/getPlacements";
-import YearSelector from "../components/utility/YearSelector";
 import Selector from "../components/utility/YearSelector";
-import objectToArray from "../functions/objectsToArray";
 
 const PlacementRecord = ({ placement }) => {
   return (
@@ -61,7 +59,6 @@ function Placements() {
   }, []);
   useEffect(() => {
     getPlacements(depo_code, year).then((data) => setPlacements(data));
-    console.log("year : ", year);
   }, [depo_code, year]);
   return (
     <section class="max-w-4xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg">
