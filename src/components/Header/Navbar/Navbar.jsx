@@ -26,8 +26,8 @@ function Navbar({ mobile = false }) {
       <Link to="/placements" className="hover:text-red-700 transition-colors">Placements</Link>
       <DropDown
         name="others"
-        values={["Login", "results", "events", "gallery", "contact"]}
-        link="/others"
+        values={[{name: "Login",code: "login"} ,{name : "results", code:"results"},{ name: "events", code: "events"}, {name: "gallery", code: "gallery"}, {name:"contact", code: "contact"}]}
+        link="/"
         mobile={mobile}
       />
     </nav>
