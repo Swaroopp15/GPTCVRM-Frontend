@@ -11,7 +11,7 @@ function Committee() {
     const getCommitteeData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/committee/${id}`
+          import.meta.env.VITE_BACKEND +`committee/info/${id}`
         );
         const data = await response.json();  
         setCommittee(data[0]);

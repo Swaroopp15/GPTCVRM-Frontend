@@ -26,9 +26,7 @@ const deleteCommittee = async (id) => {
 
 function DeleteCommittee() {
   const [id, setId] = useState(null);
-  const {committees} = useContext(Context);
-  console.log(committees);
-  
+  const {committees} = useContext(Context); 
   return (
     <div className="my-5">
       <div className="container mx-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl shadow-md dark:shadow-white py-4 px-6 sm:px-10 bg-white dark:bg-gray-800 border-emerald-500 rounded-md">

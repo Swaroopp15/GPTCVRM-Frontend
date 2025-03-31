@@ -26,6 +26,7 @@ import AdminCommittees from "./components/admin/Forms/Committees/AdminCommittees
 import AddCommittee from "./components/admin/Forms/Committees/AddCommittees";
 import DeleteCommitee from "./components/admin/Forms/Committees/DeleteCommittees";
 import DeleteCommittee from "./components/admin/Forms/Committees/DeleteCommittees";
+import AddMember from "./components/admin/Forms/Committees/AddMembers";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -70,6 +71,7 @@ function App() {
                 <Route path="" element={<AddCommittee />} /> {/* default route */}
                 <Route path="add" element={<AddCommittee />} />
                 <Route path="delete" element={<DeleteCommittee />} />
+                <Route path="add-member" element={<AddMember/>} />
               </Route>
             </Route>
           </Routes>
