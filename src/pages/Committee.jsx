@@ -13,7 +13,7 @@ function Committee() {
         const response = await fetch(
           `http://localhost:3000/committee/${id}`
         );
-        const data = await response.json();
+        const data = await response.json();  
         setCommittee(data[0]);
       } catch (error) {
         console.log("Error at fetching departments details : ", error);
@@ -27,7 +27,7 @@ function Committee() {
       <div className="bg-gray-100 font-sans flex items-center justify-center">
         <div className="p-8">
           <div className=" mx-auto">
-            <CommitteeMembers faculty={committee.members} />
+            <CommitteeMembers faculty={committee?.members} />
           </div>
         </div>
       </div>
