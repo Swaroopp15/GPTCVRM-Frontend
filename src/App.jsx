@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Committees from "./pages/Committees";
 import Committee from "./pages/Committee";
 import Results from "./pages/Results";
+import AdminLogin from "./pages/Login";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -32,10 +33,11 @@ function App() {
           </Route>
           <Route path="/results" element={<Results/>} />
           <Route path="/placements" element={<Placements/>} />
+          <Route path="adminLogin" element={<AdminLogin/>}/>
         </Routes>
-        <h1 className="text-3xl font-bold underline text-center">
+        {/* <h1 className="text-3xl font-bold underline text-center">
           Hello world!
-        </h1>
+        </h1> */}
       </ContextProvider>
     </>
   );
