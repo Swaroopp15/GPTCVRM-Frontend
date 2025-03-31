@@ -17,6 +17,7 @@ import Events from "./pages/Events";
 import Notifications from "./pages/Notifications";
 import Admin from "./pages/Admin";
 import AddFaculty from "./components/admin/Forms/Departments/AddFaculty";
+import DashBoard from "./components/admin/DashBoard";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -41,6 +42,7 @@ function App() {
           <Route path="/placements" element={<Placements/>} />
           <Route path="/events" element={<Events />} />
           <Route path="/admin" element={<Admin/>} >
+            <Route path="" element={<DashBoard/>} />
             <Route path="addFaculty" element={<AddFaculty/>} />
            </Route>
           <Route path="/login" element={<AdminLogin/>}/>

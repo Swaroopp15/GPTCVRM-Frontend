@@ -31,7 +31,7 @@ export default function SideBar() {
 
           <nav className="flex-1 px-3 py-4 space-y-1">
             <ul className="space-y-2">
-              <SideBarItem title="Dashboard" to="dashboard" icon={<FaHome className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
+              <SideBarItem title="Dashboard" to="/admin" icon={<FaHome className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Departments" to="departments" icon={<FaUniversity className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Committees" to="committees" icon={<FaUsersCog className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Faculty" to="faculty" icon={<FaChalkboardTeacher className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
