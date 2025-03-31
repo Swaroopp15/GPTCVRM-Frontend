@@ -28,9 +28,11 @@ function CommitteeMembers({ members }) {
             </tr>
           </thead>
           <tbody>
-            {members?.map((member) => {
+            {members ? members?.map((member) => {
               return <MembershipRecord member={member} key={member.id} />;
-            })}
+            }) :<tr> <td colSpan={4} className="text-center text-2xl p-5">
+               No Member available currently
+              </td></tr>}
           </tbody>
         </table>
       </div>

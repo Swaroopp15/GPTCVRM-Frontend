@@ -14,6 +14,8 @@ function Committee() {
           import.meta.env.VITE_BACKEND +`committee/info/${id}`
         );
         const data = await response.json();  
+        console.log("Committee data : ", data);
+        
         setCommittee(data[0]);
       } catch (error) {
         console.log("Error at fetching departments details : ", error);
@@ -27,7 +29,7 @@ function Committee() {
       <div className="bg-gray-100 font-sans flex items-center justify-center">
         <div className="p-8">
           <div className=" mx-auto">
-            <CommitteeMembers faculty={committee?.members} />
+            <CommitteeMembers members={committee?.members} />
           </div>
         </div>
       </div>
