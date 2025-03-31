@@ -16,8 +16,9 @@ import AdminLogin from "./pages/Login";
 import Events from "./pages/Events";
 import Notifications from "./pages/Notifications";
 import Admin from "./pages/Admin";
-import AddFaculty from "./components/admin/Forms/Departments/AddFaculty";
+import AddFaculty from "./components/admin/Forms/Faculty/AddFaculty";
 import DashBoard from "./components/admin/DashBoard";
+import DeleteFaculty from "./components/admin/Forms/Faculty/DeleteFaculty";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -44,6 +45,7 @@ function App() {
           <Route path="/admin" element={<Admin/>} >
             <Route path="" element={<DashBoard/>} />
             <Route path="addFaculty" element={<AddFaculty/>} />
+            <Route path="deleteFaculty" element={<DeleteFaculty/>} />
            </Route>
           <Route path="/login" element={<AdminLogin/>}/>
           <Route path="/notifications" element={<Notifications/>} />
