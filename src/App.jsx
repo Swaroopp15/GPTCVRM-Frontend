@@ -21,6 +21,8 @@ function App() {
     <>
       <ContextProvider>
         <Header />
+        <div className="mt-24">
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -37,9 +39,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="adminLogin" element={<AdminLogin/>}/>
         </Routes>
-        {/* <h1 className="text-3xl font-bold underline text-center">
-          Hello world!
-        </h1> */}
+        </div>
       </ContextProvider>
     </>
   );
