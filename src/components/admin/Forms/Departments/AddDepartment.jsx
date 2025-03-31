@@ -36,7 +36,7 @@ function AddDepartment() {
     <div className="my-5">
         <div className="container mx-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl shadow-md dark:shadow-white py-4 px-6 sm:px-10 bg-white dark:bg-gray-800 border-emerald-500 rounded-md">
             <div className="my-3">
-                <h1 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Add Faculty</h1>
+                <h1 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Add Department</h1>
                 <form onSubmit={addDepartment} className="my-4">
                     <div className="my-2">
                         <label for="department_name" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">Department Name</label>
