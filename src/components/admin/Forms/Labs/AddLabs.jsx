@@ -21,9 +21,9 @@ const addLab = async (event) => {
       body: form,
     });
     if (response.ok) {
-      alert("Faculty added successfully");
+      alert("Lab added successfully");
     } else {
-      alert("Error adding faculty");
+      alert("Error adding lab");
     }
   } catch (error) {
     console.log("Error at adding new Lab : " + error);

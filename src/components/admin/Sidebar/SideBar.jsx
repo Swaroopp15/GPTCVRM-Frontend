@@ -35,7 +35,7 @@ export default function SideBar() {
               <SideBarItem title="Departments" to="departments" icon={<FaUniversity className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Committees" to="committees" icon={<FaUsersCog className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Faculty" to="faculty" icon={<FaChalkboardTeacher className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
-              <SideBarItem title="Students" to="students" icon={<FaUserGraduate className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
+              <SideBarItem title="Admissions" to="admissions" icon={<FaUserGraduate className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="College Info" to="college-info" icon={<FaInfoCircle className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Results" to="results" icon={<MdSchool className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Placements" to="placements" icon={<MdWorkOutline className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
