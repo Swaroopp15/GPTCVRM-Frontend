@@ -38,8 +38,8 @@ function App() {
           <Route path="/results" element={<Results/>} />
           <Route path="/placements" element={<Placements/>} />
           <Route path="/events" element={<Events />} />
-          <Route path="adminLogin" element={<AdminLogin/>}/>
-          <Route path="notification" element={<Notifications/>} />
+          <Route path="login" element={<AdminLogin/>}/>
+          <Route path="notifications" element={<Notifications/>} />
         </Routes>
         </div>
       </ContextProvider>
