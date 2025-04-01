@@ -33,6 +33,8 @@ import AddAdmission from "./components/admin/Forms/Admission/AddAdmission";
 import Admissions from "./pages/Admissions";
 import AdminResults from "./components/admin/Forms/Results/AdminResults";
 import AddResults from "./components/admin/Forms/Results/AddResults";
+import AdminPlacements from "./components/admin/Forms/Placements/AdminPlacements";
+import AddPlacements from "./components/admin/Forms/Placements/AddPlacements";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -91,6 +93,12 @@ function App() {
               {/* Results Routes */}
               <Route path="results" element={<AdminResults/>}>
                 <Route path="add" element={<AddResults/>} />
+                <Route path="" element={<AddResults/>} />
+              </Route>
+              {/* Placements Routes */}
+              <Route path="placements" element={<AdminPlacements/>}>
+                <Route path="add" element={<AddPlacements/>} />
+                <Route path="" element={<AddPlacements/>} />
               </Route>
             </Route>
           </Routes>
