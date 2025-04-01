@@ -30,6 +30,7 @@ import AddMember from "./components/admin/Forms/Committees/AddMembers";
 import AdminLabs from "./components/admin/Forms/Labs/AdminLabs";
 import AddLabs from "./components/admin/Forms/Labs/AddLabs";
 import AddAdmission from "./components/admin/Forms/Admission/AddAdmission";
+import Admissions from "./pages/Admissions";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/admissions" element={<Admissions/>} />
             <Route path="/committees" element={<Committees />} />
             <Route path="/committee/:id" element={<Committee />} />
             <Route path="/departments" element={<Departments />} />
