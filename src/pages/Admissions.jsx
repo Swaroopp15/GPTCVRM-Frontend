@@ -24,8 +24,6 @@ function Admissions() {
       try {
         const response = await fetch(import.meta.env.VITE_BACKEND + "admissions");
         const data = await response.json();
-        console.log("Admissions : ", data);
-        
         setAdmissions(data);
       } catch (error) {
         console.log("Error in fetching admissions : ", error);
