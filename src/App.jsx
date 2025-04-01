@@ -31,6 +31,8 @@ import AdminLabs from "./components/admin/Forms/Labs/AdminLabs";
 import AddLabs from "./components/admin/Forms/Labs/AddLabs";
 import AddAdmission from "./components/admin/Forms/Admission/AddAdmission";
 import Admissions from "./pages/Admissions";
+import AdminResults from "./components/admin/Forms/Results/AdminResults";
+import AddResults from "./components/admin/Forms/Results/AddResults";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -86,6 +88,10 @@ function App() {
               </Route>
               {/* Admission Routes */}
               <Route path="admissions" element={<AddAdmission />}></Route>
+              {/* Results Routes */}
+              <Route path="results" element={<AdminResults/>}>
+                <Route path="add" element={<AddResults/>} />
+              </Route>
             </Route>
           </Routes>
         </div>
