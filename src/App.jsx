@@ -35,6 +35,7 @@ import AdminResults from "./components/admin/Forms/Results/AdminResults";
 import AddResults from "./components/admin/Forms/Results/AddResults";
 import AdminPlacements from "./components/admin/Forms/Placements/AdminPlacements";
 import AddPlacements from "./components/admin/Forms/Placements/AddPlacements";
+import ShowDepartments from "./components/admin/Forms/Departments/ShowDepatments";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -74,6 +75,7 @@ function App() {
                 <Route path="" element={<AddDepartment />} /> {/* default route */}
                 <Route path="add" element={<AddDepartment />} />
                 <Route path="delete" element={<DeleteDepartment />} />
+                <Route path="show" element={<ShowDepartments/>}/>
               </Route>
               {/* Committees Routes */}
               <Route path="committees" element={<AdminCommittees />}>
