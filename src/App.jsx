@@ -36,6 +36,7 @@ import AddResults from "./components/admin/Forms/Results/AddResults";
 import AdminPlacements from "./components/admin/Forms/Placements/AdminPlacements";
 import AddPlacements from "./components/admin/Forms/Placements/AddPlacements";
 import ShowDepartments from "./components/admin/Forms/Departments/ShowDepatments";
+import Contact from "./pages/Contact";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -46,6 +47,7 @@ function App() {
         <div className="mt-24">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="contact" element={<Contact/>}/>
             <Route path="/about" element={<About />} />
             <Route path="/admissions" element={<Admissions/>} />
             <Route path="/committees" element={<Committees />} />
