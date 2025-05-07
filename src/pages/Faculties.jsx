@@ -18,7 +18,7 @@ const getFaculty = async (depo_code) => {
   }
 };
 
-function Faculty() {
+function Faculties() {
   const depo_code = useContext(DepartmentContext);
   const [faculty, setFaculty] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -52,4 +52,4 @@ function Faculty() {
   );
 }
 
-export default Faculty;
+export default Faculties;

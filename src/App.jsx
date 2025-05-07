@@ -35,6 +35,7 @@ import AdminResults from "./components/admin/Forms/Results/AdminResults";
 import AddResults from "./components/admin/Forms/Results/AddResults";
 import AdminPlacements from "./components/admin/Forms/Placements/AdminPlacements";
 import AddPlacements from "./components/admin/Forms/Placements/AddPlacements";
+import Faculties from "./pages/Faculties";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -51,7 +52,7 @@ function App() {
             <Route path="/committee/:id" element={<Committee />} />
             <Route path="/departments" element={<Departments />} />
             <Route path="/department/:depo_code" element={<Department />}>
-              <Route path="faculty" element={<Faculty />} />
+              <Route path="faculty" element={<Faculties />} />
               <Route path="labs" element={<Labs />} />
               <Route path="placements" element={<Placements />} />
             </Route>
