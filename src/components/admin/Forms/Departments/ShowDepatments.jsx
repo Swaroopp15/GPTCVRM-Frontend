@@ -5,7 +5,7 @@ const ShowDepartments = () => {
   const [departments, setDepartments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
   const [error, setError] = useState(null);
 
   // Fetch departments from backend
@@ -54,25 +54,10 @@ const ShowDepartments = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentDepartments = departments.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currentDepartments);
   const totalPages = Math.ceil(departments.length / itemsPerPage);
 
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-      {/* <div className="px-6 py-5 sm:px-8 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
-        <div>
-          <h3 className="text-xl font-bold text-gray-800">Departments</h3>
-          <p className="mt-1 text-sm text-gray-500">List of all academic departments</p>
-        </div>
-        <div className="flex space-x-3">
-          <button className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition duration-200">
-            Export
-          </button>
-          <Link to="/add" className="px-4 py-2 bg-blue-600 rounded-lg text-sm font-medium text-white hover:bg-blue-700 transition duration-200">
-            Add New
-          </Link>
-        </div>
-      </div> */}
 
       {isLoading ? (
         <div className="p-6 space-y-4">
@@ -97,18 +82,18 @@ const ShowDepartments = () => {
               {currentDepartments.map((dept) => (
                 <tr key={dept.id} className="hover:bg-gray-50 transition duration-150">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.id}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.department_name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                      {dept.code}
+                    <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 uppercase">
+                      {dept.depo_code}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
-                    <Link to={`/update/${dept.code}`} className="text-blue-600 hover:text-blue-900 transition duration-150">
+                    <Link to={`/update/${dept.depo_code}`} className="text-blue-600 hover:text-blue-900 transition duration-150">
                       Edit
                     </Link>
                     <button
-                      onClick={() => deleteDepartment(dept.code)}
+                      onClick={() => deleteDepartment(dept.depo_code)}
                       className="text-red-600 hover:text-red-900 transition duration-150"
                     >
                       Delete
