@@ -10,7 +10,7 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className='w-full bg-white shadow-lg h-20 px-4 sm:px-8 md:px-16 lg:px-36 flex flex-row justify-between items-center fixed top-0 z-50'>
+    <div className='w-full bg-white h-20 px-4 sm:px-8 md:px-16 lg:px-36 flex flex-row justify-between items-center fixed top-0 z-50'>
       <Logo name={college.college_name} />
       
       <Link 

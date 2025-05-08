@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import DepartmentSelector from '../utilities/DepartmentSelector'
+import React from 'react';
+import DepartmentSelector from '../utilities/DepartmentSelector';
 
 const addFaculty = async (event) => {
   event.preventDefault();
@@ -10,13 +10,14 @@ const addFaculty = async (event) => {
     form.append("email", event.target.email.value);
     form.append("faculty_role", event.target.faculty_role.value);
     form.append("depo_code", event.target.depo_code.value);
-    form.append("category", "faculty"); 
+    form.append("category", "faculty");
     form.append("subfolder", event.target.email.value);
 
     if (event.target.image.files.length > 0) {
       form.append("image", event.target.image.files[0]);
     } else {
       alert("No image selected!");
+      return;
     }
 
     const response = await fetch(import.meta.env.VITE_BACKEND + "faculty/", {
@@ -35,41 +36,97 @@ const addFaculty = async (event) => {
   }
 };
 
-
 function AddFaculty() {
   return (
-    <div className="my-5">
-        <div className="container mx-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl shadow-md dark:shadow-white py-4 px-6 sm:px-10 bg-white dark:bg-gray-800 border-emerald-500 rounded-md">
-            <div className="my-3">
-                <h1 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Add Faculty</h1>
-                <form onSubmit={addFaculty} className="my-4">
-                    <div className="my-2">
-                        <label for="name" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">Full Name</label>
-                        <input type="text" name="faculty_name" className="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-sm sm:text-md rounded-md my-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" id="name" />
-                    </div>
+    <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8 max-w-2xl mx-auto my-10">
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-gray-800">Add New Faculty</h3>
+        <p className="text-sm text-gray-500 mt-1">Enter faculty details and assign them to a department</p>
+      </div>
+      <form onSubmit={addFaculty} className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="faculty_name" className="block text-sm font-medium text-gray-700 mb-2">
+              Full Name<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              name="faculty_name"
+              id="faculty_name"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="John Doe"
+            />
+          </div>
 
-                    <div className="my-2">
-                        <label for="email" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">Email</label>
-                        <input type="email" name="email" className="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-sm sm:text-md rounded-md my-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" id="email" />
-                    </div>
-                    <div className="my-2">
-                        <label for="faculty_role" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">Designation : </label>
-                        <input type="text" name="faculty_role" className="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-sm sm:text-md rounded-md my-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" id="faculty_role" />
-                    </div>
-                    <div className="my-2">
-                        <label for="department" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">Department : </label>
-                        <DepartmentSelector name={"depo_code"} />
-                    </div>
-                    <div className="my-2">
-                        <label for="image" className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300">faculty Image : </label>
-                        <input type="file" name="image" id="image" placeholder='Select faculty image'/>
-                    </div>
-                    <button className="px-4 py-1 bg-emerald-500 rounded-md text-black text-sm sm:text-lg shadow-md">Save</button>
-                </form>
-            </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Email<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="john@example.com"
+            />
+          </div>
         </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="faculty_role" className="block text-sm font-medium text-gray-700 mb-2">
+              Designation<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              name="faculty_role"
+              id="faculty_role"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Assistant Professor"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
+              Department<span className="text-red-500 ml-1">*</span>
+            </label>
+            <DepartmentSelector name="depo_code" />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+            Faculty Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            className="w-full text-gray-700 bg-white border border-gray-300 rounded-lg py-2 px-4 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition"
+          />
+        </div>
+
+        <div className="flex justify-end space-x-3 pt-2">
+          <button
+            type="reset"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
+          >
+            Reset
+          </button>
+          <button
+            type="submit"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition transform hover:-translate-y-0.5"
+          >
+            Save Faculty
+          </button>
+        </div>
+      </form>
     </div>
-  )
+  );
 }
 
-export default AddFaculty
+export default AddFaculty;
