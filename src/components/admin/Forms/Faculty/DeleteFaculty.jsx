@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import FacultySelector from "../utilities/DepartmentSelector";
+import React, { useEffect, useState } from "react";
+import DepartemntSelector from "../utilities/DepartmentSelector";
+import FacultySelector from "../utilities/FacultySelector";
+import { fetchFaculty } from "../../../../functions/faculty";
 
 const deleteFaculty = async (faculty_code) => {
   if (!faculty_code) return alert("No faculty selected!");
 
   try {
     const response = await fetch(
-      import.meta.env.VITE_BACKEND + "faculties/" + faculty_code,
+      import.meta.env.VITE_BACKEND + "faculty/" + faculty_code,
       {
         method: "DELETE",
       }
@@ -26,6 +28,19 @@ const deleteFaculty = async (faculty_code) => {
 function DeleteFaculty() {
   const [faculty_code, setFaculty_code] = useState(null);
   const [isConfirming, setIsConfirming] = useState(false);
+  const [facultyList, setFacultyList] = useState([]);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
+
+  // Logic to fetch faculty available based on selected Department
+  useEffect(() => {
+    if (!selectedDepartment) return;
+    // Fetch faculty based on selected department
+    const fetchFacultyList = async () => {
+      const data = await fetchFaculty(selectedDepartment);
+      setFacultyList(data);
+    }
+    fetchFacultyList();
+  }, [selectedDepartment]);
 
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8">
@@ -38,11 +53,18 @@ function DeleteFaculty() {
         deleteFaculty(faculty_code);
       }} className="space-y-6">
         <div>
-          <label htmlFor="faculty" className="block text-sm font-medium text-gray-700 mb-2">
-            Select Faculty
+          <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-2">
+            Select Department
             <span className="text-red-500 ml-1">*</span>
           </label>
-          <FacultySelector name="faculty_code" setValue={setFaculty_code} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"/>
+          <DepartemntSelector name="department" setValue={setSelectedDepartment} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"/>
+        </div>
+        <div>
+          <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-2">
+            Select Department
+            <span className="text-red-500 ml-1">*</span>
+          </label>
+          <FacultySelector name="department" facultyList={facultyList} setValue={setFaculty_code} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"/>
         </div>
 
         {isConfirming && (
