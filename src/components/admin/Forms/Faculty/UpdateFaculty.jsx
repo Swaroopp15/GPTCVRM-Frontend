@@ -32,8 +32,8 @@ function UpdateFaculty() {
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8 max-w-2xl mx-auto my-10">
       <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-800">Add New Faculty</h3>
-        <p className="text-sm text-gray-500 mt-1">Enter faculty details and assign them to a department</p>
+        <h3 className="text-2xl font-bold text-gray-800">Update Faculty Details</h3>
+        <p className="text-sm text-gray-500 mt-1">Select Faculty and Change their details</p>
       </div>
       <form onSubmit={(event) => {event.preventDefault(); updateFacultyDetails()}} className="space-y-6">
       <div>
