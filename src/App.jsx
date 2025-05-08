@@ -39,6 +39,7 @@ import ShowDepartments from "./components/admin/Forms/Departments/ShowDepatments
 import Contact from "./pages/Contact";
 import Faculties from "./pages/Faculties";
 import UpdateDepartment from "./components/admin/Forms/Departments/UpdateDepartment";
+import UpdateCommittee from "./components/admin/Forms/Committees/UpdateCommittee";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -88,6 +89,8 @@ function App() {
                 <Route path="add" element={<AddCommittee />} />
                 <Route path="delete" element={<DeleteCommittee />} />
                 <Route path="add-member" element={<AddMember/>} />
+                {/* <Route path="delete-member" element={<DeleteCommittee />} /> */}
+                <Route path="update" element={<UpdateCommittee />} />
               </Route>
                {/* Committees Routes */}
                <Route path="labs" element={<AdminLabs />}>
