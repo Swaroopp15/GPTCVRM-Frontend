@@ -40,6 +40,7 @@ import Contact from "./pages/Contact";
 import Faculties from "./pages/Faculties";
 import UpdateDepartment from "./components/admin/Forms/Departments/UpdateDepartment";
 import UpdateCommittee from "./components/admin/Forms/Committees/UpdateCommittee";
+import UpdateFaculty from "./components/admin/Forms/Faculty/UpdateFaculty";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -74,6 +75,7 @@ function App() {
                 <Route path="" element={<AddFaculty />} /> {/* default route */}
                 <Route path="add" element={<AddFaculty />} />
                 <Route path="delete" element={<DeleteFaculty />} />
+                <Route path="update" element={<UpdateFaculty />} />
               </Route>
               {/* Departments Routes */}
               <Route path="departments" element={<AdminDepartments />}>
