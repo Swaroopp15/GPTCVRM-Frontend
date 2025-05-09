@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import DepartmentSelector from "../utilities/DepartmentSelector";
-
+import { deleteLab, getLabs } from "../../../../functions/labs";
 
 function DeleteLabs() {
   const [depo_code, setDepo_code] = useState();
+  const [labs, setLabs] = useState([]);
+  const [selectedLab, setSelectedLab] = useState("");
   useEffect(() => {
     if (!depo_code) return;
-    const url = import.meta.env.VITE_BACKEND + 'labs'
+    getLabs(depo_code).then((data) => setLabs(data));
   }, [depo_code]);
   return (
     <div className="my-5">
@@ -18,7 +20,8 @@ function DeleteLabs() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              deleteFaculty(selectedFaculty);
+              deleteLab(selectedLab).then((response) => alert("Lab Deleted Successfully"));
+              setLabs((prevLabs) => prevLabs.filter((lab) => lab.id !== selectedLab));
             }}
             className="my-4"
           >
@@ -37,22 +40,25 @@ function DeleteLabs() {
                 htmlFor="faculty"
                 className="text-sm sm:text-md font-bold text-gray-700 dark:text-gray-300"
               >
-                Faculty:
+                Lab:
               </label>
               <select
                 name="id"
                 id="faculty"
-                onChange={(event) => setSelectedFaculty(event.target.value)}
+                onChange={(event) => setSelectedLab(event.target.value)}
                 className="block w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 bg-gray-50"
               >
-                {facultyList.length > 0 ? (
-                  facultyList.map((item) => (
-                    <option key={item.id} value={item.faculty_id}>
-                      {item.faculty_name} - {item.email}
+                <option value="" disabled selected>
+                  Select a Lab
+                </option>
+                {labs.length > 0 ? (
+                  labs.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.lab_name}
                     </option>
                   ))
                 ) : (
-                  <option value="">No Faculty</option>
+                  <option value="">No Labs Available</option>
                 )}
               </select>
             </div>
@@ -67,7 +73,7 @@ function DeleteLabs() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default DeleteLabs
+export default DeleteLabs;

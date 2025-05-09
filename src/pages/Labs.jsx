@@ -1,17 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { DepartmentContext } from './Department';
 import LabCard from '../components/Labs/LabCard';
+import { getLabs } from '../functions/labs';
 
-const getLabs = async (depo_code) => {
-  try {
-    const response = await fetch(`http://localhost:3000/labs?depo_code=${depo_code}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log("error at fetching labs :", error);
-    
-  }
-}
 
 function Labs() {
     const depo_code = useContext(DepartmentContext);
@@ -34,5 +25,6 @@ function Labs() {
     </div>
   )
 }
+
 
 export default Labs
