@@ -42,6 +42,7 @@ import UpdateDepartment from "./components/admin/Forms/Departments/UpdateDepartm
 import UpdateCommittee from "./components/admin/Forms/Committees/UpdateCommittee";
 import UpdateFaculty from "./components/admin/Forms/Faculty/UpdateFaculty";
 import DeleteLabs from "./components/admin/Forms/Labs/DeleteLabs";
+import NotFoundPage from "./pages/Not-found";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -114,6 +115,7 @@ function App() {
                 <Route path="" element={<AddPlacements/>} />
               </Route>
             </Route>
+            <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </div>
       </ContextProvider>
