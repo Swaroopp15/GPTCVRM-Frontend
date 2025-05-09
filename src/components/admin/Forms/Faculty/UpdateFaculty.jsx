@@ -61,7 +61,7 @@ function UpdateFaculty() {
               id="faculty_name"
               onChange={(event) => setFaculty_name(event.currentTarget.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="John Doe"
+              placeholder="Enter Faculty Name"
             />
           </div>
 
@@ -75,7 +75,7 @@ function UpdateFaculty() {
               id="email"
               onChange={(event) => setEmail(event.currentTarget.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="john@example.com"
+              placeholder="Enter Faculty Email"
             />
           </div>
         </div>
