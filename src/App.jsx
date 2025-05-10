@@ -54,6 +54,7 @@ import AddNotification from "./components/admin/Forms/Notifications/AddNotificat
 import DeleteNotification from "./components/admin/Forms/Notifications/DeleteNotification";
 import UpdateNotification from "./components/admin/Forms/Notifications/UpdateNotification";
 import DeleteResults from "./components/admin/Forms/Results/DeleteResults";
+import DeletePlacements from "./components/admin/Forms/Placements/DeletePlacements";
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -125,6 +126,7 @@ function App() {
               <Route path="placements" element={<AdminPlacements/>}>
                 <Route path="add" element={<AddPlacements/>} />
                 <Route path="" element={<AddPlacements/>} />
+                <Route path="delete" element={<DeletePlacements/>} />
               </Route>
               {/* Notifications Routes */}
               <Route path="notifications" element={<AdminNotifications />}>
