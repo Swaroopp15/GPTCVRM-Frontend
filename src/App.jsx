@@ -44,7 +44,10 @@ import UpdateFaculty from "./components/admin/Forms/Faculty/UpdateFaculty";
 import DeleteLabs from "./components/admin/Forms/Labs/DeleteLabs";
 import NotFoundPage from "./pages/Not-found";
 import UpdateLabs from "./components/admin/Forms/Labs/UpdateLabs";
-
+import CreateEvent from "./components/admin/Forms/Events/CreateEvent";
+import AdminEvents from "./components/admin/Forms/Events/AdminEvents";
+import UpdateEvent from "./components/admin/Forms/Events/UpdateEvent";
+import ViewEvents from "./components/admin/Forms/Events/ViewEvents";
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -116,6 +119,14 @@ function App() {
                 <Route path="add" element={<AddPlacements/>} />
                 <Route path="" element={<AddPlacements/>} />
               </Route>
+              {/* Events Routes */}
+              <Route path="events" element={<AdminEvents />}>
+                <Route path="" element={<CreateEvent/>} />
+                <Route path="create" element={<CreateEvent />} />
+                <Route path="update" element={<UpdateEvent />} />
+                <Route path="view" element={<ViewEvents />} />
+                <Route path="delete" element={<DeleteLabs />} />
+                </Route>
             </Route>
             <Route path="*" element={<NotFoundPage/>} />
           </Routes>
