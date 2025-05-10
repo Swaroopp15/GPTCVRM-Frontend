@@ -37,9 +37,11 @@ const deleteResults = async (id) => {
       method: "DELETE",
     });
     const data = await response.json();
+    alert("Results Deleted Successfully");
     return data;
   } catch (error) {
     console.log("Error deleting results:", error);
+    alert("Error deleting results");
   }
 }
 
