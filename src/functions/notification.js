@@ -46,7 +46,27 @@ const deleteNotification = async (id) => {
     return [];
   }
 };
-const updateNotification = async () => {};
+const updateNotification = async (id, newNotification) => {
+  try {
+    const response = await fetch(
+      import.meta.env.VITE_BACKEND + "notifications/"+id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newNotification),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to update notification");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error updating notification:", error);
+    alert("Failed to update notification");
+  }
+};
 
 export {
   getNotifications,

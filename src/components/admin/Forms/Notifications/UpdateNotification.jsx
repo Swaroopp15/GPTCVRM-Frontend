@@ -132,7 +132,6 @@ function UpdateNotification() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
                   value={formData.title}
                   onChange={(e) => setFormData({...formData, title: e.target.value})}
-                  required
                 />
               </div>
 
@@ -144,9 +143,8 @@ function UpdateNotification() {
                 <input
                   type="date"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
-                  value={formData.date}
+                  value={formData.date || new Date().toISOString().split('T')[0]}
                   onChange={(e) => setFormData({...formData, date: e.target.value})}
-                  required
                 />
               </div>
 
