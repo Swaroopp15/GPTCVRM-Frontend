@@ -8,7 +8,7 @@ function AdminEvents() {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link
-          to="add"
+          to="create"
           className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="flex items-center space-x-3">
