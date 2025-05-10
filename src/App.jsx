@@ -48,6 +48,10 @@ import CreateEvent from "./components/admin/Forms/Events/CreateEvent";
 import AdminEvents from "./components/admin/Forms/Events/AdminEvents";
 import UpdateEvent from "./components/admin/Forms/Events/UpdateEvent";
 import ViewEvents from "./components/admin/Forms/Events/ViewEvents";
+import AdminNotifications from "./components/admin/Forms/Notifications/AdminNotifications";
+import AddNotification from "./components/admin/Forms/Notifications/AddNotification";
+import DeleteNotification from "./components/admin/Forms/Notifications/DeleteNotification";
+import UpdateNotification from "./components/admin/Forms/Notifications/UpdateNotification";
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -118,6 +122,14 @@ function App() {
               <Route path="placements" element={<AdminPlacements/>}>
                 <Route path="add" element={<AddPlacements/>} />
                 <Route path="" element={<AddPlacements/>} />
+              </Route>
+              {/* Notifications Routes */}
+              <Route path="notifications" element={<AdminNotifications />}>
+                <Route path="" element={<AddNotification />} />
+                <Route path="add" element={<AddNotification />} />
+                <Route path="delete" element={<DeleteNotification />} />
+                <Route path="update" element={<UpdateNotification />} />
+                <Route path="view" element={<AdminNotifications />} />
               </Route>
               {/* Events Routes */}
               <Route path="events" element={<AdminEvents />}>

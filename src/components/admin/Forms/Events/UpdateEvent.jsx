@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getEvents, updateEvent } from '../../../../functions/events';
+import { getEvents, updateEvents } from '../../../../functions/events';
 import DepartmentSelector from "../utilities/DepartmentSelector";
 
 function UpdateEvent() {
@@ -50,7 +50,7 @@ function UpdateEvent() {
 
     setIsLoading(true);
     try {
-      await updateEvent(selectedEvent, formData);
+      await updateEvents(selectedEvent, formData);
       alert("Event updated successfully!");
     } catch (error) {
       console.error("Error updating event:", error);
