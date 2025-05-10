@@ -7,6 +7,8 @@ function Events() {
     const fetchEvents = async () => {
       const response = await fetch(import.meta.env.VITE_BACKEND + "events/");
       const data = await response.json();
+      console.log("events: ", data);
+      
       setEvents(data);
     }
     fetchEvents();

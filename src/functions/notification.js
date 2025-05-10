@@ -1,11 +1,11 @@
 const getNotifications = async() => {};
-const addNotifications = async() => {};
-const deleteNotifications = async() => {};
-const updateNotifications = async() => {};
+const addNotification = async() => {};
+const deleteNotification = async() => {};
+const updateNotification = async() => {};
 
 export{
   getNotifications,
-  addNotifications,
-  deleteNotifications,
-  updateNotifications
+  addNotification,
+  deleteNotification,
+  updateNotification
 }

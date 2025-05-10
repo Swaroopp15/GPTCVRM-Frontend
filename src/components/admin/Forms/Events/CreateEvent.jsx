@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import DepartmentSelector from "../utilities/DepartmentSelector";
+import { addEvent } from '../../../../functions/events';
 
 function CreateEvent() {
   const [formData, setFormData] = useState({
     event_name: '',
-    conducted_by: '',
+    date: '',
     description: '',
     depo_code: '',
     event_images: null
@@ -19,12 +20,7 @@ function CreateEvent() {
     }));
   };
 
-  const handleFileChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      event_images: e.target.files
-    }));
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,28 +28,32 @@ function CreateEvent() {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('event_name', formData.event_name);
-      formDataToSend.append('conducted_by', formData.conducted_by);
+      formDataToSend.append('name', formData.event_name);
+      formDataToSend.append('date', formData.date);
       formDataToSend.append('description', formData.description);
       formDataToSend.append('depo_code', formData.depo_code);
+      formDataToSend.append('category', 'events');
+      formDataToSend.append('subfolder', formData.event_name);
       
-      if (formData.event_images) {
-        for (let i = 0; i < formData.event_images.length; i++) {
-          formDataToSend.append('event_images', formData.event_images[i]);
-        }
-      }
+      const files = e.target.event_images.files;
+    for (let i = 0; i < files.length; i++) {
+      formDataToSend.append("event_images", files[i]);
+    }
 
       // Replace with your actual API call
       // const response = await createEvent(formDataToSend);
+      console.log("event image", formData.event_images);
+      
+      await addEvent(formDataToSend);
       // if (response.ok) {
         alert("Event created successfully!");
-        setFormData({
-          event_name: '',
-          conducted_by: '',
-          description: '',
-          depo_code: '',
-          event_images: null
-        });
+        // setFormData({
+        //   event_name: '',
+        //   date: '',
+        //   description: '',
+        //   depo_code: '',
+        //   event_images: null
+        // });
       // }
     } catch (error) {
       console.error("Error creating event:", error);
@@ -90,18 +90,18 @@ function CreateEvent() {
           </div>
 
           <div>
-            <label htmlFor="conducted_by" className="block text-sm font-medium text-gray-700 mb-2">
-              Conducted By
+            <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
+              Conducted On (Date)
               <span className="text-red-500 ml-1">*</span>
             </label>
             <input
               type="text"
-              id="conducted_by"
-              name="conducted_by"
+              id="date"
+              name="date"
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
-              placeholder="Enter organizer name"
-              value={formData.conducted_by}
+              placeholder="Enter event held date"
+              value={formData.date}
               onChange={handleInputChange}
             />
           </div>
@@ -145,7 +145,6 @@ function CreateEvent() {
               multiple
               name="event_images"
               id="event_images"
-              onChange={handleFileChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
             />
             <p className="mt-1 text-sm text-gray-500">Upload multiple images of the event</p>
