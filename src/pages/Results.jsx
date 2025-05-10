@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Selector from "../components/utility/YearSelector";
 import { Context } from "../../Context/Context";
 import ResultRecord from "../components/Results/ResultRecord";
+import { getAvailableYears } from "../functions/results";
 
 const getData = async (url) => {
   try {
@@ -23,18 +24,12 @@ function Results() {
   const { departmentNames } = useContext(Context);
   const [department, setDepartment] = useState(null);
   const [results, setResults] = useState(null);
-  const url = import.meta.env.VITE_BACKEND + "results/get-years";
   useEffect(() => {
-    getData(url)
-      .then((data) => {
-        return data.map((year) => {
-          return year.year;
-        });
-      })
+    getAvailableYears(department)
       .then((data) => {
         setYears(data);
       });
-  }, []);
+  }, [department]);
   useEffect(() => {
     if (year && department) {
       const url =
@@ -52,22 +47,22 @@ function Results() {
     <section className="max-w-4xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-4xl font-bold text-red-700 text-center mb-5">Results </h2>
       <div className="flex justify-start gap-5 px-10">
-        <Selector
-          className={"border border-black rounded"}
-          values={years}
-          setValue={setYear}
-        />
         <select
           className="w-[250px] border border-black rounded"
           onChange={(event) => setDepartment(event.target.value)}
         >
           <option value={null}>Select Department</option>
-          {departmentNames.map((department) => (
-            <option value={department.depo_code}>
+          {departmentNames.map((department, index) => (
+            <option value={department.depo_code} key={index}>
               {department.department_name}
             </option>
           ))}
         </select>
+          <Selector
+            className={"border border-black rounded"}
+            values={years}
+            setValue={setYear}
+          />
       </div>
       {year && department ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-6">
