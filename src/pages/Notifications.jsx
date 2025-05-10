@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { getNotifications } from "../functions/notification";
 
-const getNotifications = async () => {
-  try {
-    const response = await fetch(
-      import.meta.env.VITE_BACKEND + "notifications"
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching notifications:", error);
-    return [];
-  }
-};
 
 const NotificationItem = ({ notification, i }) => {
   return (

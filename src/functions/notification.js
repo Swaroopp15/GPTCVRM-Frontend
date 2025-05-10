@@ -1,4 +1,15 @@
-const getNotifications = async () => {};
+const getNotifications = async () => {
+  try {
+    const response = await fetch(
+      import.meta.env.VITE_BACKEND + "notifications"
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching notifications:", error);
+    return [];
+  }
+};
 const addNotification = async (notification) => {
   try {
     const response = await fetch(
@@ -21,7 +32,20 @@ const addNotification = async (notification) => {
     alert("Failed to create notification");
   }
 };
-const deleteNotification = async () => {};
+const deleteNotification = async (id) => {
+  try {
+    const response = await fetch(
+      import.meta.env.VITE_BACKEND + "notifications/"+id, {
+        method: "DELETE"
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching notifications:", error);
+    return [];
+  }
+};
 const updateNotification = async () => {};
 
 export {
