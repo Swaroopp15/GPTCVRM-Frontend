@@ -28,7 +28,7 @@ function EventCard({event}) {
     <div className="flex-1">
       <h3 className="text-2xl font-semibold text-red-700">{event.title}</h3>
       <p className="text-gray-600 mt-2">{event.description}</p>
-      <p className="text-gray-800 mt-2"><strong>On date :</strong> {event.event_date}</p>
+      <p className="text-gray-800 mt-2"><strong>On date :</strong> {new Date(event.event_date).toLocaleDateString()}</p>
     </div>
   </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getNotifications, updateNotifications } from '../../../../functions/notification';
+import { getNotifications, updateNotification } from '../../../../functions/notification';
 
 function UpdateNotification() {
   const [notifications, setNotifications] = useState([]);
@@ -53,7 +53,7 @@ function UpdateNotification() {
 
     setIsLoading(true);
     try {
-      await updateNotifications(selectedId, {
+      await updateNotification(selectedId, {
         title: formData.title,
         date: formData.date,
         ...(formData.hasLink && { link: formData.link })

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getNotifications, deleteNotifications } from '../../../../functions/notification';
+import { getNotifications, deleteNotification } from '../../../../functions/notification';
 
 function DeleteNotification() {
   const [notifications, setNotifications] = useState([]);
@@ -37,7 +37,7 @@ function DeleteNotification() {
 
     setIsLoading(true);
     try {
-      await deleteNotifications(selectedId);
+      await deleteNotification(selectedId);
       setNotifications(prev => prev.filter(n => n.id !== selectedId));
       setSelectedId('');
       alert("Notification deleted successfully!");

@@ -37,11 +37,10 @@ const deleteEvent = async (id) => {
 };
 const updateEvent = async (id, newEvent) => {
   try {
+    console.log("newEvent: ", newEvent.get("event_images"));
+    
     const response = await fetch(import.meta.env.VITE_BACKEND + "events/" + id, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body:newEvent,
     });
     if (!response.ok) {

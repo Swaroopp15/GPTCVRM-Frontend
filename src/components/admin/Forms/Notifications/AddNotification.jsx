@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addNotifications } from '../../../../functions/notification';
+import { addNotification } from '../../../../functions/notification';
 
 function AddNotification() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ function AddNotification() {
     setIsSubmitting(true);
     
     try {
-      await addNotifications({
+      await addNotification({
         title: formData.title,
         date: formData.date,
         ...(formData.hasLink && { link: formData.link })
