@@ -48,6 +48,7 @@ import CreateEvent from "./components/admin/Forms/Events/CreateEvent";
 import AdminEvents from "./components/admin/Forms/Events/AdminEvents";
 import UpdateEvent from "./components/admin/Forms/Events/UpdateEvent";
 import ViewEvents from "./components/admin/Forms/Events/ViewEvents";
+import DeleteEvent from "./components/admin/Forms/Events/DeleteEvent";
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -125,7 +126,7 @@ function App() {
                 <Route path="create" element={<CreateEvent />} />
                 <Route path="update" element={<UpdateEvent />} />
                 <Route path="view" element={<ViewEvents />} />
-                <Route path="delete" element={<DeleteLabs />} />
+                <Route path="delete" element={<DeleteEvent />} />
                 </Route>
             </Route>
             <Route path="*" element={<NotFoundPage/>} />

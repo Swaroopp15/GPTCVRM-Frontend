@@ -1,4 +1,16 @@
-const getEvents = async () => {};
+const getEvents = async () => {
+  try {
+    const response = await fetch(import.meta.env.VITE_BACKEND + "events");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("Error in fetching Events : ", error);
+    return error;
+  }
+};
 const addEvent = async (eventData) => {
   try {
     const response = await fetch(import.meta.env.VITE_BACKEND + "events", {
