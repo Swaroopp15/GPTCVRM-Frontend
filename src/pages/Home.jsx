@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Hero from '../components/hero/Hero';
 import { Link } from 'react-router';
 import EventCard from '../components/Events/EventCard';
+import Footer from './Footer';
 
 const Home = () => {
   const [departments, setDepartments] = useState([]);
@@ -302,7 +303,7 @@ const Home = () => {
       </section>
 
       {/* === FOOTER === */}
-      <footer className="bg-red-800 text-white py-12">
+      {/* <footer className="bg-red-800 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">GPC Chodavaram</h3>
@@ -336,7 +337,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
+      <Footer/>
     </div>
   );
 };
