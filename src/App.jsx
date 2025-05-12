@@ -64,12 +64,13 @@ function App() {
         <div className="mt-24">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="contact" element={<Contact/>}/>
+            <Route path="contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/admissions" element={<Admissions/>} />
+            <Route path="/admissions" element={<Admissions />} />
             <Route path="/committees" element={<Committees />} />
             <Route path="/committee/:id" element={<Committee />} />
-            <Route path="/departments" element={<Departments />} />
+            {/* <Route path="/departments" element={<Departments />} /> */}
+            <Route path="/departments" element={<Department />} />
             <Route path="/department/:depo_code" element={<Department />}>
               <Route path="faculty" element={<Faculties />} />
               <Route path="labs" element={<Labs />} />
@@ -95,7 +96,7 @@ function App() {
                 <Route path="" element={<AddDepartment />} /> {/* default route */}
                 <Route path="add" element={<AddDepartment />} />
                 <Route path="delete" element={<DeleteDepartment />} />
-                <Route path="show" element={<ShowDepartments/>}/>
+                <Route path="show" element={<ShowDepartments />} />
                 <Route path="update" element={<UpdateDepartment />} />
               </Route>
               {/* Committees Routes */}
@@ -103,30 +104,30 @@ function App() {
                 <Route path="" element={<AddCommittee />} /> {/* default route */}
                 <Route path="add" element={<AddCommittee />} />
                 <Route path="delete" element={<DeleteCommittee />} />
-                <Route path="add-member" element={<AddMember/>} />
+                <Route path="add-member" element={<AddMember />} />
                 {/* <Route path="delete-member" element={<DeleteCommittee />} /> */}
                 <Route path="update" element={<UpdateCommittee />} />
               </Route>
-               {/* Committees Routes */}
-               <Route path="labs" element={<AdminLabs />}>
+              {/* Committees Routes */}
+              <Route path="labs" element={<AdminLabs />}>
                 <Route path="" element={<AddLabs />} /> {/* default route */}
                 <Route path="add" element={<AddLabs />} />
                 <Route path="delete" element={<DeleteLabs />} />
-                <Route path="update" element={<UpdateLabs/>} />
+                <Route path="update" element={<UpdateLabs />} />
               </Route>
               {/* Admission Routes */}
               <Route path="admissions" element={<AddAdmission />}></Route>
               {/* Results Routes */}
-              <Route path="results" element={<AdminResults/>}>
-                <Route path="add" element={<AddResults/>} />
-                <Route path="" element={<AddResults/>} />
-                <Route path="delete" element={<DeleteResults/>} />
+              <Route path="results" element={<AdminResults />}>
+                <Route path="add" element={<AddResults />} />
+                <Route path="" element={<AddResults />} />
+                <Route path="delete" element={<DeleteResults />} />
               </Route>
               {/* Placements Routes */}
-              <Route path="placements" element={<AdminPlacements/>}>
-                <Route path="add" element={<AddPlacements/>} />
-                <Route path="" element={<AddPlacements/>} />
-                <Route path="delete" element={<DeletePlacements/>} />
+              <Route path="placements" element={<AdminPlacements />}>
+                <Route path="add" element={<AddPlacements />} />
+                <Route path="" element={<AddPlacements />} />
+                <Route path="delete" element={<DeletePlacements />} />
               </Route>
               {/* Notifications Routes */}
               <Route path="notifications" element={<AdminNotifications />}>
@@ -138,14 +139,14 @@ function App() {
               </Route>
               {/* Events Routes */}
               <Route path="events" element={<AdminEvents />}>
-                <Route path="" element={<CreateEvent/>} />
+                <Route path="" element={<CreateEvent />} />
                 <Route path="create" element={<CreateEvent />} />
                 <Route path="update" element={<UpdateEvent />} />
                 <Route path="view" element={<ViewEvents />} />
                 <Route path="delete" element={<DeleteEvent />} />
-                </Route>
+              </Route>
             </Route>
-            <Route path="*" element={<NotFoundPage/>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </ContextProvider>
