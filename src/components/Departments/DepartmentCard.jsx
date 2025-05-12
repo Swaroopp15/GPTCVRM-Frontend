@@ -1,15 +1,38 @@
 import React from "react";
 import { Link } from "react-router";
 
-function DepartmentCard({key, name, link }) {
+const DepartmentCard = ({
+  name,
+  link,
+  description,
+  facultyCount,
+  labCount,
+  icon,
+  className = "",
+}) => {
   return (
-    <div key={key} className="bg-white p-6 sm:p-8 shadow-lg rounded-lg transition-transform transform hover:scale-105">
-      <h3 className="text-xl sm:text-2xl font-semibold text-red-700">{name}</h3>
-      <Link className="text-blue-600 underline block mt-2" to={link}>
-        Explore
+    <div
+      className={`flex flex-col justify-between h-full bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 ${className}`}
+    >
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex items-center mb-4">
+          <div className="text-3xl mr-4">{icon}</div>
+          <h3 className="text-xl font-bold text-gray-800">{name}</h3>
+        </div>
+        <p className="text-gray-600 mb-6 flex-grow">{description}</p>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>{facultyCount} Faculty</span>
+          <span>{labCount} Labs</span>
+        </div>
+      </div>
+      <Link
+        to={link}
+        className="block bg-red-600 text-white text-center py-3 font-medium hover:bg-red-700 transition"
+      >
+        View More
       </Link>
     </div>
   );
-}
+};
 
 export default DepartmentCard;
