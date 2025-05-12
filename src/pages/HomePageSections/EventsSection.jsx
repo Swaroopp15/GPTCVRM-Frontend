@@ -20,7 +20,7 @@ const EventsSection = ({ events, eventsLoading, containerVariants, itemVariants 
         </motion.div>
       ) : events.length > 0 ? (
         <>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {events.slice(0, 2).map((event) => (
               <motion.div key={event.id} variants={itemVariants}>
                 <EventCard event={event} />

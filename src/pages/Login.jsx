@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { login } from "../functions/auth";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,8 +15,12 @@ const AdminLogin = () => {
   const onLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      console.log("Admin login:", email, password);
-      navigate("/admin");
+      login(email, password).then((response) => {
+        navigate("/admin");
+      }).catch((error) => {
+        console.error("Login failed:", error);
+        alert("Login failed. Please check your credentials.");
+      });
     } else {
       alert("Please enter email and password.");
     }
