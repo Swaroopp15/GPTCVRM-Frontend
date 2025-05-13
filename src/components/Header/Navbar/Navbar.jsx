@@ -29,12 +29,14 @@ function Navbar({ mobile = false }) {
         name="departments"
         values={objectToArray(departmentNames)}
         link="/department/"
+        all="/departments"
         mobile={mobile}
       />
       <DropDown
         name="committees"
         values={objectToArray(committees)}
         link="/committee/"
+        all="/committees"
         mobile={mobile}
       />
       <Link

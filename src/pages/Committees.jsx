@@ -13,7 +13,7 @@ function Committees() {
       </h2>
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {committees && committees.map((committe, index) => {
-          return <DepartmentCard key={index} name={committe.name} link={"/committe/" + committe.id} />;
+          return <DepartmentCard key={index} name={committe.name} link={"/committee/" + committe.id} />;
         })}
       </div>
     </section>

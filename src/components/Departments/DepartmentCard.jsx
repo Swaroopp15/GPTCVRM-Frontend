@@ -20,10 +20,10 @@ const DepartmentCard = ({
           <h3 className="text-xl font-bold text-gray-800">{name}</h3>
         </div>
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-        <div className="flex justify-between text-sm text-gray-500">
+        {/* <div className="flex justify-between text-sm text-gray-500">
           <span>{facultyCount} Faculty</span>
           <span>{labCount} Labs</span>
-        </div>
+        </div> */}
       </div>
       <Link
         to={link}
