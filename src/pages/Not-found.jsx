@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { Context } from '../../Context/Context';
-import NotFoundIllustration from './NotFoundIllustration'; // Adjust the path as needed
+import NotFoundIllustration from './NotFoundIllustration';
 
 function NotFoundPage() {
   const { college } = useContext(Context);
 
   return (
     <div className="min-h-screen w-full flex flex-col lg:flex-row items-center justify-center px-4 py-12 bg-white space-y-16 lg:space-y-0 lg:space-x-8 overflow-hidden">
-      {/* Text Section */}
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center text-center px-4 md:px-8">
         <p className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider text-red-600">404</p>
         <p className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-gray-800 mt-2">
@@ -52,7 +51,6 @@ function NotFoundPage() {
         </footer>
       </div>
 
-      {/* Illustration Section */}
       <div className="w-full lg:w-1/2 flex items-center justify-center px-4">
         <NotFoundIllustration />
       </div>
