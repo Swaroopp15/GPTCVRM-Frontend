@@ -83,9 +83,7 @@ function About() {
 
   return (
     <div className="min-h-screen text-gray-900">
-      {/* Full-screen Hero Section with Scrollable Image */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image - Will scroll with page */}
         <div 
           className="fixed inset-0 bg-cover bg-center z-0"
           style={{ 
@@ -96,9 +94,7 @@ function About() {
             backgroundSize: 'cover'
           }}
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-50 z-1" />
-        {/* Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -119,9 +115,7 @@ function About() {
         </motion.div>
       </section>
 
-      {/* Rest of the content */}
       <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
-        {/* About Section */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
