@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { login } from "../functions/auth";
+import { isLoggedIn, login } from "../functions/auth";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +25,22 @@ const AdminLogin = () => {
       alert("Please enter email and password.");
     }
   };
+
+  const checkLoggedIn = () => {
+    isLoggedIn().then((isLoggedIn) => {
+      if (isLoggedIn) {
+        navigate("/admin");
+      }
+    }).catch((error) => {
+      console.error("Error checking login status:", error);
+    });
+  }
+
+  // Check if the user is already logged in when the component mounts
+  // and redirect to the admin page if they are
+  useEffect(() => {
+    checkLoggedIn();
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">

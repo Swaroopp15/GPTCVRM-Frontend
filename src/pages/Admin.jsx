@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SideBar from '../components/admin/Sidebar/SideBar';
 import { FaUniversity, FaUsers, FaFlask, FaBriefcase, FaChartLine, FaCalendarAlt, FaBell, FaUserGraduate, FaChalkboardTeacher, FaCog } from 'react-icons/fa';
 import { Outlet } from 'react-router';
+import { isLoggedIn } from '../functions/auth';
 
 function Admin() {
   
+  useEffect(() => {
+    isLoggedIn().then((isLoggedIn) => {
+      if (!isLoggedIn) {
+        navigate("/login");
+      }
+    }).catch((error) => {
+      console.error("Error checking login status:", error);
+    });
+  }, [])
 
   return (
     <div className="flex bg-gray-50">

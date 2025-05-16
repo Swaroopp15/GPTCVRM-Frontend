@@ -55,6 +55,8 @@ import DeleteNotification from "./components/admin/Forms/Notifications/DeleteNot
 import UpdateNotification from "./components/admin/Forms/Notifications/UpdateNotification";
 import DeleteResults from "./components/admin/Forms/Results/DeleteResults";
 import DeletePlacements from "./components/admin/Forms/Placements/DeletePlacements";
+import UpdateInfo from "./components/admin/Forms/College_Info/UpdateInfo";
+import AdminCollegeInfo from "./components/admin/Forms/College_Info/AdminCollegeInfo";
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -144,6 +146,9 @@ function App() {
                 <Route path="update" element={<UpdateEvent />} />
                 <Route path="view" element={<ViewEvents />} />
                 <Route path="delete" element={<DeleteEvent />} />
+              </Route>
+              <Route path="college-info" element={<AdminCollegeInfo />}>
+                <Route path="" element={<UpdateInfo />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
