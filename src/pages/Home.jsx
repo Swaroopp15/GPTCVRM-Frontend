@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Hero from '../components/hero/Hero';
+import React, { useState, useEffect, useContext } from 'react';
+import { motion } from 'framer-motion';
+import { Context } from '../../Context/Context';
 import Footer from './Footer';
-
 // Section components
 import AboutSection from '../pages/HomePageSections/AboutSection';
 import DepartmentsSection from '../pages/HomePageSections/DepartmentsSection';
@@ -9,8 +9,10 @@ import LabsSection from '../pages/HomePageSections/LabsSection';
 import PlacementsSection from '../pages/HomePageSections/PlacementsSection';
 import EventsSection from '../pages/HomePageSections/EventsSection';
 import NotificationsSection from '../pages/HomePageSections/NotificationsSection';
+import Hero from '../components/hero/Hero';
 
 const Home = () => {
+  const { college } = useContext(Context);
   const [departments, setDepartments] = useState([]);
   const [events, setEvents] = useState([]);
   const [notifications, setNotifications] = useState([]);
@@ -111,13 +113,15 @@ const Home = () => {
   return (
     <div className="bg-white text-gray-900">
       <Hero />
-      <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
-      <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
-      <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
-      <PlacementsSection containerVariants={containerVariants} itemVariants={itemVariants} />
-      <EventsSection events={events} eventsLoading={eventsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
-      <NotificationsSection notifications={notifications} notificationsLoading={notificationsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
-      <Footer />
+      <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
+        <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
+        <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
+        <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
+        <PlacementsSection containerVariants={containerVariants} itemVariants={itemVariants} />
+        <EventsSection events={events} eventsLoading={eventsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
+        <NotificationsSection notifications={notifications} notificationsLoading={notificationsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
+        <Footer />
+      </div>
     </div>
   );
 };
