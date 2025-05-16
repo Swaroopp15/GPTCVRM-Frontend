@@ -42,7 +42,7 @@ import UpdateDepartment from "./components/admin/Forms/Departments/UpdateDepartm
 import UpdateCommittee from "./components/admin/Forms/Committees/UpdateCommittee";
 import UpdateFaculty from "./components/admin/Forms/Faculty/UpdateFaculty";
 import DeleteLabs from "./components/admin/Forms/Labs/DeleteLabs";
-import NotFoundPage from "./pages/Not-found";
+import NotFoundPage from "././components/hero/Not-found";
 import UpdateLabs from "./components/admin/Forms/Labs/UpdateLabs";
 import CreateEvent from "./components/admin/Forms/Events/CreateEvent";
 import AdminEvents from "./components/admin/Forms/Events/AdminEvents";

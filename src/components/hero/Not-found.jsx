@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router';
-import { Context } from '../../Context/Context';
-import NotFoundIllustration from './NotFoundIllustration';
+import { Context } from '../../../Context/Context';
+import NotFoundIllustration from '../hero/NotFoundIllustration';
 
 function NotFoundPage() {
   const { college } = useContext(Context);
