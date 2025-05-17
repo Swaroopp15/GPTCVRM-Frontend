@@ -1,6 +1,8 @@
 import React from "react";
 
 function FacultyCard({ faculty }) {
+  console.log(faculty.image);
+  
   return (
     <div className="card shadow-lg rounded-lg overflow-hidden bg-white p-6">
       <img
