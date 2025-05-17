@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -8,9 +8,9 @@ const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 function VisionMissionSection({ data }) {
@@ -18,7 +18,7 @@ function VisionMissionSection({ data }) {
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -32,8 +32,8 @@ function VisionMissionSection({ data }) {
               {data.vision.content}
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -43,9 +43,16 @@ function VisionMissionSection({ data }) {
             <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
               <span className="mr-3">🎯</span> {data.mission.title}
             </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {data.mission.content}
-            </p>
+            <ul  className="list-disc text-gray-600 leading-relaxed">
+              {data.mission.content.split("•").map((line, index) => {
+                if (line.trim() === "") return null; // Skip empty lines
+                return (
+                  <li key={index} className="">
+                    {line.trim()}
+                  </li>
+                );
+              })}
+            </ul>
           </motion.div>
         </div>
       </div>
@@ -53,4 +60,4 @@ function VisionMissionSection({ data }) {
   );
 }
 
-export default VisionMissionSection
+export default VisionMissionSection;
