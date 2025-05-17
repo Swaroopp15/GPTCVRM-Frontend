@@ -6,7 +6,6 @@ const getFaculty = async (depo_code) => {
   if (!depo_code) return [];
   
   try {
-    console.log("Fetching faculty for:", depo_code);
     const response = await fetch(`http://localhost:3000/faculty?depo_code=${depo_code}`);
     
     if (!response.ok) throw new Error("Failed to fetch faculty data");
@@ -34,21 +33,34 @@ function Faculties() {
   }, [depo_code]);
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-xl font-semibold mb-4">Faculty List</h2>
+    <section class="max-w-4xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg">
+      <h2 class="text-4xl font-bold text-red-700 text-center">Department Faculty Members </h2>
+      {/* <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-6"> */}
+        <table class="w-full border-collapse border border-gray-200">
+          <thead>
+            <tr class="bg-red-700 text-white">
+              <th class="py-3 px-6 border border-gray-300">Photo</th>
+              <th class="py-3 px-6 border border-gray-300">Name </th>
+              <th class="py-3 px-6 border border-gray-300">department</th>
+              <th class="py-3 px-6 border border-gray-300">Disignation</th>
+              <th class="py-3 px-6 border border-gray-300">Qualification</th>
+              <th class="py-3 px-6 border border-gray-300">Experience</th>
+              <th class="py-3 px-6 border border-gray-300">email</th>
+              <th class="py-3 px-6 border border-gray-300">Phone</th>
 
-      {loading ? (
-        <p className="text-center">Loading faculty data...</p>
-      ) : faculty.length > 0 ? (
-        <div className="grid grid-cols-3 gap-4">
-          {faculty.map((prof) => (
-            <FacultyCard key={prof.id} faculty={prof} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-center">No faculty data available.</p>
-      )}
-    </div>
+
+            </tr>
+          </thead>
+          <tbody>
+            {faculty ? faculty?.map((faculty) => {
+              return <FacultyCard faculty={faculty} key={faculty.id} />;
+            }) :<tr> <td colSpan={4} className="text-center text-2xl p-5">
+               No Member available currently
+              </td></tr>}
+          </tbody>
+        </table>
+      {/* </div> */}
+    </section>
   );
 }
 
