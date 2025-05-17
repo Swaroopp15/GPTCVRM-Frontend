@@ -57,6 +57,8 @@ import DeleteResults from "./components/admin/Forms/Results/DeleteResults";
 import DeletePlacements from "./components/admin/Forms/Placements/DeletePlacements";
 import UpdateInfo from "./components/admin/Forms/College_Info/UpdateInfo";
 import AdminCollegeInfo from "./components/admin/Forms/College_Info/AdminCollegeInfo";
+import EventDetails from "./components/Events/EventDetails";
+
 function App() {
   const [college, setCollege] = useState({});
   return (
@@ -81,6 +83,7 @@ function App() {
             <Route path="/results" element={<Results />} />
             <Route path="/placements" element={<Placements />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/login" element={<AdminLogin />} />
             <Route path="/notifications" element={<Notifications />} />
             {/* admin routes */}
