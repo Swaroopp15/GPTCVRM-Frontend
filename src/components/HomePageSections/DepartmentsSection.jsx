@@ -48,7 +48,7 @@ const DepartmentsSection = ({ departments, containerVariants, itemVariants }) =>
               to={`/departments/${dept.depo_code}`}
               className="inline-flex items-center text-red-600 hover:text-red-800 font-medium transition text-sm sm:text-base"
             >
-              Learn More <span className="ml-1">→</span>
+              View More <span className="ml-1">→</span>
             </Link>
           </motion.div>
         ))}

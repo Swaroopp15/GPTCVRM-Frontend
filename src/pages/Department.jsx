@@ -4,6 +4,8 @@ import DepartmentCard from "../components/Departments/DepartmentCard";
 import DepartmentDetails from "../components/Departments/DepartmentDetails";
 import { Context } from "../../Context/Context";
 import { motion } from "framer-motion";
+import Fotter from '../pages/Footer';
+import Footer from "../pages/Footer";
 
 export const DepartmentContext = createContext(null);
 
@@ -100,10 +102,9 @@ function Department() {
                   <NavLink
                     to="faculty"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -112,10 +113,9 @@ function Department() {
                   <NavLink
                     to="labs"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -124,10 +124,9 @@ function Department() {
                   <NavLink
                     to={`placements?depo_code=${depo_code}&year=2025`}
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -209,6 +208,7 @@ function Department() {
           </section>
         )}
       </motion.div>
+      <Footer />
     </DepartmentContext.Provider>
   );
 }

@@ -3,13 +3,15 @@ import { motion } from 'framer-motion';
 import { Context } from '../../Context/Context';
 import Footer from './Footer';
 // Section components
-import AboutSection from '../pages/HomePageSections/AboutSection';
-import DepartmentsSection from '../pages/HomePageSections/DepartmentsSection';
-import LabsSection from '../pages/HomePageSections/LabsSection';
-import PlacementsSection from '../pages/HomePageSections/PlacementsSection';
-import EventsSection from '../pages/HomePageSections/EventsSection';
-import NotificationsSection from '../pages/HomePageSections/NotificationsSection';
+import AboutSection from '../components/HomePageSections/AboutSection';
+import DepartmentsSection from '../components/HomePageSections/DepartmentsSection';
+import LabsSection from '../components/HomePageSections/LabsSection';
+import PlacementsSection from '../components/HomePageSections/PlacementsSection';
+import EventsSection from '../components/HomePageSections/EventsSection';
+import NotificationsSection from '../components/HomePageSections/NotificationsSection';
 import Hero from '../components/hero/Hero';
+import Spinner from '../components/hero/Spinner';
+import PrincipalMessageSection from '../components/AboutPageSections/PrincipalMessageSection';
 
 const Home = () => {
   const { college } = useContext(Context);
@@ -41,6 +43,13 @@ const Home = () => {
       image: "⚙️"
     }
   ];
+
+   const principalMessage = {
+      name: "Dr. Nagaraju",
+      title: "Principal",
+      message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+    };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -96,9 +105,7 @@ const Home = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
-      </div>
+     <Spinner/>
     );
   }
 
@@ -115,6 +122,7 @@ const Home = () => {
       <Hero />
       <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
         <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
+        <PrincipalMessageSection data={principalMessage} />
         <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
         <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
         <PlacementsSection containerVariants={containerVariants} itemVariants={itemVariants} />

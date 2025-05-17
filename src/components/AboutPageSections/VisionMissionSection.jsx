@@ -1,0 +1,56 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+function VisionMissionSection({ data }) {
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={itemVariants}
+            className="bg-gray-50 p-8 rounded-xl border-l-4 border-red-600 shadow-sm"
+          >
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <span className="mr-3">🌟</span> {data.vision.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {data.vision.content}
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={itemVariants}
+            className="bg-gray-50 p-8 rounded-xl border-l-4 border-blue-600 shadow-sm"
+          >
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <span className="mr-3">🎯</span> {data.mission.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {data.mission.content}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default VisionMissionSection
