@@ -13,7 +13,7 @@ const addLab = async (event) => {
     form.append("equipment", event.target.equipment.value);
     form.append("specifications", event.target.specifications.value);
     form.append("budget", event.target.budget.value)
-    form.append("conducted_labs", event.target.conducted_labs)
+    form.append("conducted_labs", event.target.conducted_labs.value)
     form.append("category", "labs");
     form.append("subfolder", event.target.lab_name.value);
     

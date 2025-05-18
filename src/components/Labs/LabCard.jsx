@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Labs from "../../pages/Labs";
 
 const LabCard = ({ lab }) => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -10,7 +11,6 @@ const LabCard = ({ lab }) => {
   const prevImage = () => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
-
   return (
     <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden p-6 flex flex-col md:flex-row gap-4">
       <div className="relative w-full md:w-1/3">
