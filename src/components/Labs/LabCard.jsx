@@ -29,8 +29,12 @@ const LabCard = ({ lab }) => {
       <div className="flex-1">
         <h3 className="text-2xl font-semibold text-red-700">{lab.lab_name}</h3>
         <p className="text-gray-600 mt-2">{lab.description}</p>
+        <p className="text-gray-800 mt-2"><strong>Budget : </strong> {lab.budget || "No Budget Data Available"}</p>
+        <p className="text-gray-800 mt-2"><strong>Specifications : </strong> {lab.specifications || "No Specifications data Available"}</p>
         <p className="text-gray-800 mt-2"><strong>Capacity:</strong> {lab.capacity}</p>
         <p className="text-gray-800"><strong>Equipment:</strong> {lab.equipment}</p>
+        <p className="text-gray-800 mt-2"><strong>Labs Conducted : </strong> {lab.conducted_labs ? lab.conducted_labs.split(",").map((lab) => <li>{lab}</li> ) : "No Labs available"}</p>
+      
       </div>
     </div>
   );
