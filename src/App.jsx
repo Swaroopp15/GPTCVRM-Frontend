@@ -58,6 +58,7 @@ import DeletePlacements from "./components/admin/Forms/Placements/DeletePlacemen
 import UpdateInfo from "./components/admin/Forms/College_Info/UpdateInfo";
 import AdminCollegeInfo from "./components/admin/Forms/College_Info/AdminCollegeInfo";
 import EventDetails from "./components/Events/EventDetails";
+import Facilities from "./pages/Facilities";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -83,6 +84,7 @@ function App() {
             <Route path="/results" element={<Results />} />
             <Route path="/placements" element={<Placements />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/facilities" element={<Facilities/>} />
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/login" element={<AdminLogin />} />
             <Route path="/notifications" element={<Notifications />} />

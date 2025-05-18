@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { CalendarIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon } from '@heroicons/react/24/outline';
+import EventCalender from "../Events/EventCalender";
 
-function EventCard({ event }) {
+function EventCard({ event, type }) {
   const navigate = useNavigate();
-  const images =
-    event.images.length > 0
-      ? event.images.map((image) => import.meta.env.VITE_BACKEND + image)
-      : ["/placeholder-event.jpg"];
-
+ let images = [];
+ if (type === "facility") {
+  images = event?.images?.map((image) => {return import.meta.env.VITE_BACKEND + image.replace("\\", "/")});
+ }else{
+   images =
+   event.images.length > 0
+   ? event.images.map((image) => import.meta.env.VITE_BACKEND + image)
+   : ["/placeholder-event.jpg"];
+ 
+  }
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -80,22 +86,11 @@ function EventCard({ event }) {
       </div>
 
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3 line-clamp-2">{event.title}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-3">{event.description}</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-3 line-clamp-2">{event.title || event.name}</h3>
+        {event.description ? <p className="text-gray-600 mb-4 line-clamp-3">{event.description}</p> : <p className="text-gray-600">{event.about}</p>}
         
         <div className="mt-auto pt-4 border-t border-gray-100">
-          <div className="flex items-center text-gray-700 mb-2">
-            <CalendarIcon className="h-5 w-5 mr-2 text-red-600 flex-shrink-0" />
-            <span className="font-medium truncate">
-              {new Date(event.event_date).toLocaleDateString(undefined, {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-              })}
-            </span>
-          </div>
+          {event.event_date && <EventCalender event={event}/>}
           
           {event.location && (
             <div className="flex items-center text-gray-700">
