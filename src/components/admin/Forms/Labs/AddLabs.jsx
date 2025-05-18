@@ -11,6 +11,9 @@ const addLab = async (event) => {
     form.append("depo_code", event.target.depo_code.value);
     form.append("capacity", event.target.capacity.value);
     form.append("equipment", event.target.equipment.value);
+    form.append("specifications", event.target.specifications.value);
+    form.append("budget", event.target.budget.value)
+    form.append("conducted_labs", event.target.conducted_labs)
     form.append("category", "labs");
     form.append("subfolder", event.target.lab_name.value);
     
@@ -45,8 +48,8 @@ function AddLabs() {
       </div>
       
       <form onSubmit={addLab} className="space-y-6" encType="multipart/form-data">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-3">
             <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
               Department
               <span className="text-red-500 ml-1">*</span>
@@ -100,8 +103,22 @@ function AddLabs() {
               placeholder="Enter capacity"
             />
           </div>
-
-          <div className="md:col-span-2">
+          <div>
+            <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
+              Budget
+              <span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="number"
+              min="0"
+              name="budget"
+              id="budget"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="Enter capacity"
+            />
+          </div>
+          <div className="md:col-span-3">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
               Description
             </label>
@@ -114,7 +131,7 @@ function AddLabs() {
             ></textarea>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <label htmlFor="equipment" className="block text-sm font-medium text-gray-700 mb-2">
               Equipment
             </label>
@@ -124,6 +141,29 @@ function AddLabs() {
               rows="3"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
               placeholder="List equipment (comma separated)"
+            ></textarea>
+          </div>
+          <div className="md:col-span-3">
+            <label htmlFor="specifications" className="block text-sm font-medium text-gray-700 mb-2">
+              Specifications
+            </label>
+            <textarea
+              name="specifications"
+              id="specifications"
+              rows="3"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="List Specifications (comma separated)"
+            ></textarea>
+          </div><div className="md:col-span-3">
+            <label htmlFor="conducted_labs" className="block text-sm font-medium text-gray-700 mb-2">
+              Labs Conducted (Subjects)
+            </label>
+            <textarea
+              name="conducted_labs"
+              id="conducted_labs"
+              rows="3"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="List Labs Conducted (Subjects) (comma separated)"
             ></textarea>
           </div>
 
