@@ -13,9 +13,11 @@ import Fotter from '../pages/Footer';
 
 function About() {
   const { college } = useContext(Context);
-
+  console.log("College data : ", college);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
+
   }, []);
 
   const pageData = {
@@ -116,7 +118,7 @@ function About() {
       <div className="relative z-10 bg-white">
         <StatsSection data={pageData.stats} />
         <AboutSection data={pageData.about} />
-        <VisionMissionSection data={pageData.visionMission} />
+        <VisionMissionSection data={college} />
         {/* <PrincipalMessageSection data={pageData.principalMessage} /> */}
         <WhyChooseUsSection data={pageData.whyChooseUs} />
         <JourneySection data={pageData.journey} />

@@ -26,10 +26,10 @@ function VisionMissionSection({ data }) {
             className="bg-gray-50 p-8 rounded-xl border-l-4 border-red-600 shadow-sm"
           >
             <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="mr-3">🌟</span> {data.vision.title}
+              <span className="mr-3">🌟</span> Our Vission
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              {data.vision.content}
+              {data.vision}
             </p>
           </motion.div>
 
@@ -41,14 +41,14 @@ function VisionMissionSection({ data }) {
             className="bg-gray-50 p-8 rounded-xl border-l-4 border-blue-600 shadow-sm"
           >
             <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="mr-3">🎯</span> {data.mission.title}
+              <span className="mr-3">🎯</span> Our Misssion
             </h3>
             <ul  className="list-disc text-gray-600 leading-relaxed">
-              {data.mission.content.split("•").map((line, index) => {
+              {data?.mission?.split(".").map((line, index) => {
                 if (line.trim() === "") return null; // Skip empty lines
                 return (
                   <li key={index} className="">
-                    {line.trim()}
+                    {line.trim() + "."}
                   </li>
                 );
               })}
