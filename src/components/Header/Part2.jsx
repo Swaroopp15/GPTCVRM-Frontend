@@ -21,7 +21,7 @@ const Part2 = ({ isSticky, stickyRef, stickyHeight }) => {
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-center h-16">
             {/* <div className="flex-shrink-0 hidden md:block"> 
               {isSticky && <Logo name={college.college_name} />}
             </div> */}

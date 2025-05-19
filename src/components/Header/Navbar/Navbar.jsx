@@ -17,7 +17,7 @@ function Navbar({ mobile = false }) {
 
   return (
     <nav
-      className={`${mobile ? 'flex flex-col space-y-4 w-full' : 'hidden md:flex md:flex-row md:gap-6 md:items-center'
+      className={`${mobile ? 'flex flex-col space-y-4 w-full' : 'hidden md:flex md:flex-row md:gap-7 md:items-center text-lg'
         } text-gray-700`}
     >
       <Link
@@ -53,6 +53,18 @@ function Navbar({ mobile = false }) {
         className={`${isActive('/placements') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
       >
         Placements
+      </Link>
+      <Link
+        to="/results"
+        className={`${isActive('/results') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
+      >
+        Results
+      </Link>
+      <Link
+        to="/contact"
+        className={`${isActive('/contact') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
+      >
+        Contact
       </Link>
       <DropDown
         name="others"
