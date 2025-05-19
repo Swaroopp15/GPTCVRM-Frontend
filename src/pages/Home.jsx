@@ -122,7 +122,7 @@ const Home = () => {
       <Hero />
       <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
         <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
-        <PrincipalMessageSection data={principalMessage} />
+        <PrincipalMessageSection principal_message={college.principal_message} principal_name={college.principal_name} principal_image={""} />
         <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
         <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
         <PlacementsSection containerVariants={containerVariants} itemVariants={itemVariants} />

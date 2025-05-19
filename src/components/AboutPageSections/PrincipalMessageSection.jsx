@@ -21,7 +21,7 @@ const itemVariants = {
   }
 };
 
-function PrincipalMessageSection({ data }) {
+function PrincipalMessageSection({ principal_name, principal_message, principal_image}) {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
@@ -38,8 +38,8 @@ function PrincipalMessageSection({ data }) {
               className="md:w-1/3 bg-gray-100 flex items-center justify-center p-8"
             >
               <img 
-                src={data.image} 
-                alt={data.name}
+                src={principal_image} 
+                alt={principal_name}
                 className="w-full h-auto max-w-xs rounded-lg shadow-md object-cover"
               />
             </motion.div>
@@ -52,12 +52,12 @@ function PrincipalMessageSection({ data }) {
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-1 bg-red-600 mr-4"></div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800">{data.name}</h3>
-                    <p className="text-gray-500">{data.title}</p>
+                    <h3 className="text-xl font-semibold text-gray-800">{principal_name}</h3>
+                    <p className="text-gray-500">Principal</p>
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  {data.message}
+                  {principal_message}
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
