@@ -1,20 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from '../../Context/Context';
 import HeroSection from '../components/AboutPageSections/HeroSection';
 import StatsSection from '../components/AboutPageSections/StatsSection';
 import AboutSection from '../components/AboutPageSections/AboutSection';
 import VisionMissionSection from '../components/AboutPageSections/VisionMissionSection';
-import PrincipalMessageSection from '../components/AboutPageSections/PrincipalMessageSection';
 import WhyChooseUsSection from '../components/AboutPageSections/WhyChooseUsSection';
 import JourneySection from '../components/AboutPageSections/JourneySection';
-import ContactSection from '../components/AboutPageSections/ContactSection';
 import Spinner from '../components/hero/Spinner';
 import Fotter from '../pages/Footer';
 
 function About() {
   const { college } = useContext(Context);
-  console.log("College data : ", college);
-  
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -36,25 +32,6 @@ function About() {
       title: "About Our College",
       description: "Established in 2017, our college is dedicated to academic excellence, innovation, and holistic development. We offer a dynamic learning environment where students can explore their full potential.",
       raggingFree: "Our college is a ragging-free campus, ensuring a safe and friendly environment for all students."
-    },
-    visionMission: {
-      vision: {
-        title: "Our Vision",
-        content: "To impart quality technician Education in semi urban area of eastern AP and produce quality Technician manpower to meet technological needs of economic development of the State and become an outstanding Polytechnic, an ultimate destination for learning multi Technical job skills."
-      },
-      mission: {
-        title: "Our Mission",
-        content: `
-• Offer demand-driven diploma programmes to cater to the needs of local industries and other public, private sector agencies.
-• Provide the best academic environment for students to realize their full potential in acquiring technical knowledge and job skills.
-• Infuse human values of integrity, social responsibility, and inspire students to contribute meaningfully to national development with their technical expertise.
-    `      }
-    },
-    principalMessage: {
-      name: "Dr. Ramesh Kumar",
-      title: "Principal",
-      message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
     whyChooseUs: [
       {
