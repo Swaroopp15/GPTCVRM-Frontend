@@ -2,26 +2,33 @@ import React, { useContext } from 'react';
 import DropDown from './DropDown';
 import { Context } from '../../../../Context/Context';
 import objectToArray from '../../../functions/objectsToArray';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 function Navbar({ mobile = false }) {
   const { committees, departmentNames } = useContext(Context);
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  // Helper function to check if a route is active
+  const isActive = (path, exact = false) => {
+    if (exact) return currentPath === path;
+    return currentPath.startsWith(path);
+  };
 
   return (
     <nav
-      className={`${
-        mobile ? 'flex flex-col space-y-4 w-full' : 'hidden md:flex md:flex-row md:gap-6 md:items-center'
-      } text-gray-700`}
+      className={`${mobile ? 'flex flex-col space-y-4 w-full' : 'hidden md:flex md:flex-row md:gap-6 md:items-center'
+        } text-gray-700`}
     >
       <Link
         to="/"
-        className="hover:text-red-700 transition-colors px-2 py-1 rounded"
+        className={`${isActive('/', true) ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
       >
         Home
       </Link>
       <Link
         to="/about"
-        className="hover:text-red-700 transition-colors px-2 py-1 rounded"
+        className={`${isActive('/about') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
       >
         About
       </Link>
@@ -31,6 +38,7 @@ function Navbar({ mobile = false }) {
         link="/department/"
         all="/departments"
         mobile={mobile}
+        isActive={isActive('/department') || isActive('/departments')}
       />
       <DropDown
         name="committees"
@@ -38,10 +46,11 @@ function Navbar({ mobile = false }) {
         link="/committee/"
         all="/committees"
         mobile={mobile}
+        isActive={isActive('/committee') || isActive('/committees')}
       />
       <Link
         to="/placements"
-        className="hover:text-red-700 transition-colors px-2 py-1 rounded"
+        className={`${isActive('/placements') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
       >
         Placements
       </Link>
@@ -56,13 +65,20 @@ function Navbar({ mobile = false }) {
         ]}
         link="/"
         mobile={mobile}
+        isActive={
+          isActive('/login') ||
+          isActive('/results') ||
+          isActive('/events') ||
+          isActive('/gallery') ||
+          isActive('/contact')
+        }
       />
 
       {/* Notification icon is hidden on mobile, visible on larger screens */}
       {!mobile && (
         <Link
           to="/notifications"
-          className="hover:text-red-700 transition-colors ml-2"
+          className={`${isActive('/notifications') ? 'text-red-700' : 'hover:text-red-700'} transition-colors ml-2`}
           aria-label="Notifications"
         >
           <svg
