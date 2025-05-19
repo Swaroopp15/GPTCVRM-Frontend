@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import EventCard from "../components/events/EventCard";
 import Footer from "../pages/Footer";
+import EventCard from "../components/Events/EventCard";
 
 function Facilities() {
   const [facilities, setfacilities] = useState([]);
@@ -39,9 +39,10 @@ function Facilities() {
           </div>
         ) : facilities.length > 0 ? (
           <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-            {facilities.map((event) => (
-              <EventCard key={event.id} event={event} type={"facility"} />
-            ))}
+            {facilities.map((event) => {
+              if (!event) return
+              return <EventCard key={event.id} event={event} type={"facility"} />
+})}
           </div>
         ) : (
           <div className="text-center py-12">

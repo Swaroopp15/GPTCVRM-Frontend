@@ -59,6 +59,8 @@ import UpdateInfo from "./components/admin/Forms/College_Info/UpdateInfo";
 import AdminCollegeInfo from "./components/admin/Forms/College_Info/AdminCollegeInfo";
 import EventDetails from "./components/Events/EventDetails";
 import Facilities from "./pages/Facilities";
+import AdminFacility from "./components/admin/Forms/Facility/AdminFacility";
+import AddFacility from "./components/admin/Forms/Facility/AddFacility";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -154,6 +156,12 @@ function App() {
               </Route>
               <Route path="college-info" element={<AdminCollegeInfo />}>
                 <Route path="" element={<UpdateInfo />} />
+              </Route>
+              <Route path="facility" element={<AdminFacility/>}>
+                <Route path="" element={<AddFacility />} />
+                <Route path="add" element={<AddFacility />} />
+                {/* <Route path="delete" element={<UpdateInfo />} />
+                <Route path="update" element={<UpdateFa />} /> */}
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />

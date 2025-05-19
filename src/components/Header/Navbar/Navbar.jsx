@@ -77,6 +77,7 @@ function Navbar({ mobile = false, currentPath }) {
           { name: 'Login', code: 'login', path: '/login' },
           { name: 'Results', code: 'results', path: '/results' },
           { name: 'Events', code: 'events', path: '/events' },
+          { name: 'Facilities', code: 'facilities', path: '/facility' },
           { name: 'Gallery', code: 'gallery', path: '/gallery' },
           { name: 'Contact', code: 'contact', path: '/contact' }
         ]}
