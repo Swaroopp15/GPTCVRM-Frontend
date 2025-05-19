@@ -12,6 +12,8 @@ import NotificationsSection from '../components/HomePageSections/NotificationsSe
 import Hero from '../components/hero/Hero';
 import Spinner from '../components/hero/Spinner';
 import PrincipalMessageSection from '../components/AboutPageSections/PrincipalMessageSection';
+import CommissionerMessageSection from '../components/AboutPageSections/CommissionerMessageSection';
+import GoToTop from '../components/hero/GoToTop';
 
 const Home = () => {
   const { college } = useContext(Context);
@@ -44,12 +46,12 @@ const Home = () => {
     }
   ];
 
-   const principalMessage = {
-      name: "Dr. Nagaraju",
-      title: "Principal",
-      message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-    };
+  const principalMessage = {
+    name: "Dr. Nagaraju",
+    title: "Principal",
+    message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -105,7 +107,7 @@ const Home = () => {
 
   if (loading) {
     return (
-     <Spinner/>
+      <Spinner />
     );
   }
 
@@ -122,6 +124,11 @@ const Home = () => {
       <Hero />
       <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
         <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
+        <CommissionerMessageSection
+          commissioner_name="Sri G. Ganesh Kumar, I.A.S."
+          commissioner_message="As Commissioner of Technical Education, I envision a future where our youth are skilled, empowered, and globally competitive. Let us work together to build a knowledge-driven society."
+          commissioner_image="/public/photos/image.png"
+        />
         <PrincipalMessageSection principal_message={college.principal_message} principal_name={college.principal_name} principal_image={""} />
         <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
         <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
@@ -129,6 +136,7 @@ const Home = () => {
         <EventsSection events={events} eventsLoading={eventsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
         <NotificationsSection notifications={notifications} notificationsLoading={notificationsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
         <Footer />
+        <GoToTop />
       </div>
     </div>
   );
