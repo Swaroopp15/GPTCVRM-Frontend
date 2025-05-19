@@ -2,104 +2,107 @@ import React, { useContext } from 'react';
 import DropDown from './DropDown';
 import { Context } from '../../../../Context/Context';
 import objectToArray from '../../../functions/objectsToArray';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 
-function Navbar({ mobile = false }) {
+function Navbar({ mobile = false, currentPath }) {
   const { committees, departmentNames } = useContext(Context);
-  const location = useLocation();
-  const currentPath = location.pathname;
 
-  // Helper function to check if a route is active
-  const isActive = (path, exact = false) => {
-    if (exact) return currentPath === path;
+  const isActive = (path) => {
+    if (path === '/') return currentPath === path;
     return currentPath.startsWith(path);
   };
 
   return (
     <nav
-      className={`${mobile ? 'flex flex-col space-y-4 w-full' : 'hidden md:flex md:flex-row md:gap-7 md:items-center text-lg'
-        } text-gray-700`}
+      className={`${
+        mobile 
+          ? 'flex flex-col space-y-2 md:space-y-4 w-full' 
+          : 'hidden md:flex items-center space-x-2 lg:space-x-6'
+      }`}
     >
       <Link
         to="/"
-        className={`${isActive('/', true) ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
+        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+          isActive('/') 
+            ? 'text-red-700 bg-red-50' 
+            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+        }`}
       >
         Home
       </Link>
+      
       <Link
         to="/about"
-        className={`${isActive('/about') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
+        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+          isActive('/about') 
+            ? 'text-red-700 bg-red-50' 
+            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+        }`}
       >
         About
       </Link>
+      
       <DropDown
-        name="departments"
+        name="Departments"
         values={objectToArray(departmentNames)}
         link="/department/"
         all="/departments"
         mobile={mobile}
-        isActive={isActive('/department') || isActive('/departments')}
+        currentPath={currentPath}
       />
+      
       <DropDown
-        name="committees"
+        name="Committees"
         values={objectToArray(committees)}
         link="/committee/"
         all="/committees"
         mobile={mobile}
-        isActive={isActive('/committee') || isActive('/committees')}
+        currentPath={currentPath}
       />
+      
       <Link
         to="/placements"
-        className={`${isActive('/placements') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
+        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+          isActive('/placements') 
+            ? 'text-red-700 bg-red-50' 
+            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+        }`}
       >
         Placements
       </Link>
-      <Link
-        to="/results"
-        className={`${isActive('/results') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
-      >
-        Results
-      </Link>
-      <Link
-        to="/contact"
-        className={`${isActive('/contact') ? 'text-red-700 border-b-4 border-red-800' : 'hover:text-red-700 hover:border-b-4 hover:border-red-800'} transition-all px-2 py-1 rounded`}
-      >
-        Contact
-      </Link>
+      
       <DropDown
-        name="others"
+        name="More"
         values={[
-          { name: 'Login', code: 'login' },
-          { name: 'Results', code: 'results' },
-          { name: 'Events', code: 'events' },
-          { name: 'Gallery', code: 'gallery' },
-          { name: 'Contact', code: 'contact' }
+          { name: 'Login', code: 'login', path: '/login' },
+          { name: 'Results', code: 'results', path: '/results' },
+          { name: 'Events', code: 'events', path: '/events' },
+          { name: 'Gallery', code: 'gallery', path: '/gallery' },
+          { name: 'Contact', code: 'contact', path: '/contact' }
         ]}
         link="/"
         mobile={mobile}
-        isActive={
-          isActive('/login') ||
-          isActive('/results') ||
-          isActive('/events') ||
-          isActive('/gallery') ||
-          isActive('/contact')
-        }
+        currentPath={currentPath}
       />
 
-      {/* Notification icon is hidden on mobile, visible on larger screens */}
+      {/* Notification icon - Desktop Only */}
       {!mobile && (
         <Link
           to="/notifications"
-          className={`${isActive('/notifications') ? 'text-red-700' : 'hover:text-red-700'} transition-colors ml-2`}
+          className={`transition-colors duration-200 p-1 md:p-2 rounded-full ${
+            isActive('/notifications') 
+              ? 'text-red-700 bg-red-50' 
+              : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+          }`}
           aria-label="Notifications"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-5 w-5 md:h-6 md:w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth={2}
           >
             <path
               strokeLinecap="round"
