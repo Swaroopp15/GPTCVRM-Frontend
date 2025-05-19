@@ -8,6 +8,9 @@ import WhyChooseUsSection from '../components/AboutPageSections/WhyChooseUsSecti
 import JourneySection from '../components/AboutPageSections/JourneySection';
 import Spinner from '../components/hero/Spinner';
 import Fotter from '../pages/Footer';
+import AdmissionProcess from '../components/AboutPageSections/AdmissionProcess';
+import GoToTop from '../components/hero/GoToTop';
+
 
 function About() {
   const { college } = useContext(Context);
@@ -96,11 +99,11 @@ function About() {
         <StatsSection data={pageData.stats} />
         <AboutSection data={pageData.about} />
         <VisionMissionSection data={college} />
-        {/* <PrincipalMessageSection data={pageData.principalMessage} /> */}
         <WhyChooseUsSection data={pageData.whyChooseUs} />
+        <AdmissionProcess/>
         <JourneySection data={pageData.journey} />
-        {/* <ContactSection data={pageData.contact} /> */}
         <Fotter />
+        <GoToTop />
       </div>
     </div>
   );

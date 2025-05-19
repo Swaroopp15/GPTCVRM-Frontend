@@ -21,9 +21,9 @@ const itemVariants = {
   }
 };
 
-function PrincipalMessageSection({ principal_name, principal_message, principal_image}) {
+function CommissionerMessageSection({ commissioner_name, commissioner_message, commissioner_image }) {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-1 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial="hidden"
@@ -32,32 +32,32 @@ function PrincipalMessageSection({ principal_name, principal_message, principal_
           variants={fadeIn}
           className="bg-white rounded-xl shadow-lg overflow-hidden"
         >
-          <div className="md:flex">
+          <div className="md:flex md:flex-row-reverse">
             <motion.div 
               variants={fadeIn}
               className="md:w-1/3 bg-gray-100 flex items-center justify-center p-8"
             >
               <img 
-                src={principal_image} 
-                alt={principal_name}
+                src={commissioner_image} 
+                alt={commissioner_name}
                 className="w-full h-auto max-w-xs rounded-lg shadow-md object-cover"
               />
             </motion.div>
             <div className="md:w-2/3 p-8 md:p-12">
               <motion.div variants={itemVariants}>
-                <span className="text-red-600 font-semibold tracking-wider">PRINCIPAL'S MESSAGE</span>
+                <span className="text-red-600 font-semibold tracking-wider">COMMISSIONER'S MESSAGE</span>
                 <h2 className="text-3xl font-bold text-gray-800 mt-2 mb-4">
-                  Words from Our Principal
+                  A Note from the Commissioner
                 </h2>
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-1 bg-red-600 mr-4"></div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800">{principal_name}</h3>
-                    <p className="text-gray-500">Principal</p>
+                    <h3 className="text-xl font-semibold text-gray-800">{commissioner_name}</h3>
+                    <p className="text-gray-500">Commissioner, Technical Education Department, AP</p>
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  {principal_message}
+                  {commissioner_message}
                 </p>
                 {/* <motion.button
                   whileHover={{ scale: 1.02 }}
@@ -75,4 +75,4 @@ function PrincipalMessageSection({ principal_name, principal_message, principal_
   );
 }
 
-export default PrincipalMessageSection
+export default CommissionerMessageSection;

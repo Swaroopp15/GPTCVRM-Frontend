@@ -71,6 +71,17 @@ function Navbar({ mobile = false, currentPath }) {
         Placements
       </Link>
       
+      {/* <Link
+        to="/library"
+        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+          isActive('/library') 
+            ? 'text-red-700 bg-red-50' 
+            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+        }`}
+      >
+        Library
+      </Link> */}
+
       <DropDown
         name="More"
         values={[
@@ -85,7 +96,6 @@ function Navbar({ mobile = false, currentPath }) {
         currentPath={currentPath}
       />
 
-      {/* Notification icon - Desktop Only */}
       {!mobile && (
         <Link
           to="/notifications"
