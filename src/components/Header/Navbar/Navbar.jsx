@@ -71,7 +71,7 @@ function Navbar({ mobile = false, currentPath }) {
         Placements
       </Link>
       
-      {/* <Link
+      <Link
         to="/library"
         className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
           isActive('/library') 
@@ -80,7 +80,7 @@ function Navbar({ mobile = false, currentPath }) {
         }`}
       >
         Library
-      </Link> */}
+      </Link>
 
       <DropDown
         name="More"

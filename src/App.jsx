@@ -64,6 +64,7 @@ import AddFacility from "./components/admin/Forms/Facility/AddFacility";
 import DeleteFacility from "./components/admin/Forms/Facility/DeleteFacility";
 import UpdateFacility from "./components/admin/Forms/Facility/UpdateFacility";
 import Academics from "./components/Academics/Academics";
+import Library from "../src/pages/Library";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -76,6 +77,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/library" element={<Library />} />
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/committees" element={<Committees />} />
