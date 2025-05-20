@@ -10,6 +10,7 @@ import Spinner from '../components/hero/Spinner';
 import Fotter from '../pages/Footer';
 import AdmissionProcess from '../components/AboutPageSections/AdmissionProcess';
 import GoToTop from '../components/hero/GoToTop';
+import Academics from '../components/Academics/Academics';
 
 
 function About() {
@@ -96,11 +97,12 @@ function About() {
     <div className="text-gray-900">
       <HeroSection data={pageData.hero} />
       <div className="relative z-10 bg-white">
-        <StatsSection data={pageData.stats} />
+        {/* <StatsSection data={pageData.stats} /> */}
         <AboutSection data={pageData.about} />
         <VisionMissionSection data={college} />
         <WhyChooseUsSection data={pageData.whyChooseUs} />
         <AdmissionProcess/>
+        <Academics/>
         <JourneySection data={pageData.journey} />
         <Fotter />
         <GoToTop />
