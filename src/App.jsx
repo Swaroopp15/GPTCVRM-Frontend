@@ -63,6 +63,7 @@ import AdminFacility from "./components/admin/Forms/Facility/AdminFacility";
 import AddFacility from "./components/admin/Forms/Facility/AddFacility";
 import DeleteFacility from "./components/admin/Forms/Facility/DeleteFacility";
 import UpdateFacility from "./components/admin/Forms/Facility/UpdateFacility";
+import Academics from "./components/Academics/Academics";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -76,6 +77,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/admissions" element={<Admissions />} />
+            <Route path="/academics" element={<Academics />} />
             <Route path="/committees" element={<Committees />} />
             <Route path="/committee/:id" element={<Committee />} />
             {/* <Route path="/departments" element={<Departments />} /> */}
