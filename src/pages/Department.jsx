@@ -41,7 +41,6 @@ function Department() {
   const [department, setDepartment] = useState(null);
   const [loading, setLoading] = useState(true);
   const { departmentNames } = useContext(Context);
-
   useEffect(() => {
     const fetchDepartmentData = async () => {
       try {
@@ -50,6 +49,7 @@ function Department() {
             `http://localhost:3000/departments/${depo_code}`
           );
           const data = await response.json();
+
           setDepartment(data);
         }
         setLoading(false);

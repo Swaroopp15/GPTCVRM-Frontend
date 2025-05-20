@@ -31,6 +31,7 @@ function UpdateDepartment() {
   const handleDepartmentSelect = (e) => {
     const depoCode = e.target.value;
     const department = departments.find(d => d.depo_code === depoCode);
+    console.log(department);
     
     if (department) {
       setSelectedDepartment(department);
@@ -38,7 +39,8 @@ function UpdateDepartment() {
         department_name: department.department_name,
         depo_code: department.depo_code,
         vision: department.vision || '',
-        mission: department.mission || ''
+        mission: department.mission || '',
+        avg_pass: department.avg_pass || ''
       });
     }
   };
@@ -157,6 +159,20 @@ function UpdateDepartment() {
                     value={formData.depo_code}
                     readOnly
                     disabled
+                  />
+                </div>
+                <div>
+                  <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
+                    Department Average Pass Percentage
+                  </label>
+                  <input
+                    type="text"
+                    id="avg_pass"
+                    name="avg_pass"
+                     className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                    value={formData.avg_pass}
+                  onChange={handleInputChange}
+
                   />
                 </div>
               </div>

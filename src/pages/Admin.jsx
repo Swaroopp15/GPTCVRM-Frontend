@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import SideBar from '../components/admin/Sidebar/SideBar';
 import { FaUniversity, FaUsers, FaFlask, FaBriefcase, FaChartLine, FaCalendarAlt, FaBell, FaUserGraduate, FaChalkboardTeacher, FaCog } from 'react-icons/fa';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate, useNavigation } from 'react-router';
 import { isLoggedIn } from '../functions/auth';
 
 function Admin() {
-  
+  const navigate = useNavigate()
   useEffect(() => {
     isLoggedIn().then((isLoggedIn) => {
       if (!isLoggedIn) {

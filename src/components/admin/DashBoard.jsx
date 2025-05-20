@@ -1,3 +1,4 @@
+import { Building2 } from 'lucide-react';
 import React from 'react'
 import { FaBell, FaBriefcase, FaCalendarAlt, FaChalkboardTeacher, FaChartLine, FaCog, FaFlask, FaUniversity, FaUserGraduate, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
@@ -51,6 +52,13 @@ function DashBoard() {
       description: "Manage college events and activities",
       icon: <FaCalendarAlt className="text-3xl text-pink-600" />,
       link: "/admin/events",
+      bgColor: "bg-pink-50"
+    },
+    {
+      title: "Facilities",
+      description: "Manage college Facilites",
+      icon: <Building2 className="text-3xl text-pink-600"/>,
+      link: "/admin/facility",
       bgColor: "bg-pink-50"
     },
     {

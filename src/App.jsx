@@ -61,6 +61,8 @@ import EventDetails from "./components/Events/EventDetails";
 import Facilities from "./pages/Facilities";
 import AdminFacility from "./components/admin/Forms/Facility/AdminFacility";
 import AddFacility from "./components/admin/Forms/Facility/AddFacility";
+import DeleteFacility from "./components/admin/Forms/Facility/DeleteFacility";
+import UpdateFacility from "./components/admin/Forms/Facility/UpdateFacility";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -160,8 +162,8 @@ function App() {
               <Route path="facility" element={<AdminFacility/>}>
                 <Route path="" element={<AddFacility />} />
                 <Route path="add" element={<AddFacility />} />
-                {/* <Route path="delete" element={<UpdateInfo />} />
-                <Route path="update" element={<UpdateFa />} /> */}
+                <Route path="delete" element={<DeleteFacility />} />
+                <Route path="update" element={<UpdateFacility />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
