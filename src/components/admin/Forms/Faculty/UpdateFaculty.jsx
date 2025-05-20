@@ -12,11 +12,13 @@ function UpdateFaculty() {
   const [faculty_name, setFaculty_name] = useState('');
   const [faculty_role, setFaculty_role] = useState('');
   const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
+  const [qualification, setQualification] = useState('');
   const [faculty_code, setFaculty_code] = useState(''); 
 
   // Logic to update faculty details
   const updateFacultyDetails = async () => {
-    await updateFaculty(selectedFaculty, faculty_name, faculty_role, email, depo_code);
+    await updateFaculty(selectedFaculty, faculty_name, faculty_role, email, number, qualification, depo_code);
   }
   
   // Logic to fetch faculty available based on selected Department
@@ -102,7 +104,36 @@ function UpdateFaculty() {
             <DepartmentSelector name="depo_code" setValue={setDepo_code} />
           </div>
         </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="faculty_role" className="block text-sm font-medium text-gray-700 mb-2">
+              Phone Number<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              name="number"
+              id="number"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="+91 865954331"
+              onInput={(e) => setNumber(e.target.value)}
+            />
+          </div>
 
+           <div>
+            <label htmlFor="faculty_role" className="block text-sm font-medium text-gray-700 mb-2">
+              Qualification<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              name="qualification"
+              id="qualification"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="M.Tech"
+              onInput={(e) => setQualification(e.target.value)}
+            />
+          </div>
+        </div>
 
         <div className="flex justify-end space-x-3 pt-2">
           <button

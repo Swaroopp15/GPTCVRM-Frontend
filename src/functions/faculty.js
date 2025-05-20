@@ -17,7 +17,7 @@ const fetchFaculty = async (depo_code) => {
   }
 }
 
-const updateFaculty = async (id, faculty_name, faculty_role, email, depo_code) => {
+const updateFaculty = async (id, faculty_name, faculty_role, email, number, qualification, depo_code) => {
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND}faculty/${id}`, {
       method: "PUT",
@@ -28,6 +28,8 @@ const updateFaculty = async (id, faculty_name, faculty_role, email, depo_code) =
         faculty_name,
         faculty_role,
         email,
+        number,
+        qualification,
         depo_code,
       }),
     });

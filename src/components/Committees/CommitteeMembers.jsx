@@ -37,6 +37,7 @@ function CommitteeMembers({ members }) {
           </thead>
           <tbody>
             {members ? members?.map((member) => {
+              if(!member) return;
               return <MembershipRecord member={member} key={member.id} />;
             }) :<tr> <td colSpan={4} className="text-center text-2xl p-5">
                No Member available currently
