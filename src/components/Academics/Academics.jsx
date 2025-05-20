@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Footer from '../../pages/Footer'; // Make sure this path is correct
 
 const Academics = () => {
@@ -15,8 +14,9 @@ const Academics = () => {
 
   const fetchAdmissions = async () => {
     try {
-      const response = await axios.get(admissionUrl);
-      setAdmissions(response.data);
+      const response = await fetch(admissionUrl);
+      const data = await response.json();
+      setAdmissions(data);
     } catch (err) {
       console.error('Error fetching college data:', err);
       setError('Failed to fetch data. Please try again later.');

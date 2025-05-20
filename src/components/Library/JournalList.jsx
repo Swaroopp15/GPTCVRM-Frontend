@@ -20,13 +20,13 @@ const JournalList = ({ journals }) => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {journals.map((journal, index) => (
+            {journals?.map((journal, index) => (
               <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-red-50'}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {journal.name}
+                  {journal.title}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  {journal.publisher}
+                  {journal.author}
                 </td>
               </tr>
             ))}
