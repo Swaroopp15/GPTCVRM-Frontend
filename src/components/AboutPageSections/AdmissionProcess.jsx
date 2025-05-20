@@ -62,7 +62,7 @@ const AdmissionProcess = () => {
       </motion.h2>
 
       <motion.div
-        className="space-y-6"
+        className="space-y-6 bg-gray-50 rounded-md shadow"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -71,7 +71,7 @@ const AdmissionProcess = () => {
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="p-6 border-l-4 border-red-500 bg-gray-50 rounded-md shadow"
+            className="p-2"
             variants={cardVariants}
           >
             <h3 className="text-xl font-semibold text-gray-800">{step.title}</h3>

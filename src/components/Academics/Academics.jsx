@@ -90,7 +90,7 @@ const Academics = () => {
         )}
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
