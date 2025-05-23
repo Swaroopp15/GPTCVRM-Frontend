@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LibraryOverview = ({ library }) => {
+const LibraryOverview = ({ library, ebooksLength }) => {
   const {
     area,
     titles,
@@ -42,7 +42,7 @@ const LibraryOverview = ({ library }) => {
           
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
             <h3 className="font-semibold text-red-800">E-Books Collection</h3>
-            <p className="text-3xl font-bold text-red-600">{ebooks?.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-red-600">{ebooksLength?.toLocaleString()}</p>
           </div>
           
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
