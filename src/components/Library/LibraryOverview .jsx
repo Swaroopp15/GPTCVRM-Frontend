@@ -25,19 +25,19 @@ const LibraryOverview = ({ library }) => {
           
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
             <h3 className="font-semibold text-red-800">Number of Titles</h3>
-            <p className="text-3xl font-bold text-red-600">{library[0].total_titles?.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-red-600">{library[0]?.total_titles?.toLocaleString()}</p>
           </div>
           
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
             <h3 className="font-semibold text-red-800">Number of Volumes</h3>
-            <p className="text-3xl font-bold text-red-600">{library[0].total_volumes?.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-red-600">{library[0]?.total_volumes?.toLocaleString()}</p>
           </div>
         </div>
         
         <div className="space-y-4">
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
             <h3 className="font-semibold text-red-800">Number of Journals</h3>
-            <p className="text-3xl font-bold text-red-600">{library[0].total_volumes?.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-red-600">{library[0]?.total_volumes?.toLocaleString()}</p>
           </div>
           
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
