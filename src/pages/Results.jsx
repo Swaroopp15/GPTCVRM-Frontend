@@ -96,10 +96,10 @@ function Results() {
               <table className="w-full border-collapse border border-gray-300">
                 <thead>
                   <tr className="bg-red-700 text-white">
-                    <th className="py-3 px-6 border border-gray-300 text-left">Application ID</th>
-                    <th className="py-3 px-6 border border-gray-300 text-left">Student Name</th>
                     <th className="py-3 px-6 border border-gray-300 text-left">Pin</th>
-                    <th className="py-3 px-6 border border-gray-300 text-left">Year</th>
+                    <th className="py-3 px-6 border border-gray-300 text-left">Student Name</th>
+                    <th className="py-3 px-6 border border-gray-300 text-left">Application ID</th>
+                    <th className="py-3 px-6 border border-gray-300 text-left">Issued Year</th>
                     <th className="py-3 px-6 border border-gray-300 text-left">Department</th>
                     <th className="py-3 px-6 border border-gray-300 text-left">Percentage</th>
                   </tr>
