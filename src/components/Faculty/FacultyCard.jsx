@@ -7,7 +7,6 @@ function FacultyCard({ faculty, key }) {
     <tr key={key} class="bg-white hover:bg-gray-100 w-5">
       <td class="border border-gray-300 w-4/5 h-4/5"><img src={image} alt={faculty.name} className="object-cover "/></td>
       <td class="py-3 px-4 border border-gray-300">{faculty.faculty_name}</td>
-      <td class="py-3 px-4 border border-gray-300">{faculty.depo_code}</td>
       <td class="py-3 px-4 border border-gray-300">{faculty.faculty_role}</td>
       <td class="py-3 px-4 border border-gray-300">{faculty.qualification || "No Qualification Data Available"}</td>
       <td class="py-3 px-4 border border-gray-300">{faculty.experience  || "No Experience Data Available"}</td>
