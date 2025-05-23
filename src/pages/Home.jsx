@@ -125,9 +125,9 @@ const Home = () => {
       <div className="relative z-10 bg-gradient-to-b from-gray-50 to-gray-100">
         <AboutSection containerVariants={containerVariants} itemVariants={itemVariants} />
         <CommissionerMessageSection
-          commissioner_name="Sri G. Ganesh Kumar, I.A.S."
-          commissioner_message="As Commissioner of Technical Education, I envision a future where our youth are skilled, empowered, and globally competitive. Let us work together to build a knowledge-driven society."
-          commissioner_image="/public/photos/image.png"
+          commissioner_name={ college.commissioner_name}
+          commissioner_message={college.commissioner_message}
+          commissioner_image={import.meta.env.VITE_BACKEND + college.commissioner_image}
         />
         <PrincipalMessageSection principal_message={college.principal_message} principal_name={college.principal_name} principal_image={""} />
         <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />

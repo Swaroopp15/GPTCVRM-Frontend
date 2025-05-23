@@ -12,7 +12,7 @@ function Hero() {
           className="absolute inset-0"
           style={{
             backgroundImage: college?.college_image
-              ? `url(${college.college_image})`
+              ? `url(${import.meta.env.VITE_BACKEND +  college.college_image})`
               : "linear-gradient(to right, #4a044e, #1a1a2e)",
             backgroundAttachment: "fixed",
             backgroundPosition: "center",
