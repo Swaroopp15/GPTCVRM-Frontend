@@ -1,11 +1,12 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
-import { Link, Outlet, useParams, NavLink, useLocation } from "react-router";
+import { Link, Outlet, useParams, NavLink, useLocation, useNavigate } from "react-router";
 import DepartmentCard from "../components/Departments/DepartmentCard";
 import DepartmentDetails from "../components/Departments/DepartmentDetails";
 import { Context } from "../../Context/Context";
 import { motion } from "framer-motion";
-import Fotter from '../pages/Footer';
 import Footer from "../pages/Footer";
+import Spinner from "../components/hero/Spinner";
+import GoTo from "../components/hero/GoToTop";
 
 export const DepartmentContext = createContext(null);
 
@@ -38,47 +39,75 @@ const itemVariants = {
 function Department() {
   const { depo_code } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [department, setDepartment] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { departmentNames } = useContext(Context);
+
   useEffect(() => {
     const fetchDepartmentData = async () => {
       try {
+        setLoading(true);
+        setError(null);
+        
         if (depo_code) {
           const response = await fetch(
             `http://localhost:3000/departments/${depo_code}`
           );
+          
+          if (!response.ok) {
+            if (response.status === 404) {
+              navigate("/not-found", { replace: true });
+              return;
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          
           const data = await response.json();
-
           setDepartment(data);
         }
-        setLoading(false);
       } catch (error) {
-        console.error("Error fetching department details: ", error);
+        console.error("Error fetching department details:", error);
+        setError(error.message || "Failed to load department details");
+      } finally {
         setLoading(false);
       }
     };
 
-    if (depo_code) {
-      fetchDepartmentData();
-    } else {
-      setLoading(false);
-    }
-  }, [depo_code]);
+    fetchDepartmentData();
+  }, [depo_code, navigate]);
 
   const isSubPageActive = ["faculty", "labs", "placements"].some(sub =>
     location.pathname.includes(`/department/${depo_code}/${sub}`)
   );
 
   if (loading) {
+    return <Spinner message="Loading department information..." />;
+  }
+
+  if (error) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="flex items-center justify-center min-h-[60vh]"
-      >
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
-      </motion.div>
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+        <main className="flex-grow flex items-center justify-center p-6">
+          <div className="max-w-md p-6 bg-white rounded-lg shadow-md text-center">
+            <div className="text-red-500 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-semibold text-gray-800">Error Loading Department</h2>
+            <p className="text-gray-600 mt-2">{error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </main>
+        <Footer />
+      </div>
     );
   }
 
@@ -88,10 +117,10 @@ function Department() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100"
+        className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100"
       >
         {depo_code ? (
-          <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <section className="py-16 px-4 sm:px-6 lg:px-8 flex-grow">
             <div className="max-w-7xl mx-auto">
               <motion.div variants={itemVariants}>
                 <DepartmentDetails department={department} />
@@ -102,9 +131,10 @@ function Department() {
                   <NavLink
                     to="faculty"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
-                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
+                        isActive
+                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -113,9 +143,10 @@ function Department() {
                   <NavLink
                     to="labs"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
-                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
+                        isActive
+                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -124,9 +155,10 @@ function Department() {
                   <NavLink
                     to={`placements?depo_code=${depo_code}&year=2025`}
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
-                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
+                        isActive
+                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -146,7 +178,7 @@ function Department() {
             </div>
           </section>
         ) : (
-          <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <section className="py-20 px-4 sm:px-6 lg:px-8 flex-grow">
             <div className="max-w-7xl mx-auto">
               <motion.div variants={itemVariants} className="text-center mb-16">
                 <span className="text-red-600 font-semibold tracking-wider uppercase text-sm">
@@ -161,12 +193,12 @@ function Department() {
                 </p>
               </motion.div>
 
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {departmentNames &&
-                  departmentNames.map((dept, index) => (
+              {departmentNames && departmentNames.length > 0 ? (
+                <motion.div
+                  variants={containerVariants}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {departmentNames.map((dept, index) => (
                     <motion.div
                       key={index}
                       variants={itemVariants}
@@ -185,7 +217,12 @@ function Department() {
                       />
                     </motion.div>
                   ))}
-              </motion.div>
+                </motion.div>
+              ) : (
+                <div className="text-center py-12 bg-white rounded-xl shadow-md">
+                  <p className="text-gray-600">No departments found</p>
+                </div>
+              )}
 
               <motion.div
                 variants={itemVariants}
@@ -207,8 +244,9 @@ function Department() {
             </div>
           </section>
         )}
+      <GoTo />
+        <Footer />
       </motion.div>
-      <Footer />
     </DepartmentContext.Provider>
   );
 }

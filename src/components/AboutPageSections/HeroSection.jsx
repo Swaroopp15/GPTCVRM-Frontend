@@ -10,7 +10,7 @@ function HeroSection({ data }) {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: data.collegeImage
-              ? `url(${data.collegeImage})`
+              ? `url(${import.meta.env.VITE_BACKEND + data.collegeImage})`
               : 'linear-gradient(to right, #4a044e, #1a1a2e)',
             backgroundAttachment: 'fixed',
             backgroundPosition: 'center',
