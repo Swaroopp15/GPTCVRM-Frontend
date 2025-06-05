@@ -16,16 +16,16 @@ function Navbar({ mobile = false, currentPath }) {
     <nav
       className={`${
         mobile 
-          ? 'flex flex-col space-y-2 md:space-y-4 w-full' 
-          : 'hidden md:flex items-center space-x-2 lg:space-x-6'
+          ? 'flex flex-col space-y-2 w-full py-4' 
+          : 'hidden md:flex items-center space-x-1 lg:space-x-2'
       }`}
     >
       <Link
         to="/"
-        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
           isActive('/') 
-            ? 'text-red-700 bg-red-50' 
-            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
+            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
         }`}
       >
         Home
@@ -33,10 +33,10 @@ function Navbar({ mobile = false, currentPath }) {
       
       <Link
         to="/about"
-        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
           isActive('/about') 
-            ? 'text-red-700 bg-red-50' 
-            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
+            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
         }`}
       >
         About
@@ -49,6 +49,7 @@ function Navbar({ mobile = false, currentPath }) {
         all="/departments"
         mobile={mobile}
         currentPath={currentPath}
+        isActive={isActive('/department') || isActive('/departments')}
       />
       
       <DropDown
@@ -58,14 +59,15 @@ function Navbar({ mobile = false, currentPath }) {
         all="/committees"
         mobile={mobile}
         currentPath={currentPath}
+        isActive={isActive('/committee') || isActive('/committees')}
       />
       
       <Link
         to="/placements"
-        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
           isActive('/placements') 
-            ? 'text-red-700 bg-red-50' 
-            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
+            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
         }`}
       >
         Placements
@@ -73,10 +75,10 @@ function Navbar({ mobile = false, currentPath }) {
       
       <Link
         to="/library"
-        className={`transition-colors duration-200 px-2 py-1 md:px-3 md:py-2 rounded text-sm md:text-base font-medium ${
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
           isActive('/library') 
-            ? 'text-red-700 bg-red-50' 
-            : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
+            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
         }`}
       >
         Library
@@ -96,15 +98,24 @@ function Navbar({ mobile = false, currentPath }) {
         link="/"
         mobile={mobile}
         currentPath={currentPath}
+        isActive={
+          isActive('/academics') ||
+          isActive('/login') ||
+          isActive('/results') ||
+          isActive('/events') ||
+          isActive('/facility') ||
+          isActive('/gallery') ||
+          isActive('/contact')
+        }
       />
 
       {!mobile && (
         <Link
           to="/notifications"
-          className={`transition-colors duration-200 p-1 md:p-2 rounded-full ${
+          className={`transition-all duration-300 p-2 rounded-full relative ${
             isActive('/notifications') 
-              ? 'text-red-700 bg-red-50' 
-              : 'text-gray-800 hover:text-red-700 hover:bg-red-50'
+              ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
+              : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
           }`}
           aria-label="Notifications"
         >
@@ -122,6 +133,7 @@ function Navbar({ mobile = false, currentPath }) {
               d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V10a6 6 0 10-12 0v4c0 .386-.104.762-.295 1.09L4 17h5m6 0a3 3 0 01-6 0"
             />
           </svg>
+          {/* <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span> */}
         </Link>
       )}
     </nav>
