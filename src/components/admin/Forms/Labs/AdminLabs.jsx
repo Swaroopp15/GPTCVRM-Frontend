@@ -35,7 +35,7 @@ function AdminLabs() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-800">Delete Lab<b>(Not started)</b></h3>
+              <h3 className="font-medium text-gray-800">Delete Lab</h3>
               <p className="text-sm text-gray-500 mt-1">Remove lab record</p>
             </div>
           </div>
