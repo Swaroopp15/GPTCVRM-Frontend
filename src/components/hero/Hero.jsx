@@ -52,8 +52,8 @@ function Hero() {
           <div className="mt-10 grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 text-white text-sm sm:text-base font-medium">
             <a href="#about" className="hover:text-red-400 transition">About</a>
             <a href="#departments" className="hover:text-red-400 transition">Academics</a>
-            <a href="#facilities" className="hover:text-red-400 transition">Facilities</a>
-            <a href="#careers" className="hover:text-red-400 transition">Careers</a>
+            <a href="#labs" className="hover:text-red-400 transition">Facilities</a>
+            <a href="#placements" className="hover:text-red-400 transition">Careers</a>
             <a href="#events" className="hover:text-red-400 transition">News & Events</a>
             <a href="#notifications" className="hover:text-red-400 transition">Announcements</a>
           </div>
