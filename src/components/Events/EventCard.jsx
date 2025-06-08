@@ -1,52 +1,116 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import EventCalender from "../Events/EventCalender";
 
 function EventCard({ event, type }) {
   const navigate = useNavigate();
- let images = [];
- if (type === "facility") {
-  images = event?.images?.map((image) => {return import.meta.env.VITE_BACKEND + image.replace("\\", "/")});
- }else{
-   images =
-   event.images.length > 0
-   ? event.images.map((image) => import.meta.env.VITE_BACKEND + image)
-   : ["/placeholder-event.jpg"];
- 
-  }
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Handle image URLs safely
+  const getImageUrls = () => {
+    try {
+      if (!event?.images) return ["/placeholder-event.jpg"];
+      
+      if (type === "facility") {
+        return event.images.map(image => {
+          try {
+            return import.meta.env.VITE_BACKEND + image.replace("\\", "/");
+          } catch (error) {
+            console.error("Error processing facility image:", error);
+            return "/placeholder-event.jpg";
+          }
+        });
+      } else {
+        return event.images.length > 0
+          ? event.images.map(image => {
+              try {
+                return import.meta.env.VITE_BACKEND + image;
+              } catch (error) {
+                console.error("Error processing event image:", error);
+                return "/placeholder-event.jpg";
+              }
+            })
+          : ["/placeholder-event.jpg"];
+      }
+    } catch (error) {
+      console.error("Error generating image URLs:", error);
+      return ["/placeholder-event.jpg"];
+    }
+  };
+
+  const images = getImageUrls();
 
   const nextImage = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     setCurrentImage((prev) => (prev + 1) % images.length);
+    setImageError(false);
   };
 
   const prevImage = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+    setImageError(false);
   };
 
   const handleCardClick = () => {
+    if (!event?.id) {
+      console.error("Event ID is missing");
+      return;
+    }
     navigate(`/events/${event.id}`);
   };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  if (!event) {
+    return (
+      <div className="bg-white rounded-2xl shadow-md overflow-hidden h-full flex flex-col border border-red-100">
+        <div className="bg-red-50 h-64 flex items-center justify-center">
+          <ExclamationTriangleIcon className="h-12 w-12 text-red-400" />
+        </div>
+        <div className="p-6 flex-1 flex flex-col">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Event Not Available</h3>
+          <p className="text-gray-600 mb-4">The event information could not be loaded.</p>
+          <div className="mt-auto pt-4">
+            <button 
+              className="w-full bg-gray-300 text-gray-600 py-2 px-4 rounded-lg font-medium cursor-not-allowed"
+              disabled
+            >
+              Unavailable
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div 
       className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col cursor-pointer"
-      // onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Gallery */}
       <div className="relative h-64 w-full overflow-hidden">
-        <img
-          src={images[currentImage]}
-          alt={event.title}
-          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'}`}
-          loading="lazy"
-        />
+        {imageError ? (
+          <div className="w-full h-full bg-red-50 flex items-center justify-center">
+            <ExclamationTriangleIcon className="h-12 w-12 text-red-400" />
+            <span className="sr-only">Image failed to load</span>
+          </div>
+        ) : (
+          <img
+            src={images[currentImage]}
+            alt={event.title || event.name || "Event image"}
+            className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'}`}
+            loading="lazy"
+            onError={handleImageError}
+          />
+        )}
         
         {images.length > 1 && (
           <>
@@ -75,6 +139,7 @@ function EventCard({ event, type }) {
                   onClick={(e) => {
                     e.stopPropagation();
                     setCurrentImage(index);
+                    setImageError(false);
                   }}
                   className={`w-2 h-2 rounded-full transition-all ${currentImage === index ? 'bg-white w-4' : 'bg-white/50'}`}
                   aria-label={`Go to image ${index + 1}`}
@@ -86,28 +151,35 @@ function EventCard({ event, type }) {
       </div>
 
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3 line-clamp-2">{event.title || event.name}</h3>
-        {event.description ? <p className="text-gray-600 mb-4 line-clamp-3">{event.description}</p> : <p className="text-gray-600">{event.about}</p>}
+        <h3 className="text-2xl font-bold text-gray-900 mb-3 line-clamp-2">
+          {event.title || event.name || "Untitled Event"}
+        </h3>
+        
+        {event.description || event.about ? (
+          <p className="text-gray-600 mb-4 line-clamp-3">
+            {event.description || event.about}
+          </p>
+        ) : (
+          <p className="text-gray-400 italic mb-4">No description available</p>
+        )}
         
         <div className="mt-auto pt-4 border-t border-gray-100">
-          {event.event_date && <EventCalender event={event}/>}
-          
-          {event.location && (
-            <div className="flex items-center text-gray-700">
-              <MapPinIcon className="h-5 w-5 mr-2 text-red-600 flex-shrink-0" />
-              <span className="truncate">{event.location}</span>
+          {event.event_date && (
+            <div className="mb-3">
+              <EventCalender event={event} />
             </div>
           )}
         </div>
         
         <button 
-          className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300"
+          className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300 disabled:bg-gray-300 disabled:cursor-not-allowed"
           onClick={(e) => {
             e.stopPropagation();
             handleCardClick();
           }}
+          disabled={!event?.id}
         >
-          View Details
+          {event?.id ? "View Details" : "Unavailable"}
         </button>
       </div>
     </div>

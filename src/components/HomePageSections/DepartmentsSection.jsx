@@ -45,7 +45,7 @@ const DepartmentsSection = ({ departments, containerVariants, itemVariants }) =>
               {dept.description || 'Department offering quality technical education.'}
             </p>
             <Link
-              to={`/departments/${dept.depo_code}`}
+              to={`/department/${dept.depo_code}`}
               className="inline-flex items-center text-red-600 hover:text-red-800 font-medium transition text-sm sm:text-base"
             >
               View More <span className="ml-1">→</span>
