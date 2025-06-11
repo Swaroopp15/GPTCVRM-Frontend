@@ -1,6 +1,6 @@
-import { Building2 } from 'lucide-react';
+import { BookImageIcon, Building2 } from 'lucide-react';
 import React from 'react'
-import { FaBell, FaBriefcase, FaCalendarAlt, FaChalkboardTeacher, FaChartLine, FaCog, FaFlask, FaUniversity, FaUserGraduate, FaUsers } from 'react-icons/fa';
+import { FaBell, FaBook, FaBriefcase, FaCalendarAlt, FaChalkboardTeacher, FaChartLine, FaCog, FaFlask, FaUniversity, FaUserGraduate, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
 
 function DashBoard() {
@@ -46,6 +46,20 @@ function DashBoard() {
       icon: <FaChartLine className="text-3xl text-indigo-600" />,
       link: "/admin/results",
       bgColor: "bg-indigo-50"
+    },
+    {
+      title: "Library",
+      description: "Manage college Library resources",
+      icon: <FaBook className="text-3xl text-teal-600" />,
+      link: "/admin/library",
+      bgColor: "bg-teal-50"
+    },
+    {
+      title: "Events",
+      description: "Manage college Ebooks and resources",
+      icon: <BookImageIcon className="text-3xl text-fuchsia-600" />,
+      link: "/admin/ebooks",
+      bgColor: "bg-pink-50"
     },
     {
       title: "Events",

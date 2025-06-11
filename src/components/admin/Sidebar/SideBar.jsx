@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import SideBarItem from './SideBarItem';
-import { FaChalkboardTeacher, FaInfoCircle, FaUserGraduate, FaUsersCog, FaHome, FaUniversity, FaBars, FaTimes } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaInfoCircle, FaUserGraduate, FaUsersCog, FaHome, FaUniversity, FaBars, FaTimes, FaBook } from 'react-icons/fa';
 import { ImLab } from 'react-icons/im';
 import { MdWorkOutline, MdSchool, MdEventNote, MdNotifications, MdSettings } from 'react-icons/md';
-import { Building2 } from 'lucide-react';
+import { BookImage, Building2 } from 'lucide-react';
 
 export default function SideBar() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -40,6 +40,8 @@ export default function SideBar() {
               <SideBarItem title="College Info" to="college-info" icon={<FaInfoCircle className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Results" to="results" icon={<MdSchool className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Placements" to="placements" icon={<MdWorkOutline className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
+              <SideBarItem title="Library" to="library" icon={<FaBook className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
+              <SideBarItem title="Ebook" to="ebook" icon={<BookImage className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Labs" to="labs" icon={<ImLab className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Facilities" to="facility" icon={<Building2 className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
               <SideBarItem title="Events" to="events" icon={<MdEventNote className="text-lg" />} onClick={() => setIsMobileSidebarOpen(false)} />
