@@ -47,7 +47,13 @@ const Ebooks = ({ books }) => {
                 className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-red-50'} hover:bg-red-100 cursor-pointer`}
                 onClick={() => {
                   if (book.link) {
-                    window.open(book.link, '_blank');
+                    if (book.link.startsWith('http://') || book.link.startsWith('https://')) {
+                      window.open(book.link, '_blank');
+                    }
+                    else {
+                      const link = import.meta.env.VITE_BACKEND + book.link;
+                      window.open(link, '_blank');
+                    }
                   }
                 }}
               >

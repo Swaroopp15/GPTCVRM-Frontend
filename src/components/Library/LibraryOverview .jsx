@@ -19,9 +19,9 @@ const LibraryOverview = ({ library, ebooksLength }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
         {[
           { title: "Library Area", value: library.area ? `${library.area} sq.ft` : 'N/A', icon: "🏛️" },
-          { title: "Number of Titles", value: library.total_titles ? library.total_titles.toLocaleString() : 0, icon: "📚" },
-          { title: "Number of Volumes", value: library.total_volumes ? library.total_volumes.toLocaleString() : 0, icon: "📖" },
-          { title: "Number of Journals", value: library.journals ? library.journals.toLocaleString() : 0, icon: "🗞️" },
+          { title: "Number of Titles", value: library[0].total_titles ? library[0].total_titles.toLocaleString() : 0, icon: "📚" },
+          { title: "Number of Volumes", value: library[0].total_volumes ? library[0].total_volumes.toLocaleString() : 0, icon: "📖" },
+          { title: "Number of Journals", value: library[0].total_journal ? library[0].total_journal.toLocaleString() : 0, icon: "🗞️" },
           { title: "E-Books Collection", value: ebooksLength ? ebooksLength.toLocaleString() : 0, icon: "💻" },
           { title: "Annual Library Budget", value: library.budget ? `₹${library.budget.toLocaleString()}` : 'N/A', icon: "💰" },
         ].map((stat, index) => (

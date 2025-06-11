@@ -65,6 +65,10 @@ import DeleteFacility from "./components/admin/Forms/Facility/DeleteFacility";
 import UpdateFacility from "./components/admin/Forms/Facility/UpdateFacility";
 import Academics from "./components/Academics/Academics";
 import Library from "../src/pages/Library";
+import AdminLibrary from "./components/admin/Forms/Library/AdminLibrary";
+import AddBook from "./components/admin/Forms/Library/AddBook";
+import DeleteBook from "./components/admin/Forms/Library/DeleteBook";
+import UpdateBook from "./components/admin/Forms/Library/UpdateBook";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -169,6 +173,12 @@ function App() {
                 <Route path="delete" element={<DeleteFacility />} />
                 <Route path="update" element={<UpdateFacility />} />
               </Route>
+              <Route path="library" element={<AdminLibrary />} >
+                 <Route path="" element={<AddBook />} />
+                 <Route path="add" element={<AddBook />} />
+                 <Route path="delete" element={<DeleteBook />} />
+                 <Route path="update" element={<UpdateBook/>} />
+                </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
