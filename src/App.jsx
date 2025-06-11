@@ -69,6 +69,9 @@ import AdminLibrary from "./components/admin/Forms/Library/AdminLibrary";
 import AddBook from "./components/admin/Forms/Library/AddBook";
 import DeleteBook from "./components/admin/Forms/Library/DeleteBook";
 import UpdateBook from "./components/admin/Forms/Library/UpdateBook";
+import AdminEbook from "./components/admin/Forms/Ebook/AdminEbook";
+import AddEbook from "./components/admin/Forms/Ebook/AddEbook";
+import DeleteEbook from "./components/admin/Forms/Ebook/DeleteEbook";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -178,6 +181,12 @@ function App() {
                  <Route path="add" element={<AddBook />} />
                  <Route path="delete" element={<DeleteBook />} />
                  <Route path="update" element={<UpdateBook/>} />
+                </Route>
+                 <Route path="ebook" element={<AdminEbook />} >
+                 <Route path="" element={<AddEbook />} />
+                 <Route path="add" element={<AddEbook />} />
+                 <Route path="delete" element={<DeleteEbook />} />
+                 {/* <Route path="update" element={<UpdateBook/>} /> */}
                 </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
