@@ -49,7 +49,7 @@ function DeleteBook() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="type" id="type" onChange={(e) => setType(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               >
               <option value="books" selected>Book</option>
              <option value="journals">Journal</option>
@@ -61,7 +61,7 @@ function DeleteBook() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="bookId" id="bookId"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
             >
               <option disabled selected> Select Book</option>
               {library && library[type.toString()] && library[type.toString()].map((book) => (

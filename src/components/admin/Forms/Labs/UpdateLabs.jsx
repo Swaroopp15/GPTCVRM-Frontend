@@ -153,7 +153,7 @@ function UpdateLabs() {
             <select
               name="lab"
               id="lab"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               required
               disabled={!depo_code || isLoading}
               value={selectedLabId}
@@ -186,7 +186,7 @@ function UpdateLabs() {
                   name="lab_name"
                   id="lab_name"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Enter lab name"
                   value={formData.lab_name}
                   onChange={handleInputChange}
@@ -204,7 +204,7 @@ function UpdateLabs() {
                   name="capacity"
                   id="capacity"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Enter capacity"
                   value={formData.capacity}
                   onChange={handleInputChange}
@@ -219,7 +219,7 @@ function UpdateLabs() {
                   name="description"
                   id="description"
                   rows="3"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Enter lab description"
                   value={formData.description}
                   onChange={handleInputChange}
@@ -234,7 +234,7 @@ function UpdateLabs() {
                   name="equipment"
                   id="equipment"
                   rows="3"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="List equipment (comma separated)"
                   value={formData.equipment}
                   onChange={handleInputChange}
@@ -252,7 +252,7 @@ function UpdateLabs() {
                   name="lab_images"
                   id="lab_images"
                   onChange={handleFileChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
                 />
                 <p className="mt-1 text-sm text-gray-500">Select new images to update existing ones</p>
               </div>
@@ -265,13 +265,13 @@ function UpdateLabs() {
             <button
               type="button"
               onClick={handleReset}
-              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
             >
               Reset
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? 'Updating...' : 'Update Lab'}

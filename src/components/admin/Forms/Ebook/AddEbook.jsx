@@ -53,7 +53,7 @@ const [linkType, setLinkType] = useState("");
               name="title"
               id="title"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               placeholder="Enter book title"
             />
           </div>
@@ -68,7 +68,7 @@ const [linkType, setLinkType] = useState("");
               name="author"
               id="author"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               placeholder="Enter author's name"
             />
           </div>
@@ -78,7 +78,7 @@ const [linkType, setLinkType] = useState("");
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="link_type" id="link_type" onChange={(e) => setLinkType(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200">
               <option value="" disabled selected>Select file Type</option>
               <option value="file_upload"> Upload File</option>
               <option value="link"> Link</option>
@@ -98,7 +98,7 @@ const [linkType, setLinkType] = useState("");
                 id="ebook"
                 required
                 accept=".pdf,.epub,.mobi"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
           )
@@ -116,7 +116,7 @@ const [linkType, setLinkType] = useState("");
                 name="link"
                 id="link"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                 placeholder="Enter ebook link"
               />
             </div>
@@ -126,13 +126,13 @@ const [linkType, setLinkType] = useState("");
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"
-            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5"
           >
             Add Ebook
           </button>

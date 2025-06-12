@@ -147,7 +147,7 @@ function AddPlacements() {
       <div className="flex mb-6 space-x-4">
         <button
           className={`px-4 py-2 rounded-lg text-sm font-medium ${
-            mode === "manual" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            mode === "manual" ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
           }`}
           onClick={() => setMode("manual")}
         >
@@ -155,7 +155,7 @@ function AddPlacements() {
         </button>
         <button
           className={`px-4 py-2 rounded-lg text-sm font-medium ${
-            mode === "bulk" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            mode === "bulk" ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
           }`}
           onClick={() => setMode("bulk")}
         >
@@ -174,7 +174,7 @@ function AddPlacements() {
                 name="depo_code"
                 id="depo_code"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               >
                 <option value="">Select Department</option>
                 {departmentNames.map((item) => (
@@ -197,7 +197,7 @@ function AddPlacements() {
                 max={currentYear}
                 defaultValue={currentYear}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
 
@@ -210,7 +210,7 @@ function AddPlacements() {
                 name="name"
                 id="name"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
 
@@ -223,7 +223,7 @@ function AddPlacements() {
                 name="pin"
                 id="pin"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
 
@@ -236,7 +236,7 @@ function AddPlacements() {
                 name="company"
                 id="company"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
 
@@ -249,7 +249,7 @@ function AddPlacements() {
                 name="role"
                 id="role"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
 
@@ -264,7 +264,7 @@ function AddPlacements() {
                 min="0"
                 step="0.01"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               />
             </div>
           </div>
@@ -272,13 +272,13 @@ function AddPlacements() {
           <div className="flex justify-end space-x-3 pt-2">
             <button
               type="reset"
-              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
             >
               Reset
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5"
+              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5"
             >
               Add Placement Record
             </button>
@@ -298,13 +298,13 @@ function AddPlacements() {
               accept=".xlsx, .xls, .csv"
               onChange={handleExcelUpload}
               disabled={isUploading}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
             />
             <p className="text-xs text-gray-500 mt-1">
               <a
                 href="/templates/placements-template.xlsx"
                 download="placements-template.xlsx"
-                className="text-blue-600 hover:text-blue-800"
+                className="text-red-600 hover:text-red-800"
               >
                 Download Excel Template
               </a>
@@ -361,17 +361,17 @@ function AddPlacements() {
                     setBulkError("");
                   }}
                   disabled={isUploading}
-                  className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+                  className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleBulkSubmit}
                   disabled={isUploading}
-                  className={`px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 ${
+                  className={`px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 ${
                     isUploading
-                      ? "bg-blue-400"
-                      : "bg-blue-600 hover:bg-blue-700 transform hover:-translate-y-0.5"
+                      ? "bg-red-400"
+                      : "bg-red-600 hover:bg-red-700 transform hover:-translate-y-0.5"
                   }`}
                 >
                   {isUploading ? "Uploading..." : "Upload Placements"}

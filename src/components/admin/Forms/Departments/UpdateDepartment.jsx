@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import fetchDepartments from '../../../../functions/fetchDepartments';
 import updateDepartment from '../../../../functions/updateDepartment';
 
 function UpdateDepartment() {
+  const { depo_code: routeDepoCode } = useParams();
   const [departments, setDepartments] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [formData, setFormData] = useState({
     department_name: '',
     depo_code: '',
     vision: '',
-    mission: ''
+    mission: '',
+    avg_pass: ''
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,6 +22,20 @@ function UpdateDepartment() {
         setIsLoading(true);
         const data = await fetchDepartments();
         setDepartments(data);
+
+        if (routeDepoCode) {
+          const department = data.find(d => d.depo_code === routeDepoCode);
+          if (department) {
+            setSelectedDepartment(department);
+            setFormData({
+              department_name: department.department_name,
+              depo_code: department.depo_code,
+              vision: department.vision || '',
+              mission: department.mission || '',
+              avg_pass: department.avg_pass || ''
+            });
+          }
+        }
       } catch (error) {
         console.error("Error loading departments:", error);
       } finally {
@@ -26,13 +43,11 @@ function UpdateDepartment() {
       }
     };
     loadData();
-  }, []);
+  }, [routeDepoCode]);
 
   const handleDepartmentSelect = (e) => {
     const depoCode = e.target.value;
     const department = departments.find(d => d.depo_code === depoCode);
-    console.log(department);
-    
     if (department) {
       setSelectedDepartment(department);
       setFormData({
@@ -76,14 +91,16 @@ function UpdateDepartment() {
         department_name: selectedDepartment.department_name,
         depo_code: selectedDepartment.depo_code,
         vision: selectedDepartment.vision || '',
-        mission: selectedDepartment.mission || ''
+        mission: selectedDepartment.mission || '',
+        avg_pass: selectedDepartment.avg_pass || ''
       });
     } else {
       setFormData({
         department_name: '',
         depo_code: '',
         vision: '',
-        mission: ''
+        mission: '',
+        avg_pass: ''
       });
     }
   };
@@ -97,7 +114,7 @@ function UpdateDepartment() {
 
       {isLoading ? (
         <div className="flex justify-center items-center py-8">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-500"></div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -109,7 +126,7 @@ function UpdateDepartment() {
             <select
               id="department"
               name="department"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               required
               onChange={handleDepartmentSelect}
               value={formData.depo_code || ""}
@@ -140,7 +157,7 @@ function UpdateDepartment() {
                     id="department_name"
                     name="department_name"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                     placeholder="Computer Science"
                     value={formData.department_name}
                     onChange={handleInputChange}
@@ -161,18 +178,18 @@ function UpdateDepartment() {
                     disabled
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="avg_pass" className="block text-sm font-medium text-gray-700 mb-2">
                     Department Average Pass Percentage
                   </label>
                   <input
                     type="text"
                     id="avg_pass"
                     name="avg_pass"
-                     className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                     value={formData.avg_pass}
-                  onChange={handleInputChange}
-
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -185,7 +202,7 @@ function UpdateDepartment() {
                   id="vision"
                   name="vision"
                   rows="3"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Department vision statement..."
                   value={formData.vision}
                   onChange={handleInputChange}
@@ -200,7 +217,7 @@ function UpdateDepartment() {
                   id="mission"
                   name="mission"
                   rows="3"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Department mission statement..."
                   value={formData.mission}
                   onChange={handleInputChange}
@@ -213,14 +230,14 @@ function UpdateDepartment() {
             <button
               type="button"
               onClick={handleReset}
-              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+              className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
               disabled={!selectedDepartment}
             >
               Reset
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
               disabled={!selectedDepartment}
             >
               {isLoading ? 'Updating...' : 'Update Department'}

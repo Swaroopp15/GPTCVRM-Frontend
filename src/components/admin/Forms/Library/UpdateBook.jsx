@@ -59,7 +59,7 @@ function UpdateBook() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="type" id="type" onChange={(e) => setType(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               >
               <option value="books" selected>Book</option>
              <option value="journals">Journal</option>
@@ -71,7 +71,7 @@ function UpdateBook() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="bookId" id="bookId"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               onChange={(e) => setId(e.target.value)}
               required
             >
@@ -95,7 +95,7 @@ function UpdateBook() {
               name="title"
               id="title"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               placeholder="Enter book title"
               value={title || ''}
               onChange={(e) => setTitle(e.target.value)}
@@ -112,7 +112,7 @@ function UpdateBook() {
               name="author"
               id="author"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               placeholder="Enter author's name"
               value={author || ''}
               onChange={(e) => setAuthor(e.target.value)}
@@ -131,7 +131,7 @@ function UpdateBook() {
               name="volumes"
               id="volumes"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               placeholder="Enter number of volumes"
               value={volumes || 0}
               onChange={(e) => setVolumes(e.target.value)}

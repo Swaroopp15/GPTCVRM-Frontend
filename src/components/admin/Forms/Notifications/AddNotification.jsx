@@ -51,7 +51,7 @@ function AddNotification() {
             </label>
             <input
               type="text"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               value={formData.title}
               onChange={(e) => setFormData({...formData, title: e.target.value})}
               required
@@ -65,7 +65,7 @@ function AddNotification() {
             </label>
             <input
               type="date"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               value={formData.date}
               onChange={(e) => setFormData({...formData, date: e.target.value})}
               required
@@ -76,7 +76,7 @@ function AddNotification() {
             <input
               type="checkbox"
               id="hasLink"
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
               checked={formData.hasLink}
               onChange={(e) => setFormData({...formData, hasLink: e.target.checked})}
             />
@@ -93,7 +93,7 @@ function AddNotification() {
               </label>
               <input
                 type="url"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                 value={formData.link}
                 onChange={(e) => setFormData({...formData, link: e.target.value})}
                 required={formData.hasLink}
@@ -106,13 +106,13 @@ function AddNotification() {
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"
-            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Creating...' : 'Create Notification'}

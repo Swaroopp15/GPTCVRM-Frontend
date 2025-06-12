@@ -8,7 +8,6 @@ const ShowDepartments = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [error, setError] = useState(null);
 
-  // Fetch departments from backend
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
@@ -28,7 +27,6 @@ const ShowDepartments = () => {
     fetchDepartments();
   }, []);
 
-  // DELETE department function
   const deleteDepartment = async (depo_code) => {
     if (!window.confirm('Are you sure you want to delete this department?',depo_code)) 
       return;
@@ -50,7 +48,6 @@ const ShowDepartments = () => {
     }
   };
 
-  // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentDepartments = departments.slice(indexOfFirstItem, indexOfLastItem);
@@ -72,7 +69,7 @@ const ShowDepartments = () => {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th> */}
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
@@ -81,7 +78,7 @@ const ShowDepartments = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {currentDepartments.map((dept) => (
                 <tr key={dept.id} className="hover:bg-gray-50 transition duration-150">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.id}</td>
+                  {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.id}</td> */}
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dept.department_name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 uppercase">
@@ -89,7 +86,7 @@ const ShowDepartments = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
-                    <Link to={`/update/${dept.depo_code}`} className="text-blue-600 hover:text-blue-900 transition duration-150">
+                    <Link to={`/admin/departments/update/${dept.depo_code}`} className="text-blue-600 hover:text-blue-900 transition duration-150">
                       Edit
                     </Link>
                     <button
@@ -106,7 +103,6 @@ const ShowDepartments = () => {
         </div>
       )}
 
-      {/* Pagination */}
       <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 flex justify-between items-center">
         <div className="text-sm text-gray-500">
           Showing <span className="font-medium">{indexOfFirstItem + 1}</span> to{' '}

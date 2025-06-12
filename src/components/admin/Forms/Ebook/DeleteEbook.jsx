@@ -51,7 +51,7 @@ function DeleteEbook() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <select name="bookId" id="bookId"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
             >
               <option disabled selected> Select Ebook</option>
               {library && library.ebooks && library.ebooks.map((book) => (

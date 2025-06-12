@@ -58,7 +58,7 @@ function DeleteNotification() {
 
       {isLoading && !notifications.length ? (
         <div className="flex justify-center py-8">
-          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-red-500"></div>
         </div>
       ) : error ? (
         <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
@@ -78,7 +78,7 @@ function DeleteNotification() {
                 <span className="text-red-500 ml-1">*</span>
               </label>
               <select
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                 value={selectedId}
                 onChange={(e) => setSelectedId(e.target.value)}
                 disabled={isLoading || !notifications.length}

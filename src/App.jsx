@@ -120,6 +120,7 @@ function App() {
                 <Route path="delete" element={<DeleteDepartment />} />
                 <Route path="show" element={<ShowDepartments />} />
                 <Route path="update" element={<UpdateDepartment />} />
+                <Route path="update/:depo_code" element={<UpdateDepartment />} />
               </Route>
               {/* Committees Routes */}
               <Route path="committees" element={<AdminCommittees />}>

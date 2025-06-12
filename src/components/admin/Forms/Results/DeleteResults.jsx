@@ -44,7 +44,7 @@ function DeleteResults() {
               name="depo_code"
               id="depo_code"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               onChange={(event) => {
                 setSelectedDepartment(event.currentTarget.value);} // Reset year when department changes
               }
@@ -67,11 +67,11 @@ function DeleteResults() {
               Year
               <span className="text-red-500 ml-1">*</span>
             </label>
-         <Selector values={years} setValue={setSelectedYear} className={"w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"} />
+         <Selector values={years} setValue={setSelectedYear} className={"w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"} />
           </div>
 
          {results ? (
-          <select name="" id="" onChange={(event) => setSelectedResult(event.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+          <select name="" id="" onChange={(event) => setSelectedResult(event.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200">
             <option value="">Select Pin</option>
             {results.map((result) => (
               <option key={result.pin} value={result.id}>
@@ -85,13 +85,13 @@ function DeleteResults() {
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"
-            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5"
           >
             Delete Result Record
           </button>

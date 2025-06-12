@@ -56,7 +56,7 @@ function AddFaculty() {
               name="faculty_name"
               id="faculty_name"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="John Doe"
             />
           </div>
@@ -70,7 +70,7 @@ function AddFaculty() {
               name="email"
               id="email"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="john@example.com"
             />
           </div>
@@ -86,7 +86,7 @@ function AddFaculty() {
               name="faculty_role"
               id="faculty_role"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Assistant Professor"
             />
           </div>
@@ -108,7 +108,7 @@ function AddFaculty() {
               name="number"
               id="number"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="+91 865954331"
             />
           </div>
@@ -122,7 +122,7 @@ function AddFaculty() {
               name="qualification"
               id="qualification"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="M.Tech"
             />
           </div>
@@ -137,20 +137,20 @@ function AddFaculty() {
             name="image"
             id="image"
             accept="image/*"
-            className="w-full text-gray-700 bg-white border border-gray-300 rounded-lg py-2 px-4 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition"
+            className="w-full text-gray-700 bg-white border border-gray-300 rounded-lg py-2 px-4 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-red-600 file:text-white hover:file:bg-red-700 transition"
           />
         </div>
 
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"
-            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition transform hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition transform hover:-translate-y-0.5"
           >
             Save Faculty
           </button>

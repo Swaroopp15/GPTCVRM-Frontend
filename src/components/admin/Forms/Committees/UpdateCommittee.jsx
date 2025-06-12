@@ -81,7 +81,7 @@ function UpdateCommittee() {
           <select
             id="committee"
             name="committee"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
             required
             value={selectedCommitteeId}
             onChange={(e) => setSelectedCommitteeId(e.target.value)}
@@ -112,7 +112,7 @@ function UpdateCommittee() {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Academic Committee"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -129,7 +129,7 @@ function UpdateCommittee() {
                   name="about"
                   rows="4"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Describe the committee's purpose and responsibilities..."
                   value={formData.about}
                   onChange={handleInputChange}
@@ -141,14 +141,14 @@ function UpdateCommittee() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200"
+                className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200"
                 disabled={!selectedCommitteeId}
               >
                 Reset
               </button>
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
+                className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:-translate-y-0.5 disabled:opacity-50"
                 disabled={!selectedCommitteeId || isLoading}
               >
                 {isLoading ? 'Updating...' : 'Update Committee'}

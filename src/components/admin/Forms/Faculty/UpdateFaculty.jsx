@@ -16,15 +16,12 @@ function UpdateFaculty() {
   const [qualification, setQualification] = useState('');
   const [faculty_code, setFaculty_code] = useState(''); 
 
-  // Logic to update faculty details
   const updateFacultyDetails = async () => {
     await updateFaculty(selectedFaculty, faculty_name, faculty_role, email, number, qualification, depo_code);
   }
   
-  // Logic to fetch faculty available based on selected Department
   useEffect(() => {
     if (!selectedDepartment) return;
-    // Fetch faculty based on selected department
     const fetchFacultyList = async () => {
       const data = await fetchFaculty(selectedDepartment);
       setFacultyList(data);
@@ -62,7 +59,7 @@ function UpdateFaculty() {
               name="faculty_name"
               id="faculty_name"
               onChange={(event) => setFaculty_name(event.currentTarget.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Enter Faculty Name"
             />
           </div>
@@ -76,7 +73,7 @@ function UpdateFaculty() {
               name="email"
               id="email"
               onChange={(event) => setEmail(event.currentTarget.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Enter Faculty Email"
             />
           </div>
@@ -92,7 +89,7 @@ function UpdateFaculty() {
               name="faculty_role"
               id="faculty_role"
               onChange={(event) => setFaculty_role(event.currentTarget.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Assistant Professor"
             />
           </div>
@@ -114,7 +111,7 @@ function UpdateFaculty() {
               name="number"
               id="number"
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="+91 865954331"
               onInput={(e) => setNumber(e.target.value)}
             />
@@ -128,7 +125,7 @@ function UpdateFaculty() {
               type="text"
               name="qualification"
               id="qualification"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="M.Tech"
               onInput={(e) => setQualification(e.target.value)}
             />
@@ -138,13 +135,13 @@ function UpdateFaculty() {
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"
-            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
+            className="px-5 py-2.5 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
           >
             Reset
           </button>
           <button
             type="submit"
-            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition transform hover:-translate-y-0.5"
+            className="px-5 py-2.5 rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition transform hover:-translate-y-0.5"
           >
             Save Faculty
           </button>
