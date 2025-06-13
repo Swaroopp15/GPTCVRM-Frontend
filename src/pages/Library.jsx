@@ -7,6 +7,7 @@ import Ebooks from "../components/Library/Ebooks";
 import ErrorMessage from "../components/hero/ErrorMessage";
 import LoadingSpinner from "../components/hero/Spinner";
 import { motion } from "framer-motion";
+import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 
 function Library() {
   const [library, setLibrary] = useState(null);
@@ -81,12 +82,10 @@ function Library() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-red-50 to-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="bg-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-red-100 opacity-20 mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute right-0 top-1/4 w-96 h-96 rounded-full bg-blue-100 opacity-10 mix-blend-multiply filter blur-xl animate-float animation-delay-2000"></div>
-        <div className="absolute left-1/4 bottom-0 w-80 h-80 rounded-full bg-amber-100 opacity-15 mix-blend-multiply filter blur-xl animate-float animation-delay-4000"></div>
+      <DecorativeBubbles/>
       </div>
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
