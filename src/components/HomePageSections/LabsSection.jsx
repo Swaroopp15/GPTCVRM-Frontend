@@ -18,7 +18,7 @@ const LabsSection = ({ labs, containerVariants, itemVariants }) => (
             FACILITIES
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
-            Our Laboratory Facilities
+            Laboratory Facilities
           </h2>
           <p className="text-sm sm:text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
             We provide modern, well-equipped laboratories to give students hands-on experience.

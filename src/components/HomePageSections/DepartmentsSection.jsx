@@ -18,7 +18,7 @@ const DepartmentsSection = ({ departments, containerVariants, itemVariants }) =>
             ACADEMICS
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
-            Our Departments
+            Departments
           </h2>
         </motion.div>
       </motion.div>

@@ -185,7 +185,7 @@ function Department() {
                   Academic Excellence
                 </span>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-4 mb-6">
-                  Our <span className="text-red-600">Departments</span>
+                  <span className="text-red-600">Departments</span>
                 </h2>
                 <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">

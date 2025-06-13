@@ -58,6 +58,8 @@ function Committees() {
         <h2 className="text-3xl sm:text-4xl font-bold text-red-700">
           Committees
         </h2>
+                        <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+
         {committees && committees.length > 0 ? (
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {committees.map((committee, index) => (

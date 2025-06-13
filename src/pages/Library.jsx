@@ -6,6 +6,7 @@ import { Context } from "../../Context/Context";
 import Ebooks from "../components/Library/Ebooks";
 import ErrorMessage from "../components/hero/ErrorMessage";
 import LoadingSpinner from "../components/hero/Spinner";
+import { motion } from "framer-motion";
 
 function Library() {
   const [library, setLibrary] = useState(null);
@@ -14,6 +15,7 @@ function Library() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { college } = useContext(Context);
+  const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
     const fetchLibrary = async () => {
@@ -56,7 +58,7 @@ function Library() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-50 to-white">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -64,7 +66,7 @@ function Library() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-50 to-white">
         <ErrorMessage message={error} />
       </div>
     );
@@ -72,28 +74,73 @@ function Library() {
 
   if (!library) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-50 to-white">
         <ErrorMessage message="No library data available" />
       </div>
     );
   }
 
   return (
-    <div className="bg-gradient-to-b from-red-50 to-white min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div className="text-center mb-8">
+    <div className="bg-gradient-to-b from-red-50 to-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-red-100 opacity-20 mix-blend-multiply filter blur-xl animate-float"></div>
+        <div className="absolute right-0 top-1/4 w-96 h-96 rounded-full bg-blue-100 opacity-10 mix-blend-multiply filter blur-xl animate-float animation-delay-2000"></div>
+        <div className="absolute left-1/4 bottom-0 w-80 h-80 rounded-full bg-amber-100 opacity-15 mix-blend-multiply filter blur-xl animate-float animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto space-y-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
+        >
           <h1 className="text-4xl font-extrabold text-red-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
             College Library
           </h1>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-red-700 sm:mt-4">
             Explore our vast collection of resources
           </p>
+        </motion.div>
+
+        {/* Navigation Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {[
+            { id: "overview", label: "Overview" },
+            { id: "books", label: "Books" },
+            { id: "journals", label: "Journals" },
+            { id: "ebooks", label: "E-Books" }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? "bg-red-600 text-white shadow-md"
+                  : "bg-white text-red-700 hover:bg-red-50 border border-red-200"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
-        
-        <LibraryOverview library={overview} ebooksLength={ebooks?.length} />
-        <BookList books={library.books} />
-        <JournalList journals={library.journals} />
-        <Ebooks books={ebooks} />
+
+        {/* Tab Content */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-white/20"
+        >
+          {activeTab === "overview" && (
+            <LibraryOverview library={overview} ebooksLength={ebooks?.length} />
+          )}
+          {activeTab === "books" && <BookList books={library.books} />}
+          {activeTab === "journals" && <JournalList journals={library.journals} />}
+          {activeTab === "ebooks" && <Ebooks books={ebooks} />}
+        </motion.div>
       </div>
     </div>
   );
