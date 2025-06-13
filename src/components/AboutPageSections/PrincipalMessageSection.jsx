@@ -23,7 +23,7 @@ const itemVariants = {
 
 function PrincipalMessageSection({ principal_name, principal_message, principal_image}) {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 ">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial="hidden"
@@ -47,7 +47,7 @@ function PrincipalMessageSection({ principal_name, principal_message, principal_
               <motion.div variants={itemVariants}>
                 <span className="text-red-600 font-semibold tracking-wider">PRINCIPAL'S MESSAGE</span>
                 <h2 className="text-3xl font-bold text-gray-800 mt-2 mb-4">
-                  Words from Our Principal
+                  Words from Principal Sir
                 </h2>
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-1 bg-red-600 mr-4"></div>

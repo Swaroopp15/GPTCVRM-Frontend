@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import EventCard from '../../components/Events/EventCard';
 
 const EventsSection = ({ events, eventsLoading, containerVariants, itemVariants }) => (
-  <section id="events" className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+  <section id="events" className="py-20 ">
     <div className="max-w-6xl mx-auto px-6">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants} className="text-center mb-12">
         <motion.div variants={itemVariants}>

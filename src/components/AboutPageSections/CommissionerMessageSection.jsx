@@ -23,7 +23,7 @@ const itemVariants = {
 
 function CommissionerMessageSection({ commissioner_name, commissioner_message, commissioner_image }) {
   return (
-    <section className="py-1 bg-gray-50">
+    <section className="py-1 ">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial="hidden"

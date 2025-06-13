@@ -72,6 +72,8 @@ import UpdateBook from "./components/admin/Forms/Library/UpdateBook";
 import AdminEbook from "./components/admin/Forms/Ebook/AdminEbook";
 import AddEbook from "./components/admin/Forms/Ebook/AddEbook";
 import DeleteEbook from "./components/admin/Forms/Ebook/DeleteEbook";
+import AdmissionProcess from "./components/AboutPageSections/AdmissionProcess";
+import StudentList from "./pages/StudentsList";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -86,7 +88,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/library" element={<Library />} />
             <Route path="/admissions" element={<Admissions />} />
+            <Route path="/admissionprocess" element={<AdmissionProcess />} />
             <Route path="/academics" element={<Academics />} />
+            <Route path="/students" element={<StudentList />} />
             <Route path="/committees" element={<Committees />} />
             <Route path="/committee/:id" element={<Committee />} />
             {/* <Route path="/departments" element={<Departments />} /> */}

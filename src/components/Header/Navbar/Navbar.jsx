@@ -14,34 +14,31 @@ function Navbar({ mobile = false, currentPath }) {
 
   return (
     <nav
-      className={`${
-        mobile 
-          ? 'flex flex-col space-y-2 w-full py-4' 
-          : 'hidden md:flex items-center space-x-1 lg:space-x-2'
-      }`}
+      className={`${mobile
+        ? 'flex flex-col space-y-2 w-full py-4'
+        : 'hidden md:flex items-center space-x-1 lg:space-x-2'
+        }`}
     >
       <Link
         to="/"
-        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
-          isActive('/') 
-            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
-            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
-        }`}
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${isActive('/')
+          ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md'
+          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+          }`}
       >
         Home
       </Link>
-      
+
       <Link
         to="/about"
-        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
-          isActive('/about') 
-            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
-            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
-        }`}
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${isActive('/about')
+          ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md'
+          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+          }`}
       >
         About
       </Link>
-      
+
       <DropDown
         name="Departments"
         values={objectToArray(departmentNames)}
@@ -51,7 +48,7 @@ function Navbar({ mobile = false, currentPath }) {
         currentPath={currentPath}
         isActive={isActive('/department') || isActive('/departments')}
       />
-      
+
       <DropDown
         name="Committees"
         values={objectToArray(committees)}
@@ -61,25 +58,42 @@ function Navbar({ mobile = false, currentPath }) {
         currentPath={currentPath}
         isActive={isActive('/committee') || isActive('/committees')}
       />
-      
+
       <Link
         to="/placements"
-        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
-          isActive('/placements') 
-            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
-            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
-        }`}
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${isActive('/placements')
+          ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md'
+          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+          }`}
       >
         Placements
       </Link>
-      
+
+      <DropDown
+        name="Acadamics"
+        values={[
+          { name: 'Results', code: 'results', path: '/results' },
+          { name: 'Admissions', code: 'academics', path: '/academics' },
+          { name: 'Admission Process', code: 'admissionprocess', path: '/admissionprocess' },
+          { name: 'Students', code: 'students', path: '/ww' },
+        ]}
+        link="/"
+        mobile={mobile}
+        currentPath={currentPath}
+        isActive={
+          isActive('/academics') ||
+          isActive('/results') ||
+          isActive('/students') ||
+          isActive('/admissionprocess')
+        }
+      />
+
       <Link
         to="/library"
-        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${
-          isActive('/library') 
-            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
-            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
-        }`}
+        className={`transition-all duration-300 px-3 py-2 rounded-lg text-sm md:text-[15px] font-medium ${isActive('/library')
+          ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md'
+          : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+          }`}
       >
         Library
       </Link>
@@ -87,9 +101,7 @@ function Navbar({ mobile = false, currentPath }) {
       <DropDown
         name="More"
         values={[
-          { name: 'Academics', code: 'academics', path: '/academics' },
           { name: 'Login', code: 'login', path: '/login' },
-          { name: 'Results', code: 'results', path: '/results' },
           { name: 'Events', code: 'events', path: '/events' },
           { name: 'Facilities', code: 'facilities', path: '/facility' },
           { name: 'Gallery', code: 'gallery', path: '/gallery' },
@@ -99,9 +111,7 @@ function Navbar({ mobile = false, currentPath }) {
         mobile={mobile}
         currentPath={currentPath}
         isActive={
-          isActive('/academics') ||
           isActive('/login') ||
-          isActive('/results') ||
           isActive('/events') ||
           isActive('/facility') ||
           isActive('/gallery') ||
@@ -112,11 +122,10 @@ function Navbar({ mobile = false, currentPath }) {
       {!mobile && (
         <Link
           to="/notifications"
-          className={`transition-all duration-300 p-2 rounded-full relative ${
-            isActive('/notifications') 
-              ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md' 
-              : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
-          }`}
+          className={`transition-all duration-300 p-2 rounded-full relative ${isActive('/notifications')
+            ? 'text-white bg-gradient-to-r from-red-600 to-red-500 shadow-md'
+            : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
+            }`}
           aria-label="Notifications"
         >
           <svg
