@@ -9,7 +9,7 @@ const AboutSection = ({ containerVariants, itemVariants }) => (
     whileInView="visible"
     viewport={{ once: true }}
     variants={containerVariants}
-    className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-gray-100"
+    className="py-16 sm:py-20"
   >
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12">

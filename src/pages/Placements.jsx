@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 import Selector from "../components/utility/YearSelector";
 import { Context } from "../../Context/Context";
 import { getPlacements, getPlacementYears } from "../functions/placements";
+import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 
 const PlacementRecord = ({ placement, index }) => {
   return (
@@ -100,59 +101,25 @@ function Placements() {
   }, [selectedDepartment]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
-      {/* Background Bubbles */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-red-100 opacity-20 mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute right-0 top-1/4 w-96 h-96 rounded-full bg-blue-100 opacity-20 mix-blend-multiply filter blur-xl animate-float animation-delay-2000"></div>
-        <div className="absolute left-1/4 bottom-0 w-80 h-80 rounded-full bg-green-100 opacity-20 mix-blend-multiply filter blur-xl animate-float animation-delay-4000"></div>
-        <div className="absolute right-1/3 top-3/4 w-72 h-72 rounded-full bg-yellow-100 opacity-20 mix-blend-multiply filter blur-xl animate-float animation-delay-6000"></div>
-      </div>
-
-      {/* Add custom animation styles in your global CSS */}
-      <style jsx global>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(5deg);
-          }
-        }
-        .animate-float {
-          animation: float 12s ease-in-out infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        .animation-delay-6000 {
-          animation-delay: 6s;
-        }
-      `}</style>
+    <div className="min-h-screen flex flex-col bg-white relative overflow-hidden">
 
       <main className="flex-grow relative z-10">
+      <DecorativeBubbles />
         <section className="max-w-7xl mx-auto mt-8 p-4 sm:p-6 lg:p-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-white/20">
-            {/* Header Section */}
+
+            {/* Header */}
             <div className="bg-gradient-to-r from-red-700 to-red-600 p-6 sm:p-8 text-white relative overflow-hidden">
               <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white/10"></div>
               <div className="absolute -left-20 -bottom-20 w-96 h-96 rounded-full bg-white/5"></div>
               <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-                  Placement Records
-                </h2>
-                <p className="text-center text-red-100 max-w-2xl mx-auto">
-                  Explore the achievements of our students across various companies and packages
-                </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">Placement Records</h2>
+                <p className="text-center text-red-100 max-w-2xl mx-auto">Explore the achievements of our students across various companies and packages</p>
                 <div className="w-20 h-1 bg-red-300 mx-auto mt-4 rounded-full"></div>
               </div>
             </div>
 
-            {/* Rest of your component remains the same */}
-            {/* Filters Section */}
+            {/* Filters */}
             <div className="p-6 sm:p-8 border-b border-gray-200 bg-gray-50/70">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
@@ -175,7 +142,7 @@ function Placements() {
                     setValue={setYear}
                   />
                 </div>
-                
+
                 <div className="relative w-full lg:w-auto">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -192,7 +159,7 @@ function Placements() {
               </div>
             </div>
 
-            {/* Table Section */}
+            {/* Table */}
             <div className="overflow-hidden">
               {isLoading ? (
                 <div className="p-12 flex justify-center items-center">
@@ -203,27 +170,13 @@ function Placements() {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-100">
                       <tr>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Student Name
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Pin
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Department
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Company
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Role
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Package
-                        </th>
-                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                          Year
-                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Student Name</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Pin</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Department</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Company</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Role</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Package</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Year</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -250,25 +203,23 @@ function Placements() {
               )}
             </div>
 
-            {/* Stats Footer */}
+            {/* Footer Stats */}
             {filteredPlacements.length > 0 && (
               <div className="bg-gray-50/70 px-6 py-4 border-t border-gray-200">
                 <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600">
                   <div className="mb-2 sm:mb-0">
                     Showing <span className="font-medium">{filteredPlacements.length}</span> records
                   </div>
-                  {filteredPlacements.length > 0 && (
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center">
-                        <span className="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
-                        <span>Highest Package: {Math.max(...filteredPlacements.map(p => parseFloat(p.package)))} LPA</span>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="h-3 w-3 rounded-full bg-blue-500 mr-2"></span>
-                        <span>Average: {(filteredPlacements.reduce((sum, p) => sum + parseFloat(p.package), 0) / filteredPlacements.length).toFixed(2)} LPA</span>
-                      </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center">
+                      <span className="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+                      <span>Highest Package: {Math.max(...filteredPlacements.map(p => parseFloat(p.package)))} LPA</span>
                     </div>
-                  )}
+                    <div className="flex items-center">
+                      <span className="h-3 w-3 rounded-full bg-blue-500 mr-2"></span>
+                      <span>Average: {(filteredPlacements.reduce((sum, p) => sum + parseFloat(p.package), 0) / filteredPlacements.length).toFixed(2)} LPA</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Footer from "../pages/Footer";
 import Spinner from "../components/hero/Spinner";
 import GoTo from "../components/hero/GoToTop";
+import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 
 export const DepartmentContext = createContext(null);
 
@@ -50,12 +51,12 @@ function Department() {
       try {
         setLoading(true);
         setError(null);
-        
+
         if (depo_code) {
           const response = await fetch(
             `http://localhost:3000/departments/${depo_code}`
           );
-          
+
           if (!response.ok) {
             if (response.status === 404) {
               navigate("/not-found", { replace: true });
@@ -63,7 +64,7 @@ function Department() {
             }
             throw new Error(`HTTP error! status: ${response.status}`);
           }
-          
+
           const data = await response.json();
           setDepartment(data);
         }
@@ -98,8 +99,8 @@ function Department() {
             </div>
             <h2 className="text-xl font-semibold text-gray-800">Error Loading Department</h2>
             <p className="text-gray-600 mt-2">{error}</p>
-            <button 
-              onClick={() => window.location.reload()} 
+            <button
+              onClick={() => window.location.reload()}
               className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
             >
               Try Again
@@ -117,10 +118,13 @@ function Department() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100"
+        className="min-h-screen flex flex-col  relative overflow-hidden"
       >
+        <DecorativeBubbles />
+
+
         {depo_code ? (
-          <section className="py-16 px-4 sm:px-6 lg:px-8 flex-grow">
+          <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 flex-grow">
             <div className="max-w-7xl mx-auto">
               <motion.div variants={itemVariants}>
                 <DepartmentDetails department={department} />
@@ -131,10 +135,9 @@ function Department() {
                   <NavLink
                     to="faculty"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -143,10 +146,9 @@ function Department() {
                   <NavLink
                     to="labs"
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -155,10 +157,9 @@ function Department() {
                   <NavLink
                     to={`placements?depo_code=${depo_code}&year=2025`}
                     className={({ isActive }) =>
-                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                          : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                      `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -244,7 +245,7 @@ function Department() {
             </div>
           </section>
         )}
-      <GoTo />
+        <GoTo />
         <Footer />
       </motion.div>
     </DepartmentContext.Provider>

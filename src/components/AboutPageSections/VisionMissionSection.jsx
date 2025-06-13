@@ -26,7 +26,7 @@ function VisionMissionSection({ data }) {
             className="bg-gray-50 p-8 rounded-xl border-l-4 border-red-600 shadow-sm"
           >
             <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="mr-3">🌟</span> Our Vission
+              <span className="mr-3">🌟</span>Vission
             </h3>
             <p className="text-gray-600 leading-relaxed">
               {data.vision}
@@ -41,7 +41,7 @@ function VisionMissionSection({ data }) {
             className="bg-gray-50 p-8 rounded-xl border-l-4 border-blue-600 shadow-sm"
           >
             <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="mr-3">🎯</span> Our Misssion
+              <span className="mr-3">🎯</span>Misssion
             </h3>
             <ul  className="list-disc text-gray-600 leading-relaxed">
               {data?.mission?.split(".").map((line, index) => {
