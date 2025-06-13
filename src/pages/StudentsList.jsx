@@ -41,7 +41,6 @@ function StudentList() {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  /* Fetch all students once */
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -56,7 +55,6 @@ function StudentList() {
     })();
   }, []);
 
-  /* Filter by search term */
   useEffect(() => {
     if (!search) {
       setFilteredStudents(students);
@@ -70,7 +68,6 @@ function StudentList() {
     );
   }, [students, search]);
 
-  /* Filter by department / year */
   useEffect(() => {
     if (!selectedDepartment && !year) return;
     setIsLoading(true);
@@ -80,7 +77,6 @@ function StudentList() {
     });
   }, [selectedDepartment, year]);
 
-  /* Load year options */
   useEffect(() => {
     getStudentYears(selectedDepartment).then(setYears);
   }, [selectedDepartment]);
@@ -92,7 +88,6 @@ function StudentList() {
         <section className="max-w-7xl mx-auto mt-8 p-4 sm:p-6 lg:p-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-white/20">
 
-            {/* Header */}
             <div className="bg-gradient-to-r from-red-700 to-red-600 p-6 sm:p-8 text-white relative overflow-hidden">
               <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white/10" />
               <div className="absolute -left-20 -bottom-20 w-96 h-96 rounded-full bg-white/5" />
@@ -105,7 +100,6 @@ function StudentList() {
               </div>
             </div>
 
-            {/* Filters */}
             <div className="p-6 sm:p-8 border-b border-gray-200 bg-gray-50/70">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
@@ -149,7 +143,6 @@ function StudentList() {
               </div>
             </div>
 
-            {/* Table */}
             <div className="overflow-hidden">
               {isLoading ? (
                 <div className="p-12 flex justify-center">
@@ -182,7 +175,6 @@ function StudentList() {
               )}
             </div>
 
-            {/* Footer */}
             {filteredStudents.length > 0 && (
               <div className="bg-gray-50/70 px-6 py-4 border-t border-gray-200 text-sm text-gray-600">
                 Showing <span className="font-medium">{filteredStudents.length}</span> students
@@ -191,7 +183,7 @@ function StudentList() {
           </div>
         </section>
       </main>
-      <Footer />w
+      <Footer />
     </div>
   );
 }

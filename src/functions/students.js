@@ -36,7 +36,7 @@ const deleteStudent = async (id) => {
 const getStudents = async (depo_code, year) => {
   try {
     let url = `${import.meta.env.VITE_BACKEND}students/`;
-    
+
     if (depo_code && year) {
       url += `${depo_code}/${year}`;
     } else if (depo_code) {
@@ -44,7 +44,7 @@ const getStudents = async (depo_code, year) => {
     } else if (year) {
       url += `year/${year}`;
     }
-    
+
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");

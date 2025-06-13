@@ -9,6 +9,7 @@ import LoadingSpinner from "../components/hero/Spinner";
 import { motion } from "framer-motion";
 import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 import Footer from "./Footer";
+
 function Library() {
   const [library, setLibrary] = useState(null);
   const [overview, setOverview] = useState(null);
@@ -23,27 +24,19 @@ function Library() {
       try {
         setLoading(true);
         setError(null);
-        
-        const response = await fetch(import.meta.env.VITE_BACKEND + "library");
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        if (!data) {
-          throw new Error("No data received from the server");
-        }
-        
-        setLibrary(data);
 
+        const response = await fetch(import.meta.env.VITE_BACKEND + "library");
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const data = await response.json();
+        if (!data) throw new Error("No data received from the server");
+
+        setLibrary(data);
         const over = {
-          budget: college?.library_budget || 0, 
+          budget: college?.library_budget || 0,
           area: college?.library_area || 0,
-          ...data.library
+          ...data.library,
         };
-        
         setOverview(over);
         setEbooks(data.ebooks || []);
       } catch (error) {
@@ -53,7 +46,7 @@ function Library() {
         setLoading(false);
       }
     };
-    
+
     fetchLibrary();
   }, [college]);
 
@@ -91,14 +84,12 @@ function Library() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex-grow bg-white py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <DecorativeBubbles/>
-        </div>
+    <div className="flex flex-col min-h-screen ">
+      <DecorativeBubbles />
 
+      <div className="flex-grow py-8 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto space-y-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -112,29 +103,26 @@ function Library() {
             </p>
           </motion.div>
 
-          {/* Navigation Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {[
               { id: "overview", label: "Overview" },
               { id: "books", label: "Books" },
               { id: "journals", label: "Journals" },
-              { id: "ebooks", label: "E-Books" }
+              { id: "ebooks", label: "E-Books" },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                  activeTab === tab.id
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${activeTab === tab.id
                     ? "bg-red-600 text-white shadow-md"
                     : "bg-white text-red-700 hover:bg-red-50 border border-red-200"
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
             ))}
           </div>
 
-          {/* Tab Content */}
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}
@@ -151,6 +139,7 @@ function Library() {
           </motion.div>
         </div>
       </div>
+
       <Footer />
     </div>
   );
