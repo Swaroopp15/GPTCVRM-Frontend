@@ -1,13 +1,14 @@
 const getStudentYears = async (depo_code) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BACKEND}students/years?depo_code=${depo_code}`
+      `${import.meta.env.VITE_BACKEND}students/admission-years?depo_code=${depo_code}`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    return data.years.map((year) => year.year);
+    const years = data.map((year) => year.admission_year);
+    return years; 
   } catch (error) {
     console.error("Error fetching student years:", error);
     return [];
