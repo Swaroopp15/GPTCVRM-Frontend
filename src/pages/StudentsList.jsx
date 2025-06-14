@@ -30,10 +30,8 @@ const StudentRecord = ({ student, index }) => (
 function StudentList() {
   const [query] = useSearchParams();
   const defaultDepo = query.get("depo_code");
-  const defaultYear = query.get("year");
-
-  const [year, setYear] = useState(defaultYear);
-  const [years, setYears] = useState([]);
+  const defaultSem = query.get("sem");
+const [semester, setSemester] = useState(defaultSem || "");
   const { departmentNames } = useContext(Context);
   const [selectedDepartment, setSelectedDepartment] = useState(defaultDepo);
   const [students, setStudents] = useState([]);
@@ -45,7 +43,8 @@ function StudentList() {
     (async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(import.meta.env.VITE_BACKEND + "students/all");
+        if (!selectedDepartment && !semester) return ;
+        const res = await fetch(import.meta.env.VITE_BACKEND + "students/?semester=" + semester + "&depo_code=" + selectedDepartment);
         setStudents(await res.json());
       } catch (err) {
         console.error("Error fetching students:", err);
@@ -69,17 +68,14 @@ function StudentList() {
   }, [students, search]);
 
   useEffect(() => {
-    if (!selectedDepartment && !year) return;
+    if (!selectedDepartment && !semester) return;
     setIsLoading(true);
-    getStudents(selectedDepartment, year).then((data) => {
+    getStudents(selectedDepartment, semester).then((data) => {
       setStudents(data);
       setIsLoading(false);
     });
-  }, [selectedDepartment, year]);
-
-  useEffect(() => {
-    getStudentYears(selectedDepartment).then(setYears);
-  }, [selectedDepartment]);
+    setIsLoading(false);
+  }, [selectedDepartment, semester]);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
@@ -116,11 +112,18 @@ function StudentList() {
                     ))}
                   </select>
 
-                  <Selector
-                    className="w-full sm:w-48 border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-red-500 focus:border-red-500 shadow-sm bg-white/90"
-                    values={years}
-                    setValue={setYear}
-                  />
+                   <select
+                    className="w-full sm:w-64 border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-red-500 focus:border-red-500 shadow-sm bg-white/90"
+                    onChange={(e) => setSemester(e.target.value)}
+                    value={semester || ""}
+                  >
+                    <option value="" disabled selected>Select Semester</option>
+                    <option value="1">1st Sem</option>
+                    <option value="3">3rd Sem</option>
+                    <option value="4">4rd Sem</option>
+                    <option value="5">5th Sem</option>
+                    <option value="6">Training</option>
+                  </select>
                 </div>
 
                 <div className="relative w-full lg:w-auto">
@@ -165,7 +168,7 @@ function StudentList() {
                       ) : (
                         <tr>
                           <td colSpan={4} className="px-6 py-8 text-center">
-                            <p className="text-gray-600">No students found</p>
+                            {!selectedDepartment & !semester ? <p className="text-gray-600">Please Select Department and semester to find students</p> : <p className="text-gray-600">No students match your search criteria</p>}
                           </td>
                         </tr>
                       )}

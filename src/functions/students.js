@@ -34,18 +34,9 @@ const deleteStudent = async (id) => {
   }
 }
 
-const getStudents = async (depo_code, year) => {
+const getStudents = async (depo_code, semester) => {
   try {
-    let url = `${import.meta.env.VITE_BACKEND}students/`;
-
-    if (depo_code && year) {
-      url += `${depo_code}/${year}`;
-    } else if (depo_code) {
-      url += `department/${depo_code}`;
-    } else if (year) {
-      url += `year/${year}`;
-    }
-
+    let url = `${import.meta.env.VITE_BACKEND}students/?semester=` + semester + `&depo_code=` + depo_code;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");
