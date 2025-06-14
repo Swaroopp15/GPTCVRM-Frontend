@@ -94,6 +94,8 @@ function Placements() {
       setPlacements(sorted);
       setIsLoading(false);
     });
+      setIsLoading(false);
+
   }, [selectedDepartment, year]);
 
   useEffect(() => {
