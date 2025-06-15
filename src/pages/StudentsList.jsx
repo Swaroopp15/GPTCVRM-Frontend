@@ -5,6 +5,7 @@ import { Context } from "../../Context/Context";
 import { getStudents, getStudentYears } from "../functions/students";
 import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 import Footer from "./Footer";
+import SemesterSelector from "../components/admin/Forms/utilities/SemesterSelector";
 
 const StudentRecord = ({ student, index }) => (
   <tr className={`transition-all duration-200 ${index % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-red-50 group relative z-10`}>
@@ -21,7 +22,7 @@ const StudentRecord = ({ student, index }) => (
     </td>
     <td className="py-4 px-6 border-b border-gray-200">
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-        {student.year}
+        {student.admission_year}
       </span>
     </td>
   </tr>
@@ -112,18 +113,7 @@ const [semester, setSemester] = useState(defaultSem || "");
                     ))}
                   </select>
 
-                   <select
-                    className="w-full sm:w-64 border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-red-500 focus:border-red-500 shadow-sm bg-white/90"
-                    onChange={(e) => setSemester(e.target.value)}
-                    value={semester || ""}
-                  >
-                    <option value="" disabled selected>Select Semester</option>
-                    <option value="1">1st Sem</option>
-                    <option value="3">3rd Sem</option>
-                    <option value="4">4rd Sem</option>
-                    <option value="5">5th Sem</option>
-                    <option value="6">Training</option>
-                  </select>
+                  <SemesterSelector setSemester={setSemester} />
                 </div>
 
                 <div className="relative w-full lg:w-auto">
@@ -159,7 +149,7 @@ const [semester, setSemester] = useState(defaultSem || "");
                         <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase">Student Name</th>
                         <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase">PIN</th>
                         <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase">Department</th>
-                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase">Year</th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-700 uppercase">Admission Year</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">

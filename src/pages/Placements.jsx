@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { data, useSearchParams } from "react-router";
 import Selector from "../components/utility/YearSelector";
 import { Context } from "../../Context/Context";
 import { getPlacements, getPlacementYears } from "../functions/placements";
@@ -12,7 +12,7 @@ const PlacementRecord = ({ placement, index }) => {
         {placement.name}
       </td>
       <td className="py-4 px-6 border-b border-gray-200 text-gray-700">
-        {placement.student_pin}
+        {placement.pin}
       </td>
       <td className="py-4 px-6 border-b border-gray-200">
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
@@ -30,7 +30,7 @@ const PlacementRecord = ({ placement, index }) => {
       </td>
       <td className="py-4 px-6 border-b border-gray-200">
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-          {placement.year}
+          {placement.placement_year}
         </span>
       </td>
     </tr>
@@ -99,7 +99,8 @@ function Placements() {
   }, [selectedDepartment, year]);
 
   useEffect(() => {
-    getPlacementYears(selectedDepartment).then((data) => setYears(data));
+    getPlacementYears(selectedDepartment).then((data) => {setYears(data);}
+    );
   }, [selectedDepartment]);
 
   return (

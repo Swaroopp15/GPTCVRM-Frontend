@@ -74,6 +74,8 @@ import AddEbook from "./components/admin/Forms/Ebook/AddEbook";
 import DeleteEbook from "./components/admin/Forms/Ebook/DeleteEbook";
 import AdmissionProcess from "./components/AboutPageSections/AdmissionProcess";
 import StudentList from "./pages/StudentsList";
+import AdminStudents from "./components/admin/Forms/Students/AdminStudents";
+import AddStudents from "./components/admin/Forms/Students/AddStudents";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -193,6 +195,13 @@ function App() {
                  <Route path="delete" element={<DeleteEbook />} />
                  {/* <Route path="update" element={<UpdateBook/>} /> */}
                 </Route>
+                <Route path="students" element={<AdminStudents />} >
+                 <Route path="" element={<AddStudents />} />
+                 <Route path="add" element={<AddStudents />} />
+                 <Route path="delete" element={<DeleteEbook />} />
+                 {/* <Route path="update" element={<UpdateBook/>} /> */}
+                </Route>
+
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

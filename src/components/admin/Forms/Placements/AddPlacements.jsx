@@ -1,6 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import { Context } from "../../../../../Context/Context";
+import { getPlacementYears, getStudentsForPlacements } from "../../../../functions/placements";
+import { getStudentsByYear, getStudentYears } from "../../../../functions/students";
+import { data } from "react-router";
 
 function AddPlacements() {
   const { departmentNames } = useContext(Context);
@@ -9,18 +12,20 @@ function AddPlacements() {
   const [bulkData, setBulkData] = useState([]);
   const [bulkError, setBulkError] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-
+  const [depo_code, setDepo_code] = useState();
+  const [year, setYear] = useState();
+  const [students, setStudents] = useState();
+  const [student, setStudent] = useState();
+const [years, setYears] = useState();
   const addPlacement = async (event) => {
     try {
       event.preventDefault();
       const data = {
-        pin: event.target.pin.value,
-        name: event.target.name.value,
+        pin: student,
         company: event.target.company.value,
         role: event.target.role.value,
         package: event.target.package.value,
-        depo_code: event.target.depo_code.value,
-        year: event.target.year.value
+        placement_year: event.target.placement_year.value
       };
 
       const response = await fetch(import.meta.env.VITE_BACKEND + "placements", {
@@ -137,6 +142,16 @@ function AddPlacements() {
     }
   };
 
+  // logic to fetch admission years 
+  useEffect(()=> {
+    getStudentYears(depo_code).then((data) => setYears(data));
+  }, [depo_code])
+
+  // logic to fetch students
+  useEffect(() => {
+    getStudentsForPlacements(depo_code, year).then((data) => setStudents(data));
+  }, [depo_code, year]);
+
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8">
       <div className="mb-6">
@@ -174,6 +189,7 @@ function AddPlacements() {
                 name="depo_code"
                 id="depo_code"
                 required
+                onChange={(e) => setDepo_code(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
               >
                 <option value="">Select Department</option>
@@ -186,45 +202,39 @@ function AddPlacements() {
             </div>
 
             <div>
-              <label htmlFor="year" className="block text-sm font-medium text-gray-700 mb-2">
-                Year
+              <label htmlFor="admission_year" className="block text-sm font-medium text-gray-700 mb-2">
+                Admission Year
               </label>
-              <input
-                type="number"
-                name="year"
-                id="year"
-                min="2017"
-                max={currentYear}
-                defaultValue={currentYear}
+              <select
+                name="admission_year"
+                id="admission_year"
                 required
+                onChange={(e) => setYear(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Student Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-              />
+              >
+                <option value="" disabled selected>Select Admission Year</option>
+                {years && years.map((year, index) => (
+                  <option key={index} value={year}>{year}</option>
+                ))}
+              </select>
             </div>
 
             <div>
               <label htmlFor="pin" className="block text-sm font-medium text-gray-700 mb-2">
-                PIN
+                Student pin
               </label>
-              <input
-                type="text"
+              <select
                 name="pin"
                 id="pin"
                 required
+                onChange={(e) => setStudent(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-              />
+              >
+                <option value="" disabled selected>Select Student pin</option>
+                {students && students.map((student, index) => (
+                  <option key={index} value={student.pin}>{student.pin}</option>
+                ))}
+              </select>
             </div>
 
             <div>
@@ -268,6 +278,22 @@ function AddPlacements() {
               />
             </div>
           </div>
+
+          <div>
+              <label htmlFor="placement_year" className="block text-sm font-medium text-gray-700 mb-2">
+               Placement Year
+              </label>
+              <input
+                type="number"
+                name="placement_year"
+                id="placement_year"
+                min="2017"
+                max={currentYear}
+                defaultValue={currentYear}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+              />
+            </div>
 
           <div className="flex justify-end space-x-3 pt-2">
             <button
@@ -384,7 +410,7 @@ function AddPlacements() {
             <h4 className="font-medium text-gray-700 mb-2">Excel File Requirements:</h4>
             <ul className="text-sm text-gray-600 list-disc pl-5 space-y-1">
               <li>File should be in .xlsx, .xls, or .csv format</li>
-              <li>Required columns: pin, name, company, role, package, depo_code, year</li>
+              <li>Required columns: pin, company, role, package, year</li>
               <li>First row should contain column headers</li>
               <li>Department should use department codes (matching dropdown values)</li>
               <li>Package should be in LPA (e.g., 3.5 for 3.5 LPA)</li>

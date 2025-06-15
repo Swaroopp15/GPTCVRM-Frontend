@@ -144,6 +144,8 @@ function AddResults() {
       if (response.ok) {
         alert("Bulk results uploaded successfully!");
         setBulkData([]);
+        console.log("Failed results : ", response.response);
+        
       } else {
         setBulkError("Failed to upload bulk results.");
       }

@@ -49,6 +49,24 @@ const getStudents = async (depo_code, semester) => {
   }
 };
 
+const getStudentsByYear = async (depo_code, year) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}students/by-year?depo_code=${depo_code}&year=${year}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    console.log("Students : ", data);
+    
+    return data;
+  } catch (error) {
+    console.error("Error fetching students by year:", error);
+    throw error; // Re-throw to allow handling in the component
+  }
+}
+
 const createStudent = async (studentData) => {
   try {
     const response = await fetch(
@@ -98,5 +116,6 @@ export {
   deleteStudent,
   getStudents,
   createStudent,
-  updateStudent
+  updateStudent,
+  getStudentsByYear
 }

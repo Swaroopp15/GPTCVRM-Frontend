@@ -43,6 +43,8 @@ function DeletePlacements() {
         alert("Error deleting placement record");
       });
   }
+ 
+
   return (
      <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8">
       <div className="mb-6">
@@ -52,50 +54,60 @@ function DeletePlacements() {
       <form onSubmit={(event) => {event.preventDefault(); handleSubmit()}} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
-              Department
-              <span className="text-red-500 ml-1">*</span>
-            </label>
-            <select
-              name="depo_code"
-              id="depo_code"
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
-              onChange={(event) => {
-                setSelectedDepartment(event.currentTarget.value);} // Reset year when department changes
-              }
-            >
-              <option value="">Select Department</option>
-              {departmentNames.length > 0 ? (
-                departmentNames.map((item) => (
+              <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
+                Department
+              </label>
+              <select
+                name="depo_code"
+                id="depo_code"
+                required
+                onChange={(e) => setSelectedDepartment(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+              >
+                <option value="">Select Department</option>
+                {departmentNames.map((item) => (
                   <option key={item.depo_code} value={item.depo_code}>
                     {item.department_name}
                   </option>
-                ))
-              ) : (
-                <option value="" disabled>No Departments Available</option>
-              )}
-            </select>
-          </div>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label htmlFor="year" className="block text-sm font-medium text-gray-700 mb-2">
-              Year
-              <span className="text-red-500 ml-1">*</span>
-            </label>
-         <Selector values={years} setValue={setSelectedYear} className={"w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"} />
-          </div>
+            <div>
+              <label htmlFor="admission_year" className="block text-sm font-medium text-gray-700 mb-2">
+                Admission Year
+              </label>
+              <select
+                name="admission_year"
+                id="admission_year"
+                required
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+              >
+                <option value="" disabled selected>Select Admission Year</option>
+                {years && years.map((year, index) => (
+                  <option key={index} value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
 
-         {placements ? (
-          <select name="" id="" onChange={(event) => setSelectedResult(event.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200">
-            <option value="">Select Pin</option>
-            {placements.map((placement) => (
-              <option key={placement.id} value={placement.id}>
-                {placement.student_pin}  {`- [${placement.name}]`}
-              </option>
-            ))}
-          </select>
-         ) : <div />}
+            <div>
+              <label htmlFor="pin" className="block text-sm font-medium text-gray-700 mb-2">
+                Student pin
+              </label>
+              <select
+                name="pin"
+                id="pin"
+                required
+                onChange={(e) => setSelectedResult(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+              >
+                <option value="" disabled selected>Select Student pin</option>
+                {placements && placements.map((student, index) => (
+                  <option key={index} value={student.id}>{student.pin}</option>
+                ))}
+              </select>
+            </div>
         </div>
 
         <div className="flex justify-end space-x-3 pt-2">
