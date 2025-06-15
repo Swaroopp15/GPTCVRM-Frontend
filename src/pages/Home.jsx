@@ -78,7 +78,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const deptResponse = await fetch('http://localhost:3000/departments');
+        const deptResponse = await fetch(`${import.meta.env.VITE_BACKEND}departments`);
         if (!deptResponse.ok) throw new Error('Failed to fetch departments');
         const deptData = await deptResponse.json();
         setDepartments(deptData);

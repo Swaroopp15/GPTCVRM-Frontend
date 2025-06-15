@@ -1,13 +1,12 @@
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, { createContext, useEffect, useState, useContext, useRef } from "react";
 import { Link, Outlet, useParams, NavLink, useLocation, useNavigate } from "react-router";
 import DepartmentCard from "../components/Departments/DepartmentCard";
 import DepartmentDetails from "../components/Departments/DepartmentDetails";
 import { Context } from "../../Context/Context";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../pages/Footer";
 import Spinner from "../components/hero/Spinner";
 import GoTo from "../components/hero/GoToTop";
-import DecorativeBubbles from "../components/hero/DecorativeBubbles";
 
 export const DepartmentContext = createContext(null);
 
@@ -18,9 +17,10 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.1,
       when: "beforeChildren",
-      duration: 0.6
+      duration: 0.6,
     },
   },
+  exit: { opacity: 0 }
 };
 
 const itemVariants = {
@@ -32,8 +32,8 @@ const itemVariants = {
       type: "spring",
       stiffness: 100,
       damping: 10,
-      duration: 0.5
-    }
+      duration: 0.5,
+    },
   },
 };
 
@@ -46,6 +46,18 @@ function Department() {
   const [error, setError] = useState(null);
   const { departmentNames } = useContext(Context);
 
+  const isSubPageActive = ["faculty", "labs", "placements"].some((sub) =>
+    location.pathname.includes(`/department/${depo_code}/${sub}`)
+  );
+
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (isSubPageActive && contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.pathname]);
+
   useEffect(() => {
     const fetchDepartmentData = async () => {
       try {
@@ -54,7 +66,7 @@ function Department() {
 
         if (depo_code) {
           const response = await fetch(
-            `http://localhost:3000/departments/${depo_code}`
+            `${import.meta.env.VITE_BACKEND}departments/${depo_code}`
           );
 
           if (!response.ok) {
@@ -79,29 +91,25 @@ function Department() {
     fetchDepartmentData();
   }, [depo_code, navigate]);
 
-  const isSubPageActive = ["faculty", "labs", "placements"].some(sub =>
-    location.pathname.includes(`/department/${depo_code}/${sub}`)
-  );
-
   if (loading) {
     return <Spinner message="Loading department information..." />;
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="min-h-screen flex flex-col bg-gray-50">
         <main className="flex-grow flex items-center justify-center p-6">
-          <div className="max-w-md p-6 bg-white rounded-lg shadow-md text-center">
-            <div className="text-red-500 mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="max-w-md p-8 bg-white rounded-xl shadow-lg text-center">
+            <div className="text-red-500 mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold text-gray-800">Error Loading Department</h2>
-            <p className="text-gray-600 mt-2">{error}</p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Department</h2>
+            <p className="text-gray-600 mb-6">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+              className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
             >
               Try Again
             </button>
@@ -117,21 +125,19 @@ function Department() {
       <motion.div
         initial="hidden"
         animate="visible"
+        exit="exit"
         variants={containerVariants}
-        className="min-h-screen flex flex-col  relative overflow-hidden"
+        className="min-h-screen flex flex-col bg-gray-50"
       >
-        <DecorativeBubbles />
-
-
         {depo_code ? (
-          <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 flex-grow">
+          <section className="py-12 px-4 sm:px-6 lg:px-8 flex-grow">
             <div className="max-w-7xl mx-auto">
               <motion.div variants={itemVariants}>
                 <DepartmentDetails department={department} />
               </motion.div>
 
               <motion.div variants={itemVariants} className="mt-12">
-                <div className="flex flex-wrap justify-center gap-4 mb-10">
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
                   <NavLink
                     to="faculty"
                     className={({ isActive }) =>
@@ -141,7 +147,12 @@ function Department() {
                       }`
                     }
                   >
-                    Faculty Members
+                    <div className="flex items-center justify-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
+                      </svg>
+                      Faculty
+                    </div>
                   </NavLink>
                   <NavLink
                     to="labs"
@@ -152,61 +163,73 @@ function Department() {
                       }`
                     }
                   >
-                    Laboratory Facilities
+                    <div className="flex items-center justify-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M11.17 3a1.5 1.5 0 00-1.5 1.5v1.17l-1.5-1.5V4.5A3 3 0 0111.17 1H14a3 3 0 013 3v10a3 3 0 01-3 3h-2.83a3 3 0 01-3-3v-1.17l-1.5 1.5v1.17a1.5 1.5 0 001.5 1.5H14a1.5 1.5 0 001.5-1.5V4.5A1.5 1.5 0 0014 3h-2.83zM6 5.33l5.5 5.5v-1.5a1.5 1.5 0 011.5-1.5h1.5L6 5.33z" clipRule="evenodd" />
+                        <path fillRule="evenodd" d="M4.5 6.5A1.5 1.5 0 016 5h4.17a1.5 1.5 0 011.5 1.5v4.17a1.5 1.5 0 01-1.5 1.5H6a1.5 1.5 0 01-1.5-1.5V6.5z" clipRule="evenodd" />
+                      </svg>
+                      Labs
+                    </div>
                   </NavLink>
                   <NavLink
                     to={`placements?depo_code=${depo_code}&year=2025`}
                     className={({ isActive }) =>
                       `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
                         ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
+                        : "bg-white text-red-600 border border-gray-200 hover:bg-gray-50"
                       }`
                     }
                   >
-                    Placement Records
+                    <div className="flex items-center justify-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                        <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                      </svg>
+                      Placements
+                    </div>
                   </NavLink>
                 </div>
 
-                {isSubPageActive && (
-                  <motion.div
-                    variants={itemVariants}
-                    className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-200"
-                  >
-                    <Outlet />
-                  </motion.div>
-                )}
+                <AnimatePresence mode="wait">
+                  {isSubPageActive && (
+                    <motion.div
+                      key={location.pathname}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="rounded-lg"
+                      ref={contentRef}
+                    >
+                      <Outlet />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </div>
           </section>
         ) : (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 flex-grow">
+          <section className="py-16 px-4 sm:px-6 lg:px-8 flex-grow">
             <div className="max-w-7xl mx-auto">
-              <motion.div variants={itemVariants} className="text-center mb-16">
-                <span className="text-red-600 font-semibold tracking-wider uppercase text-sm">
-                  Academic Excellence
-                </span>
-                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-4 mb-6">
-                  <span className="text-red-600">Departments</span>
+              <motion.div variants={itemVariants} className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  Our Departments
                 </h2>
-                <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Explore our comprehensive range of technical departments offering cutting-edge education and research opportunities.
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Explore our comprehensive range of technical departments.
                 </p>
               </motion.div>
 
               {departmentNames && departmentNames.length > 0 ? (
                 <motion.div
                   variants={containerVariants}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
                   {departmentNames.map((dept, index) => (
                     <motion.div
                       key={index}
                       variants={itemVariants}
-                      whileHover={{
-                        y: -5,
-                        transition: { type: "spring", stiffness: 300, damping: 10 }
-                      }}
+                      whileHover={{ y: -5 }}
                     >
                       <DepartmentCard
                         name={dept.department_name}
@@ -220,28 +243,10 @@ function Department() {
                   ))}
                 </motion.div>
               ) : (
-                <div className="text-center py-12 bg-white rounded-xl shadow-md">
+                <div className="text-center py-12 bg-white rounded-lg shadow-sm">
                   <p className="text-gray-600">No departments found</p>
                 </div>
               )}
-
-              <motion.div
-                variants={itemVariants}
-                className="mt-20 text-center bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
-              >
-                <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-                  Need help choosing a department?
-                </h3>
-                <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                  Our academic advisors are here to guide you in selecting the perfect department that aligns with your career goals and interests.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-block px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-medium hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  Contact Our Advisors
-                </Link>
-              </motion.div>
             </div>
           </section>
         )}

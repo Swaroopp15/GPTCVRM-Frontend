@@ -1,6 +1,6 @@
 const getLabs = async (depo_code) => {
   try {
-    const response = await fetch(`http://localhost:3000/labs?depo_code=${depo_code}`);
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}labs?depo_code=${depo_code}`);
     const data = await response.json();
     return data;
   } catch (error) {
