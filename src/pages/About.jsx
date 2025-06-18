@@ -10,6 +10,7 @@ import Footer from '../pages/Footer';
 import AdmissionProcess from '../components/AboutPageSections/AdmissionProcess';
 import GoToTop from '../components/hero/GoToTop';
 import Academics from '../components/Academics/Academics';
+import Facilities from '../pages/Facilities';
 
 function About() {
   const { college } = useContext(Context);
@@ -18,7 +19,7 @@ function About() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     // Simulate loading (replace with actual data loading logic)
     const timer = setTimeout(() => {
       if (college) {
@@ -34,7 +35,7 @@ function About() {
 
   const pageData = {
     hero: {
-      title: "Welcome to Our College",
+      title: college?.college_name ? college.college_name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : "Our College",
       subtitle: "Shaping the future since 2017",
       collegeImage: college?.college_image
     },
@@ -79,7 +80,7 @@ function About() {
       {
         year: "2017",
         event: "Foundation Year",
-        description: "College established with a vision for excellence in technical education."
+        description: "College established with a vision for excellence in technical education by the government."
       },
       {
         year: "2020",
@@ -88,13 +89,13 @@ function About() {
       },
       {
         year: "2022",
-        event: "Accreditation",
-        description: "Received NAAC 'A' Grade accreditation for academic excellence."
+        event: "Technical Expo",
+        description: "Received the 1st Prize in Technical Expo held in Vijayawada by the state board of technical education, AP."
       },
       {
-        year: "2024",
-        event: "National Recognition",
-        description: "Ranked among India's top 50 emerging technical institutions."
+        year: "2025",
+        event: "Highest Package Achieved",
+        description: "Highest package offered to a student reached 9.2 LPA in the Anakapalle district."
       }
     ]
   };
@@ -114,8 +115,8 @@ function About() {
           </div>
           <h2 className="text-xl font-semibold text-gray-800">Error Loading Data</h2>
           <p className="text-gray-600 mt-2">{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="mt-4 px-4 py-2 bg-red-700 text-white rounded hover:bg-red-800 transition-colors"
           >
             Try Again
@@ -131,10 +132,11 @@ function About() {
       <div className="relative z-10 bg-white">
         <AboutSection data={pageData.about} />
         <VisionMissionSection data={college} />
-        <WhyChooseUsSection data={pageData.whyChooseUs} />
-        <AdmissionProcess />
-        <Academics />
-        <JourneySection data={pageData.journey} />
+<Facilities />
+        {/* <WhyChooseUsSection data={pageData.whyChooseUs} /> */}
+        {/* <AdmissionProcess /> */}
+        {/* <Academics /> */}
+        {/* <JourneySection data={pageData.journey} /> */}
         <Footer />
         <GoToTop />
       </div>

@@ -53,7 +53,7 @@ function Facilities() {
         )}
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

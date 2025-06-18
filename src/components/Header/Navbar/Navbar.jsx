@@ -38,6 +38,24 @@ function Navbar({ mobile = false, currentPath }) {
       >
         About
       </Link>
+<DropDown
+  name="Acadamics"
+  values={[
+    { name: 'Results', code: 'results', path: '/results' },
+    { name: 'Admissions', code: 'academics', path: '/academics' },
+    { name: 'Admission Process', code: 'admissionprocess', path: '/admissionprocess' },
+    { name: 'Students', code: 'students', path: '/ww' },
+  ]}
+  link="/"
+  mobile={mobile}
+  currentPath={currentPath}
+  isActive={
+    isActive('/academics') ||
+    isActive('/results') ||
+    isActive('/students') ||
+    isActive('/admissionprocess')
+  }
+/>
 
       <DropDown
         name="Departments"
@@ -69,24 +87,6 @@ function Navbar({ mobile = false, currentPath }) {
         Placements
       </Link>
 
-      <DropDown
-        name="Acadamics"
-        values={[
-          { name: 'Results', code: 'results', path: '/results' },
-          { name: 'Admissions', code: 'academics', path: '/academics' },
-          { name: 'Admission Process', code: 'admissionprocess', path: '/admissionprocess' },
-          { name: 'Students', code: 'students', path: '/ww' },
-        ]}
-        link="/"
-        mobile={mobile}
-        currentPath={currentPath}
-        isActive={
-          isActive('/academics') ||
-          isActive('/results') ||
-          isActive('/students') ||
-          isActive('/admissionprocess')
-        }
-      />
 
       <Link
         to="/library"

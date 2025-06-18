@@ -176,7 +176,7 @@ function Department() {
                     className={({ isActive }) =>
                       `px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-sm ${isActive
                         ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
-                        : "bg-white text-red-600 border border-gray-200 hover:bg-gray-50"
+                        : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50 shadow-md"
                       }`
                     }
                   >
@@ -213,7 +213,7 @@ function Department() {
             <div className="max-w-7xl mx-auto">
               <motion.div variants={itemVariants} className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                  Our Departments
+                  Departments
                 </h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Explore our comprehensive range of technical departments.
