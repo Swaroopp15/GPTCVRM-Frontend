@@ -16,8 +16,8 @@ function UpdateFaculty() {
   const [qualification, setQualification] = useState('');
   const [faculty_code, setFaculty_code] = useState(''); 
 
-  const updateFacultyDetails = async () => {
-    await updateFaculty(selectedFaculty, faculty_name, faculty_role, email, number, qualification, depo_code);
+  const updateFacultyDetails = async (event) => {
+    await updateFaculty(selectedFaculty, faculty_name, faculty_role, email, number, qualification, depo_code, event.target.image.files[0]);
   }
   
   useEffect(() => {
@@ -34,7 +34,7 @@ function UpdateFaculty() {
         <h3 className="text-2xl font-bold text-gray-800">Update Faculty Details</h3>
         <p className="text-sm text-gray-500 mt-1">Select Faculty and Change their details</p>
       </div>
-      <form onSubmit={(event) => {event.preventDefault(); updateFacultyDetails()}} className="space-y-6">
+      <form onSubmit={(event) => {event.preventDefault(); updateFacultyDetails(event)}} className="space-y-6">
       <div>
           <label htmlFor="Department" className="block text-sm font-medium text-gray-700 mb-2">
             Select Department
@@ -110,7 +110,6 @@ function UpdateFaculty() {
               type="text"
               name="number"
               id="number"
-              required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="+91 865954331"
               onInput={(e) => setNumber(e.target.value)}
@@ -130,6 +129,18 @@ function UpdateFaculty() {
               onInput={(e) => setQualification(e.target.value)}
             />
           </div>
+        </div>
+        <div>
+          <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
+            Faculty Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            className="w-full text-gray-700 bg-white border border-gray-300 rounded-lg py-2 px-4 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-red-600 file:text-white hover:file:bg-red-700 transition"
+          />
         </div>
 
         <div className="flex justify-end space-x-3 pt-2">

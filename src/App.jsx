@@ -76,6 +76,7 @@ import AdmissionProcess from "./components/AboutPageSections/AdmissionProcess";
 import StudentList from "./pages/StudentsList";
 import AdminStudents from "./components/admin/Forms/Students/AdminStudents";
 import AddStudents from "./components/admin/Forms/Students/AddStudents";
+import UpdateImage from "./components/admin/Forms/College_Info/Image";
 
 function App() {
   const [college, setCollege] = useState({});
@@ -176,6 +177,8 @@ function App() {
               </Route>
               <Route path="college-info" element={<AdminCollegeInfo />}>
                 <Route path="" element={<UpdateInfo />} />
+                <Route path="info" element={<UpdateInfo />} />
+                <Route path="image" element={<UpdateImage />} />
               </Route>
               <Route path="facility" element={<AdminFacility/>}>
                 <Route path="" element={<AddFacility />} />

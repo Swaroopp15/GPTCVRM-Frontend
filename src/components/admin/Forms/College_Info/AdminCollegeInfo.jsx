@@ -7,9 +7,9 @@ function AdminCollegeInfo() {
     <div className="space-y-8 p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold text-center text-red-700 mb-8">Committees Management</h1>
       
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link
-          to="add"
+          to="info"
           className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="flex items-center space-x-3">
@@ -19,14 +19,14 @@ function AdminCollegeInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-800">Create Committee</h3>
-              <p className="text-sm text-gray-500 mt-1">Establish new committee</p>
+              <h3 className="font-medium text-gray-800">Update Information</h3>
+              <p className="text-sm text-gray-500 mt-1">Update college information</p>
             </div>
           </div>
         </Link>
         
         <Link
-          to="add-member"
+          to="image"
           className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-green-300 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="flex items-center space-x-3">
@@ -36,46 +36,13 @@ function AdminCollegeInfo() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium text-gray-800">Add Members</h3>
-              <p className="text-sm text-gray-500 mt-1">Assign members to committees</p>
+              <h3 className="font-medium text-gray-800">Update Images</h3>
+              <p className="text-sm text-gray-500 mt-1">Update college images</p>
             </div>
           </div>
         </Link>
-        
-        <Link
-          to="update"
-          className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-yellow-300 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
-        >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-full bg-yellow-50 text-yellow-600">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">Update Committee</h3>
-              <p className="text-sm text-gray-500 mt-1">Modify committee details</p>
-            </div>
-          </div>
-        </Link>
-        
-        <Link
-          to="delete"
-          className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
-        >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-full bg-red-50 text-red-600">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">Delete Committee</h3>
-              <p className="text-sm text-gray-500 mt-1">Remove existing committee</p>
-            </div>
-          </div>
-        </Link>
-      </div> */}
+    
+      </div>
       
       <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
         <Outlet />
