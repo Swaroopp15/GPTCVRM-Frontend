@@ -8,6 +8,7 @@ function ContextProvider(params) {
   const [departmentNames, setDepartmentNames] = useState([]);
   const [committees, setCommittees] = useState([]);
   const [collegeImages, setCollegeImages] = useState([]);
+  const [homeLabs, setHomeLabs] = useState([]);
   useEffect(() => {
     const getData = async () => {
       const collegeData = await getCollegeInfo();      
@@ -15,11 +16,12 @@ function ContextProvider(params) {
       setCommittees(collegeData.committees);
       setDepartmentNames(collegeData.departments);
       setCollegeImages(collegeData.images);
+      setHomeLabs(collegeData.homeLabs)
     }
     getData();
   }, []);
   return (
-    <Context.Provider value={{ college, setCollege, departmentNames, setDepartmentNames, committees, setCommittees, collegeImages }}>
+    <Context.Provider value={{ college, setCollege, departmentNames, setDepartmentNames, committees, setCommittees, collegeImages, homeLabs }}>
     {params.children}
   </Context.Provider>
   )

@@ -3,16 +3,16 @@ import { motion } from "framer-motion";
 import { Context } from "../../../Context/Context";
 
 function Hero() {
-  const { college } = useContext(Context);
-
+  const { college, collegeImages } = useContext(Context);
+  const banner = collegeImages.find((image) => image.image_name === "college_banner")
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <div className="fixed inset-0 z-0">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: college?.college_image
-              ? `url(${import.meta.env.VITE_BACKEND +  college.college_image})`
+            backgroundImage: banner
+              ? `url(${import.meta.env.VITE_BACKEND +  banner.image_path})`
               : "linear-gradient(to right, #4a044e, #1a1a2e)",
             backgroundAttachment: "fixed",
             backgroundPosition: "center",

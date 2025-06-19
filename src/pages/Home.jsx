@@ -16,7 +16,7 @@ import CommissionerMessageSection from '../components/AboutPageSections/Commissi
 import GoToTop from '../components/hero/GoToTop';
 
 const Home = () => {
-  const { college } = useContext(Context);
+  const { college, collegeImages, homeLabs } = useContext(Context);
   const [departments, setDepartments] = useState([]);
   const [events, setEvents] = useState([]);
   const [notifications, setNotifications] = useState([]);
@@ -25,33 +25,33 @@ const Home = () => {
   const [eventsLoading, setEventsLoading] = useState(true);
   const [notificationsLoading, setNotificationsLoading] = useState(true);
 
-  const labs = [
-    {
-      name: "Computer Lab",
-      description: "State-of-the-art computing facility with latest hardware and software",
-      equipment: "50 Computers, 3D Printers, Scanners",
-      image: "💻"
-    },
-    {
-      name: "Electronics Lab",
-      description: "Fully equipped with modern electronic testing and measurement equipment",
-      equipment: "Oscilloscopes, Function Generators, Power Supplies",
-      image: "🔌"
-    },
-    {
-      name: "Mechanical Workshop",
-      description: "Industrial-grade machinery for hands-on training",
-      equipment: "Lathes, Milling Machines, CNC Machines",
-      image: "⚙️"
-    }
-  ];
+  // const labs = [
+  //   {
+  //     name: "Computer Lab",
+  //     description: "State-of-the-art computing facility with latest hardware and software",
+  //     equipment: "50 Computers, 3D Printers, Scanners",
+  //     image: "💻"
+  //   },
+  //   {
+  //     name: "Electronics Lab",
+  //     description: "Fully equipped with modern electronic testing and measurement equipment",
+  //     equipment: "Oscilloscopes, Function Generators, Power Supplies",
+  //     image: "🔌"
+  //   },
+  //   {
+  //     name: "Mechanical Workshop",
+  //     description: "Industrial-grade machinery for hands-on training",
+  //     equipment: "Lathes, Milling Machines, CNC Machines",
+  //     image: "⚙️"
+  //   }
+  // ];
 
-  const principalMessage = {
-    name: "Dr. Nagaraju",
-    title: "Principal",
-    message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-  };
+  // const principalMessage = {
+  //   name: "Dr. Nagaraju",
+  //   title: "Principal",
+  //   message: "At our college, we believe in nurturing not just academic excellence but also character and creativity. Our dedicated faculty and state-of-the-art facilities provide students with the perfect environment to grow into responsible global citizens.",
+  //   image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+  // };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,6 +119,9 @@ const Home = () => {
     );
   }
 
+console.log("home Labs : ", homeLabs);
+
+
   return (
     <div className="bg-white text-gray-900">
       <Hero />
@@ -131,7 +134,7 @@ const Home = () => {
         />
         <PrincipalMessageSection principal_message={college.principal_message} principal_name={college.principal_name} principal_image={""} />
         <DepartmentsSection departments={departments} containerVariants={containerVariants} itemVariants={itemVariants} />
-        <LabsSection labs={labs} containerVariants={containerVariants} itemVariants={itemVariants} />
+        <LabsSection labs={homeLabs} containerVariants={containerVariants} itemVariants={itemVariants} />
         <PlacementsSection containerVariants={containerVariants} itemVariants={itemVariants} />
         <EventsSection events={events} eventsLoading={eventsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />
         <NotificationsSection notifications={notifications} notificationsLoading={notificationsLoading} containerVariants={containerVariants} itemVariants={itemVariants} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const addDepartment = async (event) => {
   event.preventDefault();
@@ -8,15 +8,17 @@ const addDepartment = async (event) => {
     form.append("depo_code", event.target.depo_code.value);
     form.append("vision", event.target.vision.value);
     form.append("mission", event.target.mission.value);
+    form.append("avg_pass", event.target.avg_pass.value);
+    form.append("department_image", event.target.image.files[0]);
 
     const data = Object.fromEntries(form.entries());
-    const response = await fetch(import.meta.env.VITE_BACKEND + "departments/", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      import.meta.env.VITE_BACKEND + "departments/",
+      {
+        method: "POST",
+        body: form,
+      }
+    );
 
     const result = await response.json();
     console.log(result);
@@ -35,12 +37,17 @@ function AddDepartment() {
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden p-6 sm:p-8">
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-gray-800">Add New Department</h3>
-        <p className="text-sm text-gray-500 mt-1">Create a new academic department</p>
+        <p className="text-sm text-gray-500 mt-1">
+          Create a new academic department
+        </p>
       </div>
       <form onSubmit={addDepartment} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="department_name" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="department_name"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Department Name
               <span className="text-red-500 ml-1">*</span>
             </label>
@@ -55,7 +62,10 @@ function AddDepartment() {
           </div>
 
           <div>
-            <label htmlFor="depo_code" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="depo_code"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Department Code
               <span className="text-red-500 ml-1">*</span>
             </label>
@@ -72,7 +82,10 @@ function AddDepartment() {
         </div>
 
         <div>
-          <label htmlFor="vision" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="vision"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Vision Statement
           </label>
           <textarea
@@ -85,7 +98,10 @@ function AddDepartment() {
         </div>
 
         <div>
-          <label htmlFor="mission" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="mission"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Mission Statement
           </label>
           <textarea
@@ -96,7 +112,39 @@ function AddDepartment() {
             placeholder="Department mission statement..."
           ></textarea>
         </div>
-
+        <div>
+          <label
+            htmlFor="avg_pass"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
+            Department Average Pass Percentage
+          </label>
+          <input
+            id="avg_pass"
+            name="avg_pass"
+            type="number"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
+            placeholder="Department Average Pass Percentage"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="lab_images"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
+            Department Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            id="image"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
+          />
+          <p className="mt-1 text-sm text-gray-500">
+            Select new images to update existing ones
+          </p>
+        </div>
         <div className="flex justify-end space-x-3 pt-2">
           <button
             type="reset"

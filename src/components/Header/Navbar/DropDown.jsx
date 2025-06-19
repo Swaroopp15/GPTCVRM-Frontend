@@ -79,7 +79,7 @@ function DropDown({ name, values, link, all, mobile = false, currentPath, isActi
           onMouseEnter={() => !mobile && clearTimeout(closeTimeout)}
           onMouseLeave={() => !mobile && handleMouseLeave()}
         >
-          <ul className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+          <ul className="w-56 divide-y mt-[-5px] divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             {all && (
               <li className="py-2 px-4 hover:bg-gray-50 transition-colors duration-200">
                 <Link

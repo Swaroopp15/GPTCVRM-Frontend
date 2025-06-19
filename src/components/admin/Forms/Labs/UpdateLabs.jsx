@@ -98,7 +98,7 @@ function UpdateLabs() {
         }
       }
 
-      await updateLab(selectedLabId, formDataToSend);
+      await updateLab(selectedLabId, e);
       alert("Lab updated successfully!");
       
       // Refresh labs list
@@ -185,7 +185,6 @@ function UpdateLabs() {
                   type="text"
                   name="lab_name"
                   id="lab_name"
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Enter lab name"
                   value={formData.lab_name}
@@ -203,7 +202,6 @@ function UpdateLabs() {
                   min="0"
                   name="capacity"
                   id="capacity"
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-200"
                   placeholder="Enter capacity"
                   value={formData.capacity}
