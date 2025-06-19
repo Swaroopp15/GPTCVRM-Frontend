@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Logo from './logo';
+import Logo from './Logo';
 import Navbar from './Navbar/Navbar';
 import { Context } from '../../../Context/Context';
 import { FaBars, FaTimes } from 'react-icons/fa';
