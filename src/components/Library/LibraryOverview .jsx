@@ -10,7 +10,7 @@ const LibraryOverview = ({ library, ebooksLength }) => {
   }
 
   const stats = [
-    { title: "Library Area", value: library.area ? `${library.area} sq.ft` : 'N/A', icon: "🏛️", color: "bg-red-100" },
+    { title: "Library Area", value: library.area ? `${library.area}` : 'N/A', icon: "🏛️", color: "bg-red-100" },
     { title: "Number of Titles", value: library[0]?.total_titles ? library[0].total_titles.toLocaleString() : 0, icon: "📚", color: "bg-blue-100" },
     { title: "Number of Volumes", value: library[0]?.total_volumes ? library[0].total_volumes.toLocaleString() : 0, icon: "📖", color: "bg-green-100" },
     { title: "Number of Journals", value: library[0]?.total_journal ? library[0].total_journal.toLocaleString() : 0, icon: "🗞️", color: "bg-purple-100" },
